@@ -1,8 +1,6 @@
-# Created by the script cgal_create_cmake_script
-# This is the CMake script for compiling a CGAL application.
 
 
-project( cgal_demos_example )
+project( pacman_bbox )
 
 cmake_minimum_required(VERSION 2.6.2)
 if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" VERSION_GREATER 2.6)
@@ -32,4 +30,4 @@ add_executable(bounding bounding.cpp)
 
 #add_executable(prova prova1.cpp)
 
-add_executable(load_mesh load_mesh.cpp)
+#add_executable(load_mesh load_mesh.cpp)
