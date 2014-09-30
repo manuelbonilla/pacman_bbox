@@ -11,5 +11,5 @@ to execute just
   
 to execute the code example
 
-  ./bounding < ../TAZZA_prova.shl
+  ./bounding < ../cup.shl
   
