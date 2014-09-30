@@ -26,7 +26,7 @@ else()
   
 endif()
 
-add_executable(bounding bounding.cpp)
+add_executable(bounding src/bounding.cpp)
 
 #add_executable(prova prova1.cpp)
 

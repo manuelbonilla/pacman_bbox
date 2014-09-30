@@ -31,4 +31,7 @@
 *~
 .kdev4
 build
-
+BUILD
+.kdev4/
+build/
+BUILD/
