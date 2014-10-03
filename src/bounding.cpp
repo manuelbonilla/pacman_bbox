@@ -38,6 +38,22 @@ int main()
   std::vector<Object3d> SplitedObject;
   
   SplitedObject = FindBestSplit( Object  );
+    
+  K::Iso_cuboid_3 box1 = CGAL::bounding_box(SplitedObject[0].begin(), SplitedObject[0].end());
+  K::Iso_cuboid_3 box2 = CGAL::bounding_box(SplitedObject[1].begin(), SplitedObject[1].end());
+  K::Iso_cuboid_3 Objectbox = CGAL::bounding_box(Object.begin(), Object.end());
+  std::cout << box1 << std::endl;
+  std::cout << box2 << std::endl;
+  std::cout << Objectbox << std::endl;
+  
+
+  
+  
+ // if ( (box1.volume() + box2.volume()) < Objectbox.volume() )
+      
+  
+  
+  
   
   return 0;
 }
@@ -48,6 +64,9 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
     Object2d up, down, left, right;
     double area_up, area_down, area_left, area_right, area_min_y, area_min_x, area_min;
     Point2d cutting_point;
+    std::vector<Point2d> cutting_point_vec;
+    std::vector<double> area_min_vec;
+    std::vector<int> cutting_direction_vec;
     
     
   Object2d face;
@@ -153,14 +172,124 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
     
   }
  
+ cutting_point_vec.push_back( cutting_point );
+ area_min_vec.push_back(area_min);
+ cutting_direction_vec.push_back(cutting_direction);
+ 
 //   std::cout << "Face " << i << std::endl;
   std::cout << cutting_point << " "; 
-  std::cout << cutting_direction << std::endl;
+  std::cout << cutting_direction ;
+  std::cout << " " << area_min << " 0 0" <<  std::endl;
   
   }
-  
+ 
+
   std::vector<Object3d> test;
-  return test;
+  
+  double total_area_min = area_min_vec[0];
+  int total_min_index = 0, total_min_direction;
+  for (unsigned int i; i < cutting_point_vec.size(); i++)
+  {
+      if( area_min_vec[i] < total_area_min ) 
+      {
+          total_min_index = i;
+      }
+      
+  }
+  
+  total_area_min = area_min_vec[total_min_index];
+  Point2d best_point = cutting_point_vec[total_min_index];
+  total_min_direction = cutting_direction_vec[total_min_index];
+  
+  Object3d temp_object1, temp_object2;
+  for (unsigned int i = 0; i < Object.size(); i++)
+  {
+      switch (total_min_index)
+      {
+          case 0:
+              if(total_min_direction == 0)
+              {
+                  if (Object[i].y() >= best_point.y())
+                  {
+                    temp_object1.push_back(Object[i]);                  
+                  }
+                  else
+                  {
+                      temp_object2.push_back(Object[i]);   
+                  }
+              }
+              else
+              {
+                  if (Object[i].x() >= best_point.x())
+                  {
+                      temp_object1.push_back(Object[i]);                  
+                    }
+                    else
+                    {
+                        temp_object2.push_back(Object[i]);   
+                    }
+              }
+              break;
+              
+          case 1:
+              if(total_min_direction == 0)
+              {
+                  if (Object[i].z() >= best_point.y())
+                  {
+                      temp_object1.push_back(Object[i]);                  
+                  }
+                  else
+                  {
+                      temp_object2.push_back(Object[i]);   
+                  }
+              }
+              else
+              {
+                  if (Object[i].x() >= best_point.x())
+                  {
+                      temp_object1.push_back(Object[i]);                  
+                  }
+                  else
+                  {
+                      temp_object2.push_back(Object[i]);   
+                  }
+              }
+              break;
+              
+          case 2:
+              if(total_min_direction == 0)
+              {
+                  if (Object[i].z() >= best_point.y())
+                  {
+                      temp_object1.push_back(Object[i]);                  
+                  }
+                  else
+                  {
+                      temp_object2.push_back(Object[i]);   
+                  }
+              }
+              else
+              {
+                  if (Object[i].y() >= best_point.x())
+                  {
+                      temp_object1.push_back(Object[i]);                  
+                  }
+                  else
+                  {
+                      temp_object2.push_back(Object[i]);   
+                  }
+              }
+              break;
+
+            
+      }
+  }
+   
+  std::vector <Object3d> split;
+  split.push_back(temp_object1);
+  split.push_back(temp_object2);
+  
+  return split;
   
 }
 

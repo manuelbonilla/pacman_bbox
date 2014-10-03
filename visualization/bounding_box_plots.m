@@ -22,3 +22,18 @@ subplot(2,2,4); plot(points(:,2), points(:,3), '*'); title('yz projection');
 grid on; hold on;
 plot(best_points(3,1), best_points(3,2), 'r*');
 
+subplot(2,2,1); hold on; 
+
+plot3isobox([best_points(4,1) best_points(4,2) best_points(4,3)],...
+    [best_points(4,4) best_points(4,5) best_points(4,6)], 0, [1 0 0]);
+            
+plot3isobox([best_points(5,1) best_points(5,2) best_points(5,3)],...
+    [best_points(5,4) best_points(5,5) best_points(5,6)], 0, [1 0 0]);
+
+% plot3isobox([best_points(6,1) best_points(6,2) best_points(6,3)],...
+%     [best_points(6,4) best_points(6,5) best_points(6,6)], .5, [1 0 0]);
+
+
+
+
+
