@@ -15,7 +15,7 @@ Authors:
 
     cgal
 
-to execute just
+to compile just
 
     cmake build
     cd build
