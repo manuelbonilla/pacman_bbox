@@ -35,3 +35,7 @@ BUILD
 .kdev4/
 build/
 BUILD/
+
+#Matlab files
+*.fig
+*.png
