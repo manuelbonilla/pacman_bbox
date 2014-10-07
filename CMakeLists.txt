@@ -4,6 +4,13 @@ project( pacman_bbox )
 cmake_minimum_required(VERSION 2.6.2)
 
 find_package(CGAL QUIET COMPONENTS Core )
+find_package(Eigen3 REQUIRED COMPONENTS Dense Geometry)
+
+if ( EIGEN3_FOUND )
+  INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIRS})
+else()
+    message(STATUS "This program requires the Eigen Headers, and will not be compiled.")
+endif()
 
 
 if ( CGAL_FOUND )
@@ -15,6 +22,7 @@ endif()
 
 
 add_executable(bounding src/bounding.cpp)
+add_executable(bounding_eigen src/bounding_eigen.cpp)
 
 #add_executable(prova prova1.cpp)
 
