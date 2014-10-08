@@ -14,6 +14,7 @@ Authors:
 ## Dependencies
 
     cgal
+    eigen
 
 to compile just
 
