@@ -12,7 +12,6 @@ else()
     message(STATUS "This program requires the Eigen Headers, and will not be compiled.")
 endif()
 
-
 if ( CGAL_FOUND )
   include( ${CGAL_USE_FILE} )
   include( CGAL_CreateSingleSourceCGALProgram )
@@ -21,9 +20,9 @@ else()
 endif()
 
 
-add_executable(bounding src/bounding.cpp)
+#add_executable(bounding src/bounding.cpp)
 add_executable(bounding_eigen src/bounding_eigen.cpp)
 
-#add_executable(prova prova1.cpp)
+add_executable(test_pca src/test_pca.cpp)
 
 #add_executable(load_mesh load_mesh.cpp)

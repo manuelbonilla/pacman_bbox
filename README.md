@@ -15,6 +15,7 @@ Authors:
 
     cgal
     eigen
+    copy cmake_modules/FindEigen3.cmake to system cmake modules path or adjust the cmake_modlues_path variable
 
 to compile just
 
