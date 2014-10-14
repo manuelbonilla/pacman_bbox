@@ -15,25 +15,36 @@ typedef std::vector<Point2d> Object2d;
 
 using Eigen::MatrixXd;
 
-std::vector<Object3d> FindBestSplit ( Object3d Object );
-Object2d  Project2plane ( Object3d Object, int plane );
+std::vector<Object3d> FindBestSplit ( Object3d& Object );
+Object2d  Project2plane ( const Object3d& Object, int plane );
+void splitSingleDirection(const Object2d& face_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction);
 
 int main()
 {
+
+    Point2d* temp = new Point2d[4000];
+    Object2d tmp2;
+    tmp2.reserve(4000);
+    tmp2.resize(4000);
 
     int num_points;
     float x, y, z;
     std::cin >> num_points;
 
     Object3d Object;
-    Eigen::MatrixXd object_eigen ( num_points,3 );
+    //Eigen::MatrixXd object_eigen ( num_points,3 );
 
 // Load object
-    for ( unsigned int i = 0; i < num_points; ++i ) {
+    for ( unsigned int i = 0; i < num_points; ++i ) 
+    {
         std::cin >> x;
         std::cin >> y;
         std::cin >> z;
-        Object.push_back ( Point3d ( x,y,z ) );
+
+        if ((i % 10) == 0)
+        {
+            Object.push_back ( Point3d ( x,y,z ) );
+        }
 // object_eigen(i,0) = x;
 //object_eigen(i,1) = y;
 //object_eigen(i,2) = z;
@@ -41,10 +52,11 @@ int main()
 
     }
 
-//return 0;
     std::vector<Object3d> SplitedObject;
 
     SplitedObject = FindBestSplit ( Object );
+
+    return 0;
 
     K::Iso_cuboid_3 box1 = CGAL::bounding_box ( SplitedObject[0].begin(), SplitedObject[0].end() );
     K::Iso_cuboid_3 box2 = CGAL::bounding_box ( SplitedObject[1].begin(), SplitedObject[1].end() );
@@ -53,20 +65,13 @@ int main()
     std::cout << box2 << std::endl;
     std::cout << Objectbox << std::endl;
 
-
-
-
 // if ( (box1.volume() + box2.volume()) < Objectbox.volume() )
-
-
-
-
 
     return 0;
 }
 
 
-std::vector<Object3d> FindBestSplit ( Object3d Object )
+std::vector<Object3d> FindBestSplit ( Object3d& Object )
 {
     Object2d up, down, left, right;
     double area_up, area_down, area_left, area_right, area_min_y, area_min_x, area_min;
@@ -75,19 +80,20 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
     std::vector<double> area_min_vec;
     std::vector<int> cutting_direction_vec;
     float x,y,z;
+    int cutting_direction = 0;
 //Object2d face_pca;
 
 
     Object2d face, face_pca;
 
     Eigen::MatrixXd face_eigen ( Object.size(),2 );
-    Eigen::JacobiSVD<MatrixXd> SVD_eigen;
     Eigen::MatrixXd face_pca_eigen ( Object.size(),2 );
 
 
 
     for ( unsigned int i = 0; i < 3; i++ ) {
 
+        std::cout << "for i:" << i << std::endl;
         switch ( i ) {
         case 0:
             face = Project2plane ( Object, 0 ); //xy
@@ -101,7 +107,11 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 
         }
 
+        std::cout << "projected!" << std::endl;
+
         for ( int j=0; j<face.size(); j++ ) {
+
+            // std::cout << "for j:" << j << std::endl;
 
             face_eigen ( j,0 ) =face[j].x();
             face_eigen ( j,1 ) =face[j].y();
@@ -109,136 +119,65 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
         }
 
 
-//std::cout << "Covariance matrix:" << std::endl << face.transpose()*face<< std::endl;
+        //std::cout << "Covariance matrix:" << std::endl << face.transpose()*face<< std::endl;
+        
+        {
+          {
+            Eigen::JacobiSVD<MatrixXd> SVD_eigen;
+            {
+            Eigen::MatrixXd tempM2=face_eigen.transpose()*face_eigen;
+            SVD_eigen.compute ( tempM2, Eigen::ComputeThinU | Eigen::ComputeThinV );
+            std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
+            std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
+            std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
+            }
+            
+            Eigen::MatrixXd Un = SVD_eigen.matrixU();
+            {
+              Eigen::MatrixXd U = SVD_eigen.matrixU();
 
-        SVD_eigen.compute ( face_eigen.transpose() *face_eigen, Eigen::ComputeThinU | Eigen::ComputeThinV );
-        std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
-        std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
-        std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
+              face_pca.clear();
 
-        Eigen::MatrixXd Un = SVD_eigen.matrixU();
-        Eigen::MatrixXd U = SVD_eigen.matrixU();
-//Eigen::MatrixXd face_pca(Object.size(),2);
+              Un.col ( 0 ) =  U.col ( 0 ) / U.col ( 0 ).norm();
+              Un.col ( 1 ) =  U.col ( 1 ) / U.col ( 1 ).norm();
+            }
+            std::cout << "U normalized:" << std::endl << Un << std::endl;
 
-        face_pca.clear();
+            face_pca_eigen= face_eigen*Un;
 
-        Un.col ( 1 ) =  U.col ( 1 ) / U.col ( 1 ).norm();
-        Un.col ( 2 ) =  U.col ( 2 ) / U.col ( 2 ).norm();
+            //std::cout << "face_pca_eigen:" << std::endl << face_pca_eigen << std::endl;
 
+            std::cout << "Un destructor..." << std::endl;
+          }
 
-        std::cout << "U normalized:" << std::endl << Un << std::endl;
+          std::cout << "SVD_eigen destructor..." << std::endl;
 
-        face_pca_eigen= face_eigen*Un;
-
-
+        }
         for ( int l=0; l<face_pca_eigen.rows(); l++ ) {
 
             face_pca.push_back ( Point2d ( face_pca_eigen ( l,0 ), face_pca_eigen ( l,1 ) ) );
         }
 
         std::cout << "n points = " << face_pca.size() << std::endl;
-//devi trasformare face_pca in un vettore;
 
-//Eigen::JacobiSVD<MatrixXd>::SingularValuesType invSingVals = svd.singularValues();
-//std::cout << "Reconstructed covariance matrix:" << std::endl << svd.matrixV() * invSingVals.asDiagonal() * svd.matrixU().transpose(
-
-
-        /*********************************************/
-
+        //Eigen::JacobiSVD<MatrixXd>::SingularValuesType invSingVals = svd.singularValues();
+        //std::cout << "Reconstructed covariance matrix:" << std::endl << svd.matrixV() * invSingVals.asDiagonal() * svd.matrixU().transpose(
+      
         K::Iso_rectangle_2 face_bb = CGAL::bounding_box ( face_pca.begin(), face_pca.end() );
         double area_total = face_bb.area();
 
         area_min = area_total;
-        int cutting_direction = 0;
 
-// Find the best split using horizontal direction
-
-
-
-        for ( unsigned int k = 0; k < face_pca.size(); ++k ) {
-
-            up.clear();
-            down.clear();
-
-            for ( int t = 0; t < face_pca.size(); ++t ) {
-                if ( k==t ) {
-                    continue;
-                }
-
-                if ( face_pca[t].y() > face_pca[k].y() ) {
-                    up.push_back ( Point2d ( face_pca[t].x(), face_pca[t].y() ) );
-                }
-
-                else {
-                    down.push_back ( Point2d ( face_pca[t].x() ,face_pca[t].y() ) );
-                }
-            }
-
-            if ( up.size() ==0 || down.size() ==0 ) {
-                continue;
-            }
-
-            K::Iso_rectangle_2 up_bb = CGAL::bounding_box ( up.begin(), up.end() );
-            K::Iso_rectangle_2 down_bb = CGAL::bounding_box ( down.begin(), down.end() );
-            area_up= up_bb.area();
-            area_down= down_bb.area();
-
-            if ( area_up + area_down < area_min ) {
-                area_min = area_up + area_down;
-                cutting_point = face_pca[k];
-                cutting_direction = 0;
-            }
-
-        }
-
-        /// up to this line executes the code
-
-        
-        
-// Find the best split using vertical direction
-
-        for ( unsigned int k = 0; k < face_pca.size(); ++k ) {
-
-            right.clear();
-            left.clear();
-
-            for ( int t = 0; t < face_pca.size(); ++t ) {
-                if ( k==t ) {
-                    continue;
-                }
-
-                if ( face_pca[t].x() > face_pca[k].x() ) {
-                    right.push_back ( Point2d ( face_pca[t].x(), face_pca[t].y() ) );
-                }
-
-                else {
-                    left.push_back ( Point2d ( face_pca[t].x() ,face_pca[t].y() ) );
-                }
-
-            }
-
-            if ( right.size() ==0 || left.size() ==0 ) {
-                continue;
-            }
-
-            K::Iso_rectangle_2 right_bb = CGAL::bounding_box ( right.begin(), right.end() );
-            K::Iso_rectangle_2 left_bb = CGAL::bounding_box ( left.begin(), left.end() );
-            area_right= right_bb.area();
-            area_left= left_bb.area();
-
-            if ( area_right + area_left < area_min ) {
-                area_min = area_right + area_left;
-                cutting_point = face_pca[k];
-                cutting_direction = 1;
-            }
-
-        }
+        // Find the best split using horizontal direction
+        splitSingleDirection(face_pca, area_min, cutting_point, cutting_direction, 0);
+        // Find the best split using vertical direction
+        splitSingleDirection(face_pca, area_min, cutting_point, cutting_direction, 1);
 
         cutting_point_vec.push_back ( cutting_point );
         area_min_vec.push_back ( area_min );
         cutting_direction_vec.push_back ( cutting_direction );
 
-//   std::cout << "Face " << i << std::endl;
+        //   std::cout << "Face " << i << std::endl;
         std::cout << cutting_point << " ";
         std::cout << cutting_direction ;
         std::cout << " " << area_min << " 0 0" <<  std::endl;
@@ -346,19 +285,26 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 // 1 = xz
 // 2 = yz
 
-Object2d  Project2plane ( Object3d Object, int plane )
+Object2d Project2plane ( const Object3d& Object, int plane )
 {
 
     Object2d projection;
 
+    std::cout << "in fcn Project2plane:" << std::endl;
+    std::cout << "case " << plane << std::endl;
+
     for ( unsigned int i = 0; i < Object.size(); i++ ) {
+
+        std::cout << "i=" << i << std::endl;
         switch ( plane ) {
         case 0:
-            projection.push_back ( Point2d ( Object[i].x(), Object[i].y() ) );
+            projection.push_back( Point2d ( Object[i].x(), Object[i].y() ) );
             break;
         case 1:
+        {
             projection.push_back ( Point2d ( Object[i].x(), Object[i].z() ) );
             break;
+        }
         case 2:
             projection.push_back ( Point2d ( Object[i].y(), Object[i].z() ) );
             break;
@@ -367,8 +313,64 @@ Object2d  Project2plane ( Object3d Object, int plane )
         }
 
     }
+    std::cout << "case " << plane << std::endl;
 
 
     return projection;
 
+}
+
+// Find the best split using horizontal direction
+void splitSingleDirection(const Object2d& face_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction)
+{
+        Object2d up, down;
+        double area_up, area_down;
+
+        bool directedSplit;
+
+        for ( unsigned int k = 0; k < face_pca.size(); ++k ) {
+
+            up.clear();
+            down.clear();
+
+            for ( int t = 0; t < face_pca.size(); ++t ) {
+                if ( k==t ) {
+                    continue;
+                }
+
+                if (cutting_direction == 0)
+                {
+                  directedSplit = face_pca[t].y() > face_pca[k].y();
+                }
+                else
+                {
+                  directedSplit = face_pca[t].x() > face_pca[k].x();
+                }
+
+
+                if ( directedSplit ) {
+                    up.push_back ( Point2d ( face_pca[t].x(), face_pca[t].y() ) );
+                }
+
+                else {
+                    down.push_back ( Point2d ( face_pca[t].x() ,face_pca[t].y() ) );
+                }
+            }
+
+            if ( up.size() ==0 || down.size() ==0 ) {
+                continue;
+            }
+
+            K::Iso_rectangle_2 up_bb = CGAL::bounding_box ( up.begin(), up.end() );
+            K::Iso_rectangle_2 down_bb = CGAL::bounding_box ( down.begin(), down.end() );
+            area_up= up_bb.area();
+            area_down= down_bb.area();
+
+            if ( area_up + area_down < area_min ) {
+                area_min = area_up + area_down;
+                cutting_point = face_pca[k];
+                best_cutting_direction = cutting_direction;
+            }
+
+        }
 }
