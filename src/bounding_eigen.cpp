@@ -22,11 +22,6 @@ void splitSingleDirection(const Object2d& face_pca, double& area_min, Point2d& c
 int main()
 {
 
-    Point2d* temp = new Point2d[4000];
-    Object2d tmp2;
-    tmp2.reserve(4000);
-    tmp2.resize(4000);
-
     int num_points;
     float x, y, z;
     std::cin >> num_points;
@@ -44,28 +39,26 @@ int main()
         if ((i % 10) == 0)
         {
             Object.push_back ( Point3d ( x,y,z ) );
-        }
-// object_eigen(i,0) = x;
-//object_eigen(i,1) = y;
-//object_eigen(i,2) = z;
-//std::cout << x << " " << y << std::endl;
+        
 
     }
 
-    std::vector<Object3d> SplitedObject;
+   //  std::vector<Object3d> SplitedObject;
 
     SplitedObject = FindBestSplit ( Object );
 
-    return 0;
+   // std::cout << "SplitedObject.size \n" <<SplitedObject.size()<< std::endl;
+   // std::cout << "SplitedObject[0].size \n" <<SplitedObject[0].size()<< std::endl;
+   //  std::cout << "SplitedObject[1].size \n" <<SplitedObject[1].size()<< std::endl;
 
-    K::Iso_cuboid_3 box1 = CGAL::bounding_box ( SplitedObject[0].begin(), SplitedObject[0].end() );
-    K::Iso_cuboid_3 box2 = CGAL::bounding_box ( SplitedObject[1].begin(), SplitedObject[1].end() );
-    K::Iso_cuboid_3 Objectbox = CGAL::bounding_box ( Object.begin(), Object.end() );
-    std::cout << box1 << std::endl;
-    std::cout << box2 << std::endl;
-    std::cout << Objectbox << std::endl;
+   //  K::Iso_cuboid_3 box1 = CGAL::bounding_box ( SplitedObject[0].begin(), SplitedObject[0].end() );
+   //  K::Iso_cuboid_3 box2 = CGAL::bounding_box ( SplitedObject[1].begin(), SplitedObject[1].end() );
+   //  K::Iso_cuboid_3 Objectbox = CGAL::bounding_box ( Object.begin(), Object.end() );
+   //  std::cout << box1 << std::endl;
+   //  std::cout << box2 << std::endl;
+   //  std::cout << Objectbox << std::endl;
 
-// if ( (box1.volume() + box2.volume()) < Objectbox.volume() )
+
 
     return 0;
 }
@@ -81,14 +74,11 @@ std::vector<Object3d> FindBestSplit ( Object3d& Object )
     std::vector<int> cutting_direction_vec;
     float x,y,z;
     int cutting_direction = 0;
-//Object2d face_pca;
+    //Object2d face_pca;
 
 
     Object2d face, face_pca;
-
-    Eigen::MatrixXd face_eigen ( Object.size(),2 );
-    Eigen::MatrixXd face_pca_eigen ( Object.size(),2 );
-
+    std::vector<Eigen::MatrixXd > v_un;
 
 
     for ( unsigned int i = 0; i < 3; i++ ) {
@@ -108,57 +98,73 @@ std::vector<Object3d> FindBestSplit ( Object3d& Object )
         }
 
         std::cout << "projected!" << std::endl;
-
-        for ( int j=0; j<face.size(); j++ ) {
-
-            // std::cout << "for j:" << j << std::endl;
-
-            face_eigen ( j,0 ) =face[j].x();
-            face_eigen ( j,1 ) =face[j].y();
-
-        }
-
-
-        //std::cout << "Covariance matrix:" << std::endl << face.transpose()*face<< std::endl;
         
+
         {
+
+          Eigen::MatrixXd face_pca_eigen ( Object.size(),2 );
+
           {
-            Eigen::JacobiSVD<MatrixXd> SVD_eigen;
-            {
-            Eigen::MatrixXd tempM2=face_eigen.transpose()*face_eigen;
-            SVD_eigen.compute ( tempM2, Eigen::ComputeThinU | Eigen::ComputeThinV );
-            std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
-            std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
-            std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
+              Eigen::MatrixXd face_eigen ( Object.size(),2 );
+
+              for ( int j=0; j<face.size(); j++ ) {
+
+                  // std::cout << "for j:" << j << std::endl;
+
+                  face_eigen ( j,0 ) =face[j].x();
+                  face_eigen ( j,1 ) =face[j].y();
+
+              }
+
+
+              //std::cout << "Covariance matrix:" << std::endl << face.transpose()*face<< std::endl;
+              
+              {
+                {
+                  Eigen::JacobiSVD<MatrixXd> SVD_eigen;
+                  {
+                  Eigen::MatrixXd tempM2=face_eigen.transpose()*face_eigen;
+                  SVD_eigen.compute ( tempM2, Eigen::ComputeThinU | Eigen::ComputeThinV );
+                  std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
+                  std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
+                  std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
+                  }
+                  
+                  Eigen::MatrixXd Un = SVD_eigen.matrixU();
+                  {
+                    Eigen::MatrixXd U = SVD_eigen.matrixU();
+
+                    face_pca.clear();
+
+                    Un.col ( 0 ) =  U.col ( 0 ) / U.col ( 0 ).norm();
+                    Un.col ( 1 ) =  U.col ( 1 ) / U.col ( 1 ).norm();
+                  }
+                  std::cout << "U normalized:" << std::endl << Un << std::endl;
+
+                  face_pca_eigen= face_eigen*Un;
+                  v_un.push_back(Un);
+
+                  //std::cout << "face_pca_eigen:" << std::endl << face_pca_eigen << std::endl;
+
+                  //std::cout << "Un destructor..." << std::endl;
+                }
+
+                //std::cout << "SVD_eigen destructor..." << std::endl;
+
+              }
+
+              std::cout << "face_eigen destructor..." << std::endl;
+
             }
-            
-            Eigen::MatrixXd Un = SVD_eigen.matrixU();
-            {
-              Eigen::MatrixXd U = SVD_eigen.matrixU();
+            for ( int l=0; l<face_pca_eigen.rows(); l++ ) {
 
-              face_pca.clear();
-
-              Un.col ( 0 ) =  U.col ( 0 ) / U.col ( 0 ).norm();
-              Un.col ( 1 ) =  U.col ( 1 ) / U.col ( 1 ).norm();
+                face_pca.push_back ( Point2d ( face_pca_eigen ( l,0 ), face_pca_eigen ( l,1 ) ) );
             }
-            std::cout << "U normalized:" << std::endl << Un << std::endl;
 
-            face_pca_eigen= face_eigen*Un;
-
-            //std::cout << "face_pca_eigen:" << std::endl << face_pca_eigen << std::endl;
-
-            std::cout << "Un destructor..." << std::endl;
-          }
-
-          std::cout << "SVD_eigen destructor..." << std::endl;
-
-        }
-        for ( int l=0; l<face_pca_eigen.rows(); l++ ) {
-
-            face_pca.push_back ( Point2d ( face_pca_eigen ( l,0 ), face_pca_eigen ( l,1 ) ) );
+            std::cout << "face_pca_eigen destructor..." << std::endl;
         }
 
-        std::cout << "n points = " << face_pca.size() << std::endl;
+        //std::cout << "n points = " << face_pca.size() << std::endl;
 
         //Eigen::JacobiSVD<MatrixXd>::SingularValuesType invSingVals = svd.singularValues();
         //std::cout << "Reconstructed covariance matrix:" << std::endl << svd.matrixV() * invSingVals.asDiagonal() * svd.matrixU().transpose(
@@ -178,64 +184,77 @@ std::vector<Object3d> FindBestSplit ( Object3d& Object )
         cutting_direction_vec.push_back ( cutting_direction );
 
         //   std::cout << "Face " << i << std::endl;
-        std::cout << cutting_point << " ";
-        std::cout << cutting_direction ;
-        std::cout << " " << area_min << " 0 0" <<  std::endl;
+        std::cout << " cutting_point \t "<< cutting_point <<  std::endl; ;
+        std::cout << " cutting_direction\t" <<cutting_direction <<   std::endl;
+        std::cout << " area_min \t" << area_min  <<  std::endl; 
 
     }
 
+    double total_area_min = area_min_vec[0];
 
-   
+    int total_min_index = 0, total_min_direction;
+    for ( unsigned int i = 1; i < cutting_point_vec.size(); i++ )
+    { std::cout << "****entro nel for*********" <<std::endl;
+        
+        //questo if da problemi
+        if ( area_min_vec[i] < total_area_min) {
+            std::cout << "****entro nel if "<<std::endl;
+            total_min_index = i; 
+            total_area_min = area_min_vec[total_min_index]; 
+            std::cout << "total_min_index " << total_min_index << std::endl;
+        }
+     
+    }
 
-//std::vector<Object3d> test;
+    Point2d best_point = cutting_point_vec[total_min_index];
+    total_min_direction = cutting_direction_vec[total_min_index];
 
-//     double total_area_min = area_min_vec[0];
-//     int total_min_index = 0, total_min_direction;
-//     for ( unsigned int i; i < cutting_point_vec.size(); i++ ) {
-//         if ( area_min_vec[i] < total_area_min ) {
-//             total_min_index = i;
-//         }
-// 
-//     }
-// 
-//     
-//     
-//     total_area_min = area_min_vec[total_min_index];
-//     Point2d best_point = cutting_point_vec[total_min_index];
-//     total_min_direction = cutting_direction_vec[total_min_index];
+    for(unsigned int i=0; i<cutting_point_vec.size();i++)
+    {
+      std::cout << "cutting_point_vec i" << cutting_point_vec[i]<<std::endl;
+    }
     
+    for(unsigned int i=0; i<cutting_direction_vec.size();i++)
+    {
+      std::cout << "cutting_direction_vec i" << cutting_direction_vec[i]<<std::endl;
+    }
+
+    std::cout << "best_point " <<  best_point << std::endl;
+    std::cout << "total_min_direction\t" << total_min_direction<<std::endl;
     std::cout << "**************************" << std::endl;
 
     Object3d temp_object1, temp_object2;
-    
-    std::vector <Object3d> split;
-    split.push_back ( temp_object1 );
-    split.push_back ( temp_object2 );
-    
-    
-    return split;
-/*
+   
+   //NON VA BENE...  best point è in pca mentre object in terna globale
+
+    Eigen::MatrixXd  best_point_local(1,2); 
+
     for ( unsigned int i = 0; i < Object.size(); i++ ) {
+      //std::cout << "i" << i<<std::endl;
         switch ( total_min_index ) {
         case 0:
+              best_point_local(0,0) = best_point.x();
+              best_point_local(0,1) = best_point.y();
+              best_point_local = best_point_local*v_un[].inverse();
+
             if ( total_min_direction == 0 ) {
-                if ( Object[i].y() >= best_point.y() ) {
-                    temp_object1.push_back ( Object[i] );
+                if ( Object[i].y() >= best_point_local(0,1) ) {
+                  temp_object1.push_back ( Object[i] );
                 } else {
                     temp_object2.push_back ( Object[i] );
                 }
             } else {
-                if ( Object[i].x() >= best_point.x() ) {
+                if ( Object[i].x() >= best_point_local(0,0) ) {
                     temp_object1.push_back ( Object[i] );
                 } else {
                     temp_object2.push_back ( Object[i] );
                 }
             }
             break;
-
+              /*
         case 1:
             if ( total_min_direction == 0 ) {
-                if ( Object[i].z() >= best_point.y() ) {
+                if ( Object[i].z() >= best_point.y()*v_un[1]  ) {
                     temp_object1.push_back ( Object[i] );
                 } else {
                     temp_object2.push_back ( Object[i] );
@@ -264,22 +283,22 @@ std::vector<Object3d> FindBestSplit ( Object3d& Object )
                 }
             }
             break;
+*/
 
-
-        }
+       }
     }
 
-//     std::vector <Object3d> split;
-//     split.push_back ( temp_object1 );
-//     split.push_back ( temp_object2 );
-// 
-// 
-//     return split;*/
+    std::vector <Object3d> split;
+    split.push_back ( temp_object1 );
+    split.push_back ( temp_object2 );
+
+
+    return split;
 
 
 }
 
-
+}
 // projections are defined as follows
 // 0 = xy
 // 1 = xz
@@ -295,7 +314,7 @@ Object2d Project2plane ( const Object3d& Object, int plane )
 
     for ( unsigned int i = 0; i < Object.size(); i++ ) {
 
-        std::cout << "i=" << i << std::endl;
+       // std::cout << "i=" << i << std::endl;
         switch ( plane ) {
         case 0:
             projection.push_back( Point2d ( Object[i].x(), Object[i].y() ) );
@@ -320,7 +339,7 @@ Object2d Project2plane ( const Object3d& Object, int plane )
 
 }
 
-// Find the best split using horizontal direction
+// Find the best split using horizontal and vertical direction
 void splitSingleDirection(const Object2d& face_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction)
 {
         Object2d up, down;

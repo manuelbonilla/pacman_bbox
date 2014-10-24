@@ -19,10 +19,10 @@ else()
     message(STATUS "This program requires the CGAL library, and will not be compiled.")
 endif()
 
+#include( CMAKE_CURRENT_SOURCE_DIR/include )
 
 #add_executable(bounding src/bounding.cpp)
-add_executable(bounding_eigen src/bounding_eigen.cpp)
+#add_executable(bounding_eigen src/bounding_eigen.cpp)
 
-add_executable(test_pca src/test_pca.cpp)
 
-#add_executable(load_mesh load_mesh.cpp)
+add_executable(code src/code.cpp)
