@@ -45,9 +45,7 @@ int main()
   std::cout << box1 << std::endl;
   std::cout << box2 << std::endl;
   std::cout << Objectbox << std::endl;
-  
-
-  
+    
   
  // if ( (box1.volume() + box2.volume()) < Objectbox.volume() )
       
