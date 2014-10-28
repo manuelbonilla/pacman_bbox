@@ -5,6 +5,7 @@
 #include <iostream>
 #include <CGAL/array.h>
 #include <eigen3/Eigen/Dense>
+#include <CGAL/centroid.h>
 
 
 typedef double                     FT;
@@ -43,11 +44,8 @@ void CObject::SetPoints(Eigen::MatrixXd& EigenPoints)
 }
 
 
-
-
 CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object);
-
-
+void splitSingleDirection(const  Object2d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction);
 
 int main()
 {
@@ -72,22 +70,22 @@ int main()
     object_eigen(i,2) = z;
   
   }
-
-  
   
   CObject pca_eigen;
   pca_eigen = PCA(object_eigen, Object);
+
+  std::cout<<"pca_eigen.T \n"<<pca_eigen.T<<std::endl;
     
   std::vector<Object3d> SplitedObject;
   
-  SplitedObject = FindBestSplit( Object  );
+  SplitedObject = FindBestSplit( pca_eigen.Points  );
     
   K::Iso_cuboid_3 box1 = CGAL::bounding_box(SplitedObject[0].begin(), SplitedObject[0].end());
   K::Iso_cuboid_3 box2 = CGAL::bounding_box(SplitedObject[1].begin(), SplitedObject[1].end());
   K::Iso_cuboid_3 Objectbox = CGAL::bounding_box(Object.begin(), Object.end());
-  std::cout << box1 << std::endl;
-  std::cout << box2 << std::endl;
-  std::cout << Objectbox << std::endl;
+  std::cout << "box1 \t"<< box1 << std::endl;
+  std::cout << "box2 \t "<< box2 << std::endl;
+  std::cout << "Objectbox \t"<< Objectbox << std::endl;
   
  // if ( (box1.volume() + box2.volume()) < Objectbox.volume() )
       
@@ -97,7 +95,6 @@ int main()
   
   return 0;
 }
-
 
 std::vector<Object3d> FindBestSplit ( Object3d Object )
 {
@@ -129,105 +126,33 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
     }
     
 
-  K::Iso_rectangle_2 face_bb = CGAL::bounding_box( face.begin(), face.end() );
-  double area_total = face_bb.area();
+    K::Iso_rectangle_2 face_bb = CGAL::bounding_box( face.begin(), face.end() );
+    double area_total = face_bb.area();
+    
+    area_min = area_total;
+    int cutting_direction = 0;
+
+    // Find the best split using horizontal direction
+    splitSingleDirection(face, area_min, cutting_point, cutting_direction, 0);
+    // Find the best split using vertical direction
+    splitSingleDirection(face, area_min, cutting_point, cutting_direction, 1);
+    
+    
+   cutting_point_vec.push_back( cutting_point );
+   area_min_vec.push_back(area_min);
+   cutting_direction_vec.push_back(cutting_direction);
+   
+    //   std::cout << "Face " << i << std::endl;
+    std::cout <<"cutting_point \t" <<  cutting_point << std::endl;
+    std::cout <<"cutting_direction \t" <<  cutting_direction <<std::endl;
+    std::cout << "area_min \t " << area_min << std::endl;
   
-  area_min = area_total;
-  int cutting_direction = 0;
-  
-  // Find the best split using horizontal direction
-  
-  for (unsigned int k = 0; k < face.size(); ++k)
-  {    
-    
-    up.clear();
-    down.clear();
-    
-    for (int t = 0; t < face.size(); ++t)
-    {
-      if (k==t)
-        continue;
-      
-      if (face[t].y() > face[k].y())
-        up.push_back(Point2d(face[t].x(), face[t].y()));
-      
-      else 
-        down.push_back(Point2d(face[t].x() ,face[t].y()));
-    }
-    
-    if (up.size()==0 || down.size()==0)
-      continue;
-    
-    K::Iso_rectangle_2 up_bb = CGAL::bounding_box(up.begin(), up.end());
-    K::Iso_rectangle_2 down_bb = CGAL::bounding_box(down.begin(), down.end());
-    area_up= up_bb.area();
-    area_down= down_bb.area();
-    
-    if (area_up + area_down < area_min)
-    {
-      area_min = area_up + area_down;
-      cutting_point = face[k];
-      cutting_direction = 0;
-    }
-    
   }
 
-  
-  
-  // Find the best split using vertical direction
-  
-  for (unsigned int k = 0; k < face.size(); ++k)
-  {    
-    
-    right.clear();
-    left.clear();
-    
-    for (int t = 0; t < face.size(); ++t)
-    {
-      if (k==t)
-        continue;
-      
-      if (face[t].x() > face[k].x())
-        right.push_back(Point2d(face[t].x(), face[t].y()));
-      
-      else 
-        left.push_back(Point2d(face[t].x() ,face[t].y()));
-      
-    }
-    
-    if (right.size()==0 || left.size()==0)
-      continue;
-    
-    K::Iso_rectangle_2 right_bb = CGAL::bounding_box(right.begin(), right.end());
-    K::Iso_rectangle_2 left_bb = CGAL::bounding_box(left.begin(), left.end());
-    area_right= right_bb.area();
-    area_left= left_bb.area();
-    
-    if (area_right + area_left < area_min)
-    {
-      area_min = area_right + area_left;   
-      cutting_point = face[k];
-      cutting_direction = 1;
-    }
-    
-  }
- 
- cutting_point_vec.push_back( cutting_point );
- area_min_vec.push_back(area_min);
- cutting_direction_vec.push_back(cutting_direction);
- 
-//   std::cout << "Face " << i << std::endl;
-  std::cout << cutting_point << " "; 
-  std::cout << cutting_direction ;
-  std::cout << " " << area_min << " 0 0" <<  std::endl;
-  
-  }
- 
-
-  std::vector<Object3d> test;
   
   double total_area_min = area_min_vec[0];
   int total_min_index = 0, total_min_direction;
+
   for (unsigned int i; i < cutting_point_vec.size(); i++)
   {
       if( area_min_vec[i] < total_area_min ) 
@@ -241,6 +166,7 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
   Point2d best_point = cutting_point_vec[total_min_index];
   total_min_direction = cutting_direction_vec[total_min_index];
   
+ //from 2d to 3d
   Object3d temp_object1, temp_object2;
   for (unsigned int i = 0; i < Object.size(); i++)
   {
@@ -397,6 +323,77 @@ CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object)
     Eigen::MatrixXd T = Eigen::MatrixXd::Identity(4,4);
     T.block<3,3>(0,0) = Un;
    
-   
+    
+    Point3d centroid = CGAL::centroid(ObjectPCA.Points.begin(), ObjectPCA.Points.end(),CGAL::Dimension_tag<0>());
+    std::cout<<"centroid \t"<<centroid<<std::endl;
+    T(0,3)= centroid.x();
+    T(1,3)= centroid.y();
+    T(2,3)= centroid.z();
+    ObjectPCA.T = T;
+
+    
     return ObjectPCA;
+}
+
+void splitSingleDirection(const Object2d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction)
+{
+    Object2d up, down, hull;
+    double area_up, area_down, convex_area, Area, teta;
+    Object2d face_pca;
+
+    bool directedSplit;
+  
+  
+  for ( unsigned int k = 0; k < vect_pca.size(); ++k )
+  {
+
+    up.clear();
+    down.clear();
+
+    for ( int t = 0; t < vect_pca.size(); ++t ) 
+    {
+      if ( k==t )
+      {
+        continue;
+      }
+
+      if (cutting_direction == 0)
+      {
+        directedSplit = vect_pca[t].y() > vect_pca[k].y();
+      }
+      
+      else
+      {
+        directedSplit = vect_pca[t].x() > vect_pca[k].x();
+      }
+
+      if ( directedSplit ) 
+      {
+        up.push_back ( Point2d ( vect_pca[t].x(), vect_pca[t].y() ) );
+      }
+
+      else 
+      {
+        down.push_back ( Point2d ( vect_pca[t].x() ,vect_pca[t].y() ) );
+      }
+    }
+
+    if ( up.size() ==0 || down.size() ==0 ) 
+    {
+        continue;
+    }
+  
+    K::Iso_rectangle_2 up_bb = CGAL::bounding_box ( up.begin(), up.end() );
+    K::Iso_rectangle_2 down_bb = CGAL::bounding_box ( down.begin(), down.end() );
+    area_up= up_bb.area();
+    area_down= down_bb.area();
+    area_min = area_up + area_down;
+
+    if ( area_up + area_down < area_min )
+    {
+      area_min = area_up + area_down;
+      cutting_point = face_pca[k];
+      best_cutting_direction = cutting_direction;
+    }
+  }
 }

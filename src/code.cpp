@@ -18,8 +18,19 @@ using Eigen::MatrixXd;
 
 std::vector<Object3d> FindBestSplit ( const MatrixXd& object_eigen, const Object3d& Object );
 Object2d  Project2plane ( const MatrixXd& object_pca_eigen, int plane,  Object3d& vect_pca);
-void splitSingleDirection(const  Object3d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction);
+void splitSingleDirection(const  Object3d& vect_pca, double& area_min, Point2d& cutting_point, int best_cutting_direction, int cutting_direction);
+void splitSingleDirection(const  Object2d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction)
 MatrixXd PCA(const MatrixXd& object_eigen, const Object3d& Object);
+
+class CObject3d
+{
+	Object3d Points;
+	Eigen::MatrixXd T;
+public:
+	CObject3d();
+	~CObject3d();
+	
+};
 
 
 int main()
@@ -42,14 +53,17 @@ int main()
         object_eigen(i,0) = x;
         object_eigen(i,1) = y;
         object_eigen(i,2) = z;
+
+
         
 	}
-	
+
+		
 	//std::cout << "object_eigen " << object_eigen<< std::endl;
 	
-	std::vector<Object3d> SplitedObject;
+	std::vector<CObject3d> SplitedObject;
 
-	SplitedObject = FindBestSplit ( object_eigen, Object );
+	SplitedObject = FindBestSplit ( objectret.points, Object );
 
     return 0;
 }
@@ -76,6 +90,14 @@ MatrixXd PCA(const MatrixXd& object_eigen, const Object3d& Object)
     //std::cout << "U normalized:" << std::endl << Un << std::endl;
 
     object_pca_eigen= object_eigen*Un;
+
+
+    //objectret.Points = object_pca_vettore; //trasformalo in vettore
+    //objectret.T = U //metti matrice 4x4 1 riga u e centroide poi 2 e 1
+
+
+
+
    
     return object_pca_eigen;
 }
@@ -123,7 +145,7 @@ Object2d Project2plane ( const MatrixXd& object_pca_eigen, int plane, Object3d& 
  }
 
 //funzione che calcola il miglior punto nel quale fare le bounding box
-std::vector<Object3d> FindBestSplit ( const MatrixXd& object_eigen, const Object3d& Object  )
+std::vector<CObject3d> FindBestSplit ( const MatrixXd& object_eigen, const Object3d& Object  )
 {
    	Eigen::MatrixXd pca_eigen(Object.size(),3);
    	pca_eigen = PCA(object_eigen,Object);
@@ -256,19 +278,19 @@ void splitSingleDirection(const Object2d& vect_pca, double& area_min, Point2d& c
 
 		//scrivo funzione costo che minimizza area totale 
 		
-		CGAL::convex_hull_2( vect_pca.begin(), vect_pca.end(), std::back_inserter(hull) );
-		convex_area=hull.area();
+		// CGAL::convex_hull_2( vect_pca.begin(), vect_pca.end(), std::back_inserter(hull) );
+		// convex_area=hull.area();
 		
-		Area= area_min-convex_area;
-		teta=area_min/convex_area;
+		// Area= area_min-convex_area;
+		// teta=area_min/convex_area;
 
-		cutting_point = face_pca[k];
-		best_cutting_direction = cutting_direction;
+		// cutting_point = face_pca[k];
+		// best_cutting_direction = cutting_direction;
 
-		if(teta<0.95)
-		{
-			splitSingleDirection(vect_pca, area_min, cutting_point, best_cutting_direction, cutting_direction);
-		}
+		// if(teta<0.95)
+		// {
+		// 	splitSingleDirection(vect_pca, area_min, cutting_point, best_cutting_direction, cutting_direction);
+		// }
 
 				
 	}
