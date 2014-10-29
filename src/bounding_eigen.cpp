@@ -17,6 +17,7 @@ typedef std::vector<Point2d> Object2d;
 
 std::vector<Object3d> FindBestSplit ( Object3d Object );
 Object2d  Project2plane ( Object3d Object, int plane );
+Eigen::MatrixXd vec2Eigen(  const Object3d& vin );
 
 class CObject
 {
@@ -74,18 +75,31 @@ int main()
   CObject pca_eigen;
   pca_eigen = PCA(object_eigen, Object);
 
-  std::cout<<"pca_eigen.T \n"<<pca_eigen.T<<std::endl;
+  //std::cout<<"pca_eigen.T \n"<<pca_eigen.T<<std::endl;
     
   std::vector<Object3d> SplitedObject;
   
   SplitedObject = FindBestSplit( pca_eigen.Points  );
-    
-  K::Iso_cuboid_3 box1 = CGAL::bounding_box(SplitedObject[0].begin(), SplitedObject[0].end());
-  K::Iso_cuboid_3 box2 = CGAL::bounding_box(SplitedObject[1].begin(), SplitedObject[1].end());
-  K::Iso_cuboid_3 Objectbox = CGAL::bounding_box(Object.begin(), Object.end());
-  std::cout << "box1 \t"<< box1 << std::endl;
-  std::cout << "box2 \t "<< box2 << std::endl;
-  std::cout << "Objectbox \t"<< Objectbox << std::endl;
+	
+	CObject box1, box2;
+	box1 = PCA( vec2Eigen( SplitedObject[0] ), SplitedObject[0] );
+	box2 = PCA( vec2Eigen( SplitedObject[1] ), SplitedObject[1] );
+	
+	box1.T = pca_eigen.T*box1.T;
+	box2.T = pca_eigen.T*box2.T;
+	
+	std::cout << vec2Eigen(pca_eigen.Points) << std::endl;
+	std::cout << std::endl;
+	std::cout << pca_eigen.T << std::endl;
+	
+	std::cout << std::endl;	
+	
+ // K::Iso_cuboid_3 box1 = CGAL::bounding_box(SplitedObject[0].begin(), SplitedObject[0].end());
+  //K::Iso_cuboid_3 box2 = CGAL::bounding_box(SplitedObject[1].begin(), SplitedObject[1].end());
+  //K::Iso_cuboid_3 Objectbox = CGAL::bounding_box(Object.begin(), Object.end());
+  std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
+ // std::cout << "box2 \t "<< box2 << std::endl;
+  //std::cout << "Objectbox \t"<< Objectbox << std::endl;*/
   
  // if ( (box1.volume() + box2.volume()) < Objectbox.volume() )
       
@@ -143,9 +157,9 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
    cutting_direction_vec.push_back(cutting_direction);
    
     //   std::cout << "Face " << i << std::endl;
-    std::cout <<"cutting_point \t" <<  cutting_point << std::endl;
-    std::cout <<"cutting_direction \t" <<  cutting_direction <<std::endl;
-    std::cout << "area_min \t " << area_min << std::endl;
+//     std::cout <<"cutting_point \t" <<  cutting_point << std::endl;
+//     std::cout <<"cutting_direction \t" <<  cutting_direction <<std::endl;
+//     std::cout << "area_min \t " << area_min << std::endl;
   
   }
 
@@ -298,37 +312,66 @@ Object2d  Project2plane ( Object3d Object, int plane )
 CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object)
 {
     Eigen::MatrixXd object_pca_eigen ( Object.size(),3);
-    Eigen::JacobiSVD<Eigen::MatrixXd> SVD_eigen;        
+    Eigen::JacobiSVD<Eigen::MatrixXd> SVD_eigen;       
+		
+		
+		/*********/
+		Eigen::MatrixXd data_m = object_eigen;
+		Eigen::MatrixXd mean_data;
+		
+		mean_data = object_eigen.colwise().mean();
+		
+		for (int i = 0; i < object_eigen.rows(); i++)
+		{
+			data_m.block<1,3>(i,0) = object_eigen.block<1,3>(i,0) - mean_data;
+		}
+		
+		
+		Eigen::MatrixXd tempM2=(object_eigen.transpose()*object_eigen)*(double )data_m.rows();	
+		
+		//std::cout << "data_size = " << mean_data.rows() << "  " << mean_data.cols() << std::endl;
+		
+		/**********/
     
-    Eigen::MatrixXd tempM2=object_eigen.transpose()*object_eigen;
+    
     SVD_eigen.compute ( tempM2, Eigen::ComputeThinU | Eigen::ComputeThinV );
-    std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
-    std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
-    std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
-  
-    Eigen::MatrixXd Un = SVD_eigen.matrixU();
+//     std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
+//     std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
+//     std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
+//   
+    //Eigen::MatrixXd Un = SVD_eigen.matrixU();
     Eigen::MatrixXd U = SVD_eigen.matrixU();
    
-    Un.col ( 0 ) =  U.col ( 0 ) / U.col ( 0 ).norm();
-    Un.col ( 1 ) =  U.col ( 1 ) / U.col ( 1 ).norm();
-    Un.col ( 2 ) =  U.col ( 2 ) / U.col ( 2 ).norm();
+//     Un.col ( 0 ) =  U.col ( 0 ) / U.col ( 0 ).norm();
+//     Un.col ( 1 ) =  U.col ( 1 ) / U.col ( 1 ).norm();
+//     Un.col ( 2 ) =  U.col ( 2 ) / U.col ( 2 ).norm();
+		
+
     
     //std::cout << "U normalized:" << std::endl << Un << std::endl;
 
-    object_pca_eigen= object_eigen*Un;
+    //object_pca_eigen= object_eigen*Un;
+		object_pca_eigen= data_m*U;
+		
+		
     
     CObject ObjectPCA;
     ObjectPCA.SetPoints( object_pca_eigen );
     
     Eigen::MatrixXd T = Eigen::MatrixXd::Identity(4,4);
-    T.block<3,3>(0,0) = Un;
+    T.block<3,3>(0,0) = U;
    
     
-    Point3d centroid = CGAL::centroid(ObjectPCA.Points.begin(), ObjectPCA.Points.end(),CGAL::Dimension_tag<0>());
+    /*Point3d centroid = CGAL::centroid(ObjectPCA.Points.begin(), ObjectPCA.Points.end(),CGAL::Dimension_tag<0>());
     std::cout<<"centroid \t"<<centroid<<std::endl;
     T(0,3)= centroid.x();
     T(1,3)= centroid.y();
-    T(2,3)= centroid.z();
+    T(2,3)= centroid.z();*/
+		
+		T(0,3) = mean_data(0,0);
+		T(1,3) = mean_data(0,2);
+		T(2,3) = mean_data(0,3);
+		
     ObjectPCA.T = T;
 
     
@@ -396,4 +439,19 @@ void splitSingleDirection(const Object2d& vect_pca, double& area_min, Point2d& c
       best_cutting_direction = cutting_direction;
     }
   }
+}
+
+Eigen::MatrixXd vec2Eigen(  const Object3d& vin )
+{
+
+	Eigen::MatrixXd newObject(vin.size(),3);
+		
+	for (unsigned int i=0; i < vin.size(); i++)
+	{
+	  newObject(i,0) = vin[i].x();
+    newObject(i,1) = vin[i].y();
+    newObject(i,2) = vin[i].z();
+	}
+	
+	return newObject;
 }
