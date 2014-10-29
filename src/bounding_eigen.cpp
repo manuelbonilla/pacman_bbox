@@ -5,6 +5,7 @@
 #include <iostream>
 #include <CGAL/array.h>
 #include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/SVD>
 #include <CGAL/centroid.h>
 
 
@@ -82,22 +83,27 @@ int main()
   SplitedObject = FindBestSplit( pca_eigen.Points  );
 	
 	CObject box1, box2;
-	box1 = PCA( vec2Eigen( SplitedObject[0] ), SplitedObject[0] );
-	box2 = PCA( vec2Eigen( SplitedObject[1] ), SplitedObject[1] );
+	//box1 = PCA( vec2Eigen( SplitedObject[0] ), SplitedObject[0] );
+	//box2 = PCA( vec2Eigen( SplitedObject[1] ), SplitedObject[1] );
 	
-	box1.T = pca_eigen.T*box1.T;
-	box2.T = pca_eigen.T*box2.T;
+	//box1.T = pca_eigen.T*box1.T;
+	//box2.T = pca_eigen.T*box2.T;
 	
-	std::cout << vec2Eigen(pca_eigen.Points) << std::endl;
-	std::cout << std::endl;
-	std::cout << pca_eigen.T << std::endl;
+// 	std::cout << vec2Eigen(pca_eigen.Points) << std::endl;
+// 	std::cout << std::endl;
+   std::cout << pca_eigen.T << std::endl;
+// 	
+// 	std::cout << std::endl;	
+// 	
+   std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
 	
-	std::cout << std::endl;	
-	
- // K::Iso_cuboid_3 box1 = CGAL::bounding_box(SplitedObject[0].begin(), SplitedObject[0].end());
+	// K::Iso_cuboid_3 box1 = CGAL::bounding_box(SplitedObject[0].begin(), SplitedObject[0].end());
   //K::Iso_cuboid_3 box2 = CGAL::bounding_box(SplitedObject[1].begin(), SplitedObject[1].end());
   //K::Iso_cuboid_3 Objectbox = CGAL::bounding_box(Object.begin(), Object.end());
-  std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
+ 
+	
+	
+	
  // std::cout << "box2 \t "<< box2 << std::endl;
   //std::cout << "Objectbox \t"<< Objectbox << std::endl;*/
   
@@ -316,7 +322,7 @@ CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object)
 		
 		
 		/*********/
-		Eigen::MatrixXd data_m = object_eigen;
+		Eigen::MatrixXd data_m(object_eigen.rows(),3);
 		Eigen::MatrixXd mean_data;
 		
 		mean_data = object_eigen.colwise().mean();
@@ -324,21 +330,26 @@ CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object)
 		for (int i = 0; i < object_eigen.rows(); i++)
 		{
 			data_m.block<1,3>(i,0) = object_eigen.block<1,3>(i,0) - mean_data;
+// 			if (i <10)
+// 				std::cout << data_m.block<1,3>(i,0) << std::endl;
 		}
 		
 		
-		Eigen::MatrixXd tempM2=(object_eigen.transpose()*object_eigen)*(double )data_m.rows();	
+		Eigen::MatrixXd tempM2 = (data_m.transpose()*data_m)/(double )data_m.rows();
 		
-		//std::cout << "data_size = " << mean_data.rows() << "  " << mean_data.cols() << std::endl;
+		//std::cout << "mean_size = " << mean_data.rows() << "  " << mean_data.cols() << std::endl;
+		//std::cout << mean_data << std::endl;
+		//std::cout << (double )data_m.rows() << std::endl;
+ 		std::cout << "Covar Matrix \n" << tempM2 << std::endl;
 		
 		/**********/
     
     
-    SVD_eigen.compute ( tempM2, Eigen::ComputeThinU | Eigen::ComputeThinV );
-//     std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
-//     std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
-//     std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
-//   
+    SVD_eigen.compute ( tempM2, Eigen::ComputeFullU | Eigen::ComputeFullV );
+//      std::cout << "Its singular values are:" << std::endl << SVD_eigen.singularValues() << std::endl;
+//      std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << SVD_eigen.matrixU() << std::endl;
+//      std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << SVD_eigen.matrixV() << std::endl;
+// //   
     //Eigen::MatrixXd Un = SVD_eigen.matrixU();
     Eigen::MatrixXd U = SVD_eigen.matrixU();
    
@@ -369,8 +380,9 @@ CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object)
     T(2,3)= centroid.z();*/
 		
 		T(0,3) = mean_data(0,0);
-		T(1,3) = mean_data(0,2);
-		T(2,3) = mean_data(0,3);
+		T(1,3) = mean_data(0,1);
+		T(2,3) = mean_data(0,2);
+		
 		
     ObjectPCA.T = T;
 
@@ -455,3 +467,4 @@ Eigen::MatrixXd vec2Eigen(  const Object3d& vin )
 	
 	return newObject;
 }
+

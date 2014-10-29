@@ -11,20 +11,25 @@ plot3(points(:,1), points(:,2), points(:,3),'*');
 title('Original_objetc'); grid on
 xlabel('x');  ylabel('y');  zlabel('z'); 
 
- T =[   0.706048     0.384877     0.594446   -0.0264067;
-   -0.515869    -0.295547     0.804071    0.0449642;
-   -0.485155      0.87437    0.0101238 4.00193e-322;
-           0            0            0            1];
+ T =[   0.781113    0.589467    0.205892  -0.0264067
+  -0.571446    0.807779   -0.144713   0.0192473
+  -0.251619 -0.00461886    0.967815   0.0449642
+          0           0           0           1];
+      
+       
 
-X =[-0.184208 -0.0540897 -0.0662541];
-Y = [0.0960577 0.0716075 0.0671901];
+
+X =[-0.188466 -0.0668068 -0.0483791];
+Y = [0.0955151 0.0666183 0.0515402];
+
 
 plotOrientedIsobox(X, Y, T)
 
-pointspca = inv(T)*[points.'; ones(1,size(points,1))];
+
+pointspca = (inv(T)*([points ones(size(points,1),1)].')).';
 
 hold on
-plot3(pointspca(1,:), pointspca(2,:), pointspca(3,:),'r*'); 
+plot3(pointspca(:,1), pointspca(:,2), pointspca(:,3),'r*'); 
 
 
 figure
@@ -39,27 +44,27 @@ m_m = mean(data_m);
 
 
 N = size(data, 1);
-covar = data_m'*data_m/N;
+covar = data_m'*data_m/N
 
 
 [U,S,V] = svd(covar)
+% 
+% 
+% 
+% data_r = data_m*V; % rotated data
+% 
+% 
+% plot3(data_r(:,1), data_r(:,2), data_r(:,3), 'm*');
+% 
+T2 = [V m.'; zeros(1,3) 1]
+% data_recover = (T*([data_r ones(size(data_r,1),1)].')).';
+% 
+% plot3(data_recover(:,1), data_recover(:,2), data_recover(:,3), 'ro');
+% 
+% legend('Original Data','Translated Data','Translated and rotated data', 'Recovered data')
 
-
-
-data_r = data_m*V; % rotated data
-
-
-plot3(data_r(:,1), data_r(:,2), data_r(:,3), 'm*');
-
-T = [V m.'; zeros(1,3) 1];
-data_recover = (T*([data_r ones(size(data_r,1),1)].')).';
-
-plot3(data_recover(:,1), data_recover(:,2), data_recover(:,3), 'ro');
-
-legend('Original Data','Translated Data','Translated and rotated data', 'Recovered data')
-
-plot3(data(:,1), data(:,2), data(:,3),'b*')
-plot3(m_m(1), m_m(2), m_m(3), 'r*')
+% plot3(data(:,1), data(:,2), data(:,3),'b*')
+% plot3(m_m(1), m_m(2), m_m(3), 'r*')
 
 
 

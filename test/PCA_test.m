@@ -51,9 +51,10 @@ end
 
 % data is a Nx3 matrix
 m = mean(data);
+plot3(data(:,1), data(:,2), data(:,3),'b*')
 %subplot(2,2,1); 
 hold on;
-plot3(m(1), m(2), m(3), 'r*')
+
 data_m = data - repmat(m, length(data), 1);
 m_m = mean(data_m);
 %subplot(2,2,1); 
@@ -102,10 +103,17 @@ data_recover = (T*([data_r ones(size(data_r,1),1)].')).';
 %subplot(2,2,1); 
 plot3(data_recover(:,1), data_recover(:,2), data_recover(:,3), 'ro');
 
-legend('Original Data','Translated Data','Translated and rotated data', 'Recovered data')
+data_recover2 = (inv(T)*([data ones(size(data_r,1),1)].')).';
+%subplot(2,2,1); 
+plot3(data_recover2(:,1), data_recover2(:,2), data_recover2(:,3), 'ko');
 
-plot3(data(:,1), data(:,2), data(:,3),'b*')
+legend('Original Data','Translated Data','Translated and rotated data', 'Recovered data', 'Recovered data pca frame')
+
+plot3(m(1), m(2), m(3), 'r*')
 plot3(m_m(1), m_m(2), m_m(3), 'r*')
+
+
+
 
 %reduced_data = data_r(:, 1:2); % keep first 2 components
 
