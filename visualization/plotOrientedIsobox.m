@@ -1,7 +1,7 @@
 function plotOrientedIsobox (X, Y, T, RGBColor)
 
 if nargin == 3
-    RGBColor = [0.0 0.0 1.0];
+    RGBColor = [rand/2 rand/2 rand/2];
 end
 
 %PLOTORIENTEDISOBOX This function plot an isocube with initial point X1 and
