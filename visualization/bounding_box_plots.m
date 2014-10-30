@@ -15,19 +15,33 @@ res = import_bbox_results( bb_results );
 
 
 %%%%%%%%%%%%%%%%%%%%55
-plotOrientedIsobox(res{1}.X, res{1}.Y, eye(4))
-pointspca = (inv(res{1}.T)*([points ones(size(points,1),1)].')).';
-hold on
-plot3(pointspca(:,1), pointspca(:,2), pointspca(:,3),'r*'); 
+% plotOrientedIsobox(res{1}.X, res{1}.Y, eye(4))
+% pointspca = (inv(res{1}.T)*([points ones(size(points,1),1)].')).';
+% hold on
+% plot3(pointspca(:,1), pointspca(:,2), pointspca(:,3),'r*'); 
+% plotOrientedIsobox(res{1}.X, res{1}.Y, eye(4))
 
-% for i=1: size(res,2)
-%    
-% 
-%     
-%     plotOrientedIsobox(res{i}.X, res{i}.Y, res{i}.T)
-%     
-% end
+for i=1: size(res,2)
+   
+    plotOrientedIsobox(res{i}.X, res{i}.Y, res{i}.T)
+    plotCSYS(res{i}.T, .12);
     
+end
+
+
+% P1 = import_subpoints('../build/points1.txt');
+% P2 = import_subpoints('../build/points2.txt');
+% 
+% hold on
+% 
+% 
+% P1 = (res{2}.T*([P1 ones(size(P1,1),1)].')).';
+% P2 = (res{3}.T*([P2 ones(size(P2,1),1)].')).';
+% 
+% plot3(P1(:,1), P1(:,2), P1(:,3),'go'); 
+% plot3(P2(:,1), P2(:,2), P2(:,3),'mo'); 
+axis equal
+
 
 % plot3(points(:,1), points(:,2), points(:,3),'*');
 

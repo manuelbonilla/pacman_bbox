@@ -80,15 +80,16 @@ int main()
     
   std::vector<Object3d> SplitedObject;
   
-  SplitedObject = FindBestSplit( pca_eigen.Points  );
+  //SplitedObject = FindBestSplit( pca_eigen.Points  );
+	SplitedObject = FindBestSplit( Object  );
 	
 	CObject box1, box2;
 	box1 = PCA( vec2Eigen( SplitedObject[0] ), SplitedObject[0] );
 	box2 = PCA( vec2Eigen( SplitedObject[1] ), SplitedObject[1] );
 	
-	box1.T = pca_eigen.T*box1.T;
-	box2.T = pca_eigen.T*box2.T;
-	
+ 	//box1.T = pca_eigen.T*box1.T;
+ 	//box2.T = pca_eigen.T*box2.T;
+
 // 	std::cout << vec2Eigen(pca_eigen.Points) << std::endl;
 // 	std::cout << std::endl;
    std::cout << pca_eigen.T << std::endl;
@@ -97,6 +98,8 @@ int main()
 	 std::cout << CGAL::bounding_box(box1.Points.begin(), box1.Points.end()) << std::endl;
 	 std::cout << box2.T  << std::endl;
 	 std::cout << CGAL::bounding_box(box2.Points.begin(), box2.Points.end()) << std::endl;
+	 
+	 
 
 	 //std::cout << CGAL::bounding_box(Object.begin(), Object.end()) << std::endl;
 	 
