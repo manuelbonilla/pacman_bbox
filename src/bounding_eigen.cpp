@@ -91,13 +91,13 @@ int main()
 	
 // 	std::cout << vec2Eigen(pca_eigen.Points) << std::endl;
 // 	std::cout << std::endl;
-   
+   std::cout << pca_eigen.T << std::endl;
+	 std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
 	 std::cout << box1.T << std::endl;
 	 std::cout << CGAL::bounding_box(box1.Points.begin(), box1.Points.end()) << std::endl;
 	 std::cout << box2.T  << std::endl;
 	 std::cout << CGAL::bounding_box(box2.Points.begin(), box2.Points.end()) << std::endl;
-	 std::cout << pca_eigen.T << std::endl;
-	 std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
+
 	 //std::cout << CGAL::bounding_box(Object.begin(), Object.end()) << std::endl;
 	 
 	 

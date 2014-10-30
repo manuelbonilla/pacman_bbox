@@ -7,28 +7,31 @@ function bounding_box_plots(filename_object, bb_results)
 figure();
 plot3(points(:,1), points(:,2), points(:,3),'*'); 
 title('Original_objetc'); grid on
+
+plotCSYS(eye(4), .12);
 xlabel('x');  ylabel('y');  zlabel('z'); 
 
 res = import_bbox_results( bb_results );
 
-for i=1: size(res,2)
 
+%%%%%%%%%%%%%%%%%%%%55
+plotOrientedIsobox(res{1}.X, res{1}.Y, eye(4))
+pointspca = (inv(res{1}.T)*([points ones(size(points,1),1)].')).';
+hold on
+plot3(pointspca(:,1), pointspca(:,2), pointspca(:,3),'r*'); 
+
+% for i=1: size(res,2)
+%    
+% 
+%     
+%     plotOrientedIsobox(res{i}.X, res{i}.Y, res{i}.T)
+%     
+% end
     
-    plotOrientedIsobox(res{3}.X, res{3}.Y, res{3}.T)
-    
-end
-    
- hold on
- T = res{3}.T;
-%   T = [rotz(180) zeros(3,1);zeros(1,3) 1];
-  pointspca = (T*([points ones(size(points,1),1)].')).';
-  plot3(pointspca(:,1), pointspca(:,2), pointspca(:,3),'r*'); 
+
 % plot3(points(:,1), points(:,2), points(:,3),'*');
 
-% pointspca = (inv(T)*([points ones(size(points,1),1)].')).';
-% 
-% hold on
-% plot3(pointspca(:,1), pointspca(:,2), pointspca(:,3),'r*'); 
+
 
 % 
 % figure
