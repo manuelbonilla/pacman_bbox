@@ -22,6 +22,6 @@ endif()
 #include( CMAKE_CURRENT_SOURCE_DIR/include )
 
 #add_executable(bounding src/bounding.cpp)
-add_executable(bounding_eigen src/bounding_eigen.cpp)
+#add_executable(bounding_eigen src/bounding_eigen.cpp)
 
-#add_executable(code src/code.cpp)
+add_executable(code src/code.cpp)

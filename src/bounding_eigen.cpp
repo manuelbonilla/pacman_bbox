@@ -79,16 +79,17 @@ int main()
   std::vector<Object3d> SplitedObject;
  
  //ciclo per iterare il codice
-  
+  int count=0;
   bool a=true;
   while( a )
   { 
-      SplitedObject = FindBestSplit( Object  );
-      
+    CObject box1, box2;
+     
+         
       if(SplitedObject.size() >= 1)
       { 
-                 	
-        	CObject box1, box2;
+          SplitedObject = FindBestSplit( Object);
+        	
         	box1 = PCA( vec2Eigen( SplitedObject[0] ), SplitedObject[0] );
         	box2 = PCA( vec2Eigen( SplitedObject[1] ), SplitedObject[1] );
       
@@ -98,7 +99,8 @@ int main()
         	 std::cout << CGAL::bounding_box(box1.Points.begin(), box1.Points.end()) << std::endl;
         	 std::cout << box2.T  << std::endl;
         	 std::cout << CGAL::bounding_box(box2.Points.begin(), box2.Points.end()) << std::endl;
-	    }
+	         count++;
+      }
        
       else
         a=false;
@@ -312,9 +314,9 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
       
     }
  
-     cutting_point_vec.push_back( cutting_point );
-     area_min_vec.push_back(area_min);
-     cutting_direction_vec.push_back(cutting_direction);
+    cutting_point_vec.push_back( cutting_point );
+    area_min_vec.push_back(area_min);
+    cutting_direction_vec.push_back(cutting_direction);
      
   }
  
@@ -332,6 +334,8 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
       }
       
   }
+
+   std::vector <Object3d> split;
 
   if(cutting_point_vec.size() >= 1)
   {
@@ -422,7 +426,7 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
           }
     }
      
-    std::vector <Object3d> split;
+   
     split.push_back(temp_object1);
     split.push_back(temp_object2);
   }
