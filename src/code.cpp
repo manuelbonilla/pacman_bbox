@@ -16,9 +16,13 @@ typedef K::Point_3                 Point3d;
 typedef std::vector<Point3d> Object3d;
 typedef std::vector<Point2d> Object2d;
 
+
 std::vector<Object3d> FindBestSplit ( Object3d Object );
 Object2d  Project2plane ( Object3d Object, int plane );
 Eigen::MatrixXd vec2Eigen(  const Object3d& vin );
+
+bool condition=true;
+int indice;
 
 class CObject
 {
@@ -78,56 +82,63 @@ int main()
   CObject pca_eigen;
   pca_eigen = PCA(object_eigen, Object);
     
-    std::list<Object3d> list;
-   	list.push_front(Object);
+    std::list<Object3d> taglio,results;
+   	taglio.push_front(Object);
   
   
   
-  while( !list.empty() )
+  while( !taglio.empty() )
   { 
   		std::vector<Object3d> SplitedObject;
-  		std::list<Object3d>::iterator it1,it2;
+  		std::list<Object3d>::iterator it1;
         std::cout <<"entro nel while"<<std::endl;
 
-        it1=list.begin();
-        it2 = list.begin();
-  		 
-	  		SplitedObject = FindBestSplit( list.front() );            
-	  
-	     		
-	      		if(SplitedObject.size()==0)
-	            {	
-	               	
-	               	it1 = list.erase (it1);   
-	               	it2 = list.erase (it2);
-  			
-	        	} 
+        it1=taglio.begin();
+        
+	  		SplitedObject = FindBestSplit( taglio.front() );            
+	  		std::cout <<"dopo FindBestSplit"<<std::endl;
 
-	        	else
-	        	{
-	        		
-	        		list.push_front(SplitedObject[0]);
-	        		list.push_back(SplitedObject[1]);
+	      	if(SplitedObject.size()==0)
+	        {	
+	              	results.push_back(taglio.front());
+	             	taglio.erase(it1);
+	       	} 
 
-	           	}
+	       	else
+	       	{	
+	        		if(condition ==true)
+		        	{	//assert(SplitedObject.size()==2);
+		        		taglio.erase(it1);
+		        		taglio.push_back(SplitedObject[0]);
+		          		taglio.push_back(SplitedObject[1]);
+		          		std::cout <<"dentro else if"<<std::endl;
+		          	}
+		          	else
+		          		taglio.erase(it1);
+		          		taglio.push_back(SplitedObject[indice]);
+		          		//results.push_back(taglio.front());
+	       				//taglio.erase(it1);
+		          		
+	        }
 
+	    std::cout <<"taglio.size(): "<< taglio.size() <<std::endl;
+	}
 
-			
+	std::cout <<"esco while"<<std::endl;
+	std::list<Object3d>::iterator it;
+
+	for ( it=results.begin() ; it != results.end(); ++it)
+	{		
 			CObject box;
-	 		box=(PCA( vec2Eigen( *it1 ), *it1));
+	 		box=(PCA( vec2Eigen( *it ), *it));
 	 		std::cout <<"box.size()"<<box.Points.size()<<std::endl;	
 			std::cout << pca_eigen.T << std::endl;
 			std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
 			std::cout << box1.T << std::endl;
 			std::cout << CGAL::bounding_box(box.Points.begin(), box.Points.end()) << std::endl;
-			list.erase(it1,it2);
+	}		
 
 
-
-			
-	}        	
-			
-	
   return 0;
 }
 
@@ -226,18 +237,16 @@ Eigen::MatrixXd vec2Eigen(  const Object3d& vin )
 std::vector<Object3d> FindBestSplit ( Object3d Object )
 {
     Object2d up, down, left, right;
-    double area_up, area_down, area_left, area_right, area_min_y, area_min_x, area_min;
+    double area_up, area_down, area_left, area_right, area_min_y, area_min_x, area_min,prova;
     Point2d cutting_point;
     std::vector<Point2d> cutting_point_vec;
-    std::vector<double> area_min_vec;
+    std::vector<double> area_min_vec,test;
     std::vector<int> cutting_direction_vec;
-    int gain=0.8;
-     double A1,A2;
-    
-    
-  Object2d face;
+    double gain=0.1;
+    double A_sum;
+    Object2d face;
 
-  
+
   for (unsigned int i = 0; i < 3; i++)
   {
       
@@ -289,11 +298,11 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 	      K::Iso_rectangle_2 down_bb = CGAL::bounding_box(down.begin(), down.end());
 	      area_up= up_bb.area();
 	      area_down= down_bb.area();
-	      A1=area_total/area_min;
+	      A_sum=area_up + area_down;
 	            
-	      if (area_up + area_down < area_min)
+	      if ((A_sum < area_min) && (A_sum/area_total <gain))
 	      {
-	        area_min = area_up + area_down;
+	        area_min = A_sum;
 	        cutting_point = face[k];
 	        cutting_direction = 0;
 	      }
@@ -329,142 +338,168 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 	      K::Iso_rectangle_2 left_bb = CGAL::bounding_box(left.begin(), left.end());
 	      area_right= right_bb.area();
 	      area_left= left_bb.area();
-	      A2=area_total/area_min;
-	      if (area_right + area_left < area_min)
+	      A_sum=area_right + area_left;
+	      if ((A_sum < area_min) && (A_sum/area_total <gain))
 	      {
-	        area_min = area_right + area_left;   
+	        area_min = A_sum;   
 	        cutting_point = face[k];
 	        cutting_direction = 1;
 	      }
 	      
     	}
  
-     
+     	std::cout<<"qui"<<std::endl;
 	     cutting_point_vec.push_back( cutting_point );
 	     area_min_vec.push_back(area_min);
 	     cutting_direction_vec.push_back(cutting_direction);
-     
+
+	   
+     	 
   	}
  
     
   //double total_area_min,ans;
   int total_min_index = 0, total_min_direction;
-  std::vector<double> test;
+  //std::vector<double> test;
 	std::vector <Object3d> split;
+	double total_area_min = area_min_vec[0];
 
-
-   std::vector <Object3d> split;
-
-
-
-	//if(A1 || A2 <gain)
-	//{
-	
 		for (unsigned int i = 0; i < cutting_point_vec.size(); i++) 
 		 {
-     
-          total_min_index = i;
-     
-      
+     		if(area_min_vec[i]<total_area_min)
+          	{
+          		total_min_index = i;
+          		total_area_min=area_min_vec[i];
+     		}
+  		
   		}
 
-		double total_area_min = area_min_vec[0];
 
 
-	    total_area_min = area_min_vec[total_min_index];
+//if(cutting_point_vec.size()>=1)
+//{
+	    //total_area_min = area_min_vec[total_min_index];
 	    Point2d best_point = cutting_point_vec[total_min_index];
 	    total_min_direction = cutting_direction_vec[total_min_index];
 	    
 	    Object3d temp_object1, temp_object2;
+	    
 	    for (unsigned int i = 0; i < Object.size(); i++)
 	    {
 	        switch (total_min_index)
-	        {
-	            case 0:
-	                if(total_min_direction == 0)
-	                {
-	                    if (Object[i].y() >= best_point.y())
-	                    {
-	                      temp_object1.push_back(Object[i]);                  
-	                    }
-	                    else
-	                    {
-	                        temp_object2.push_back(Object[i]);   
-	                    }
-	                }
-	                else
-	                {
-	                    if (Object[i].x() >= best_point.x())
-	                    {
-	                        temp_object1.push_back(Object[i]);                  
-	                    }
-	                      else
-	                      {
-	                          temp_object2.push_back(Object[i]);   
-	                      }
-	                }
-	                break;
-	                
-	            case 1:
-	                if(total_min_direction == 0)
-	                {
-	                    if (Object[i].z() >= best_point.y())
-	                    {
-	                        temp_object1.push_back(Object[i]);                  
-	                    }
-	                    else
-	                    {
-	                        temp_object2.push_back(Object[i]);   
-	                    }
-	                }
-	                else
-	                {
-	                    if (Object[i].x() >= best_point.x())
-	                    {
-	                        temp_object1.push_back(Object[i]);                  
-	                    }
-	                    else
-	                    {
-	                        temp_object2.push_back(Object[i]);   
-	                    }
-	                }
-	                break;
-	                
-	            case 2:
-	                if(total_min_direction == 0)
-	                {
-	                    if (Object[i].z() >= best_point.y())
-	                    {
-	                        temp_object1.push_back(Object[i]);                  
-	                    }
-	                    else
-	                    {
-	                        temp_object2.push_back(Object[i]);   
-	                    }
-	                }
-	                else
-	                {
-	                    if (Object[i].y() >= best_point.x())
-	                    {
-	                        temp_object1.push_back(Object[i]);                  
-	                    }
-	                    else
-	                    {
-	                        temp_object2.push_back(Object[i]);   
-	                    }
-	                }
-	                break;
-	          }
-	    
-	     
-	//}
+		        {
+		            case 0:
+		                if(total_min_direction == 0)
+		                {
+		                    if (Object[i].y() >= best_point.y())
+		                    {
+		                      temp_object1.push_back(Object[i]);                  
+		                    }
+		                    else
+		                    {
+		                        temp_object2.push_back(Object[i]);   
+		                    }
+		                }
+		                else
+		                {
+		                    if (Object[i].x() >= best_point.x())
+		                    {
+		                        temp_object1.push_back(Object[i]);                  
+		                    }
+		                      else
+		                      {
+		                          temp_object2.push_back(Object[i]);   
+		                      }
+		                }
+		                break;
+		                
+		            case 1:
+		                if(total_min_direction == 0)
+		                {
+		                    if (Object[i].z() >= best_point.y())
+		                    {
+		                        temp_object1.push_back(Object[i]);                  
+		                    }
+		                    else
+		                    {
+		                        temp_object2.push_back(Object[i]);   
+		                    }
+		                }
+		                else
+		                {
+		                    if (Object[i].x() >= best_point.x())
+		                    {
+		                        temp_object1.push_back(Object[i]);                  
+		                    }
+		                    else
+		                    {
+		                        temp_object2.push_back(Object[i]);   
+		                    }
+		                }
+		                break;
+		                
+		            case 2:
+		                if(total_min_direction == 0)
+		                {
+		                    if (Object[i].z() >= best_point.y())
+		                    {
+		                        temp_object1.push_back(Object[i]);                  
+		                    }
+		                    else
+		                    {
+		                        temp_object2.push_back(Object[i]);   
+		                    }
+		                }
+		                else
+		                {
+		                    if (Object[i].y() >= best_point.x())
+		                    {
+		                        temp_object1.push_back(Object[i]);                  
+		                    }
+		                    else
+		                    {
+		                        temp_object2.push_back(Object[i]);   
+		                    }
+		                }
+		                break;
+		        }
+		 }
+		    		     
+					if(temp_object1.size()==0)
+					{		
+					 	condition=false;
+					 	indice=1;
+					}
+					
+					 if(temp_object2.size()==0 )
+					{	
+					    condition=false;
+					    indice=0;
+					}
+				
 
+				   	if(temp_object1.size()==0 && temp_object2.size()==0)
+				   	{
+				   		//condition=false;
+				   		temp_object1.clear();
+				   		temp_object2.clear();
+				   		split.push_back(temp_object1);
+				   		split.push_back(temp_object2);
 
-    split.push_back(temp_object1);
-    split.push_back(temp_object2);
-  
-  }
+				   	}	
+		
+				
+				   	if(temp_object1.size()>0 && temp_object2.size()>0)
+				   	{
+				   		split.push_back(temp_object1);
+						split.push_back(temp_object2);
+					}
 
+		
+						//assert(temp_object1.size()>0);
+						//assert(temp_object2.size()>0);
+					    //split.push_back(temp_object1);
+						//split.push_back(temp_object2);
   return split;
   
 }
