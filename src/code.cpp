@@ -21,7 +21,7 @@ std::vector<Object3d> FindBestSplit ( Object3d Object );
 Object2d  Project2plane ( Object3d Object, int plane );
 Eigen::MatrixXd vec2Eigen(  const Object3d& vin );
 
-bool condition=true;
+bool condition;
 int indice;
 
 class CObject
@@ -55,73 +55,72 @@ void splitSingleDirection(const  Object2d& vect_pca, double& area_min, Point2d& 
 
 int main()
 {
-  
-  int num_points;
-  float x, y, z;
-  std::cin >> num_points;
+  	
+	  int num_points;
+	  float x, y, z;
+	  std::cin >> num_points;
 
-  Object3d Object;
-  Eigen::MatrixXd object_eigen (num_points,3);
-  CObject box1;
+	  Object3d Object;
+	  Eigen::MatrixXd object_eigen (num_points,3);
+	  CObject box1;	
   
-  // Load object
-  for (unsigned int i = 0; i < num_points; ++i)
-  {
-    std::cin >> x;
-    std::cin >> y;
-    std::cin >> z;
-    Object.push_back(Point3d(x,y,z));
+  	// Load object
+  	for (unsigned int i = 0; i < num_points; ++i)
+  	{
+   		std::cin >> x;
+   	 	std::cin >> y;
+    	std::cin >> z;
+    	Object.push_back(Point3d(x,y,z));
     
-    object_eigen(i,0) = x;
-    object_eigen(i,1) = y;
-    object_eigen(i,2) = z;
+    	object_eigen(i,0) = x;
+    	object_eigen(i,1) = y;
+    	object_eigen(i,2) = z;
+  	}
   
-  }
-  
-  
-  CObject pca_eigen;
-  pca_eigen = PCA(object_eigen, Object);
-    
-    std::list<Object3d> taglio,results;
-   	taglio.push_front(Object);
-  
-  
-  
-  while( !taglio.empty() )
-  { 
+	
+	CObject pca_eigen;
+	pca_eigen = PCA(object_eigen, Object);    
+	std::list<Object3d> taglio,results;
+	
+	taglio.push_front(Object);
+	
+  	while( !taglio.empty() )
+  	{ 
   		std::vector<Object3d> SplitedObject;
   		std::list<Object3d>::iterator it1;
         std::cout <<"entro nel while"<<std::endl;
 
         it1=taglio.begin();
         
-	  		SplitedObject = FindBestSplit( taglio.front() );            
-	  		std::cout <<"dopo FindBestSplit"<<std::endl;
+	  	SplitedObject = FindBestSplit( taglio.front() );            
+	  	std::cout <<"dopo FindBestSplit"<<std::endl;
 
 	      	if(SplitedObject.size()==0)
 	        {	
-	              	results.push_back(taglio.front());
-	             	taglio.erase(it1);
+	            results.push_back(taglio.front());
+	            taglio.erase(it1);
+	            std::cout <<"dentro results"<<std::endl;
 	       	} 
 
 	       	else
 	       	{	
-	        		if(condition ==true)
-		        	{	//assert(SplitedObject.size()==2);
-		        		taglio.erase(it1);
-		        		taglio.push_back(SplitedObject[0]);
-		          		taglio.push_back(SplitedObject[1]);
-		          		std::cout <<"dentro else if"<<std::endl;
-		          	}
-		          	else
-		          		taglio.erase(it1);
-		          		taglio.push_back(SplitedObject[indice]);
-		          		//results.push_back(taglio.front());
-	       				//taglio.erase(it1);
-		          		
+	        	if(condition ==true)
+		        {	//assert(SplitedObject.size()==2);
+		        	taglio.erase(it1);
+		        	taglio.push_back(SplitedObject[0]);
+		          	taglio.push_back(SplitedObject[1]);
+		          	std::cout <<"dentro else if"<<std::endl;
+		       	}
+		       	
+		       	else
+		       	{	
+		          	taglio.erase(it1);
+		          	taglio.push_back(SplitedObject[0]);
+		        }	//results.push_back(taglio.front());
+	       			//taglio.erase(it1);
 	        }
 
-	    std::cout <<"taglio.size(): "<< taglio.size() <<std::endl;
+	  	std::cout <<"taglio.size(): "<< taglio.size() <<std::endl;
 	}
 
 	std::cout <<"esco while"<<std::endl;
@@ -302,6 +301,7 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 	            
 	      if ((A_sum < area_min) && (A_sum/area_total <gain))
 	      {
+	        std::cout << "good by criterion up" << std::endl;
 	        area_min = A_sum;
 	        cutting_point = face[k];
 	        cutting_direction = 0;
@@ -341,6 +341,7 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 	      A_sum=area_right + area_left;
 	      if ((A_sum < area_min) && (A_sum/area_total <gain))
 	      {
+	      	std::cout << "good by criterion" << std::endl;
 	        area_min = A_sum;   
 	        cutting_point = face[k];
 	        cutting_direction = 1;
@@ -465,26 +466,29 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 		        }
 		}
 		    		     
-					if(temp_object1.size()==0)
+				if(temp_object1.size()==0 && temp_object2.size()>0)
 					{		
 					 	condition=false;
-					 	indice=1;
+					 	split.push_back(temp_object2);
+					 	//indice=1;
 					}
 					
-					 if(temp_object2.size()==0 )
+					 if(temp_object2.size()==0 && temp_object1.size()>0)
 					{	
 					    condition=false;
-					    indice=0;
+					    split.push_back(temp_object1);
+					    //indice=0;
 					}
 				
 
 				   	if(temp_object1.size()==0 && temp_object2.size()==0)
 				   	{
-				   		//condition=false;
-				   		temp_object1.clear();
-				   		temp_object2.clear();
-				   		split.push_back(temp_object1);
-				   		split.push_back(temp_object2);
+				   		//condition=true;
+				   		std::cout << "void return" << std::endl;
+				   		split.clear();
+				   		//temp_object2.clear();
+				   		//split.push_back(temp_object1);
+				   		//split.push_back(temp_object2);
 
 				   	}	
 		
@@ -493,13 +497,9 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 				   	{
 				   		split.push_back(temp_object1);
 						split.push_back(temp_object2);
+						condition=true;
 					}
-
-		
-						//assert(temp_object1.size()>0);
-						//assert(temp_object2.size()>0);
-					    //split.push_back(temp_object1);
-						//split.push_back(temp_object2);
   return split;
   
 }
+
