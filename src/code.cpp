@@ -463,7 +463,7 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 		                }
 		                break;
 		        }
-		 }
+		}
 		    		     
 					if(temp_object1.size()==0)
 					{		
