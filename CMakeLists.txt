@@ -25,3 +25,5 @@ endif()
 #add_executable(bounding_eigen src/bounding_eigen.cpp)
 
 add_executable(code src/code.cpp)
+#add_executable(code_p src/code_prova.cpp)
+add_executable(bounding_eigen_cycle src/bounding_eigen_cycle.cpp)

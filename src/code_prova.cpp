@@ -95,7 +95,7 @@ int main()
 	  	SplitedObject = FindBestSplit( taglio.front() );            
 	  	std::cout <<"dopo FindBestSplit"<<std::endl;
 
-	      	if(SplitedObject.size()==0)
+	      	if(SplitedObject.size()<2)
 	        {	
 	            results.push_back(taglio.front());
 	            taglio.erase(it1);
@@ -107,18 +107,22 @@ int main()
 	        	if(condition ==true)
 		        {	//assert(SplitedObject.size()==2);
 		        	taglio.erase(it1);
+
 		        	taglio.push_back(SplitedObject[0]);
 		          	taglio.push_back(SplitedObject[1]);
 		          	std::cout <<"dentro else if"<<std::endl;
+		          	std::cout <<"SplitedObject[1]"<<SplitedObject[0].size()<<std::endl;
+		          	std::cout <<"SplitedObject[0]"<<SplitedObject[1].size()<<std::endl;
 		       	}
 		       	
-		       	else
-		       	{	
-		          	taglio.erase(it1);
-		          	taglio.push_back(SplitedObject[0]);
-					std::cout <<"dentro else if else"<<std::endl;		          	
-		        }	//results.push_back(taglio.front());
-	       			//taglio.erase(it1);
+		       	// else
+		       	// {	
+		        //   	results.push_back(taglio.front());
+		        //   	taglio.erase(it1);
+		        //   	//taglio.push_back(SplitedObject[0]);
+		       	// 	std::cout <<"dentro else if else"<<std::endl;		          	
+		        // }	//results.push_back(taglio.front());
+	       		// 	//taglio.erase(it1);
 	        }
 
 	  	std::cout <<"taglio.size(): "<< taglio.size() <<std::endl;
@@ -237,18 +241,18 @@ Eigen::MatrixXd vec2Eigen(  const Object3d& vin )
 std::vector<Object3d> FindBestSplit ( Object3d Object )
 {
     Object2d up, down, left, right;
-    double area_up, area_down, area_left, area_right, area_min_y, area_min_x, area_min,prova;
+    double area_up, area_down, area_left, area_right, area_min_y, area_min_x, area_min;
     Point2d cutting_point;
-    std::vector<Point2d> cutting_point_vec;
-    std::vector<double> area_min_vec,test;
+    std::vector<Point2d> cutting_point_vec,test1,test2;
+    std::vector<double> area_min_vec,prova_up_dw,prova_lf_rg;
     std::vector<int> cutting_direction_vec;
     double gain=0.1;
-    double A_sum;
+    double A_sum1,A_sum2;
     Object2d face;
 
 
   for (unsigned int i = 0; i < 3; i++)
-  {
+  	{
       
 	   switch (i)
 	    {
@@ -298,20 +302,38 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 	      K::Iso_rectangle_2 down_bb = CGAL::bounding_box(down.begin(), down.end());
 	      area_up= up_bb.area();
 	      area_down= down_bb.area();
-	      A_sum=area_up + area_down;
-	            
-	      if (A_sum < gain*area_min)
+	      A_sum1=area_up + area_down;
+
+
+	       if (A_sum1 < gain*area_min)
 	      {
 	        std::cout << "good by criterion up" << std::endl;
-	        area_min = A_sum;
+	        area_min = A_sum1;
 	        cutting_point = face[k];
-	        cutting_direction = 0;
+	        //cutting_direction = 0;
 	      }
     	
-	      
+
+	     //  prova_up_dw.push_back(area_total/A_sum1);
+	     //  area_min = A_sum1;
+	      	     
+		    // for(int j=0; j<prova_up_dw.size(); j++)
+		    // {	
+		    //  	if(j== prova_up_dw.size()-1)
+		    //  		continue;
+
+		    //   	if (prova_up_dw[j]<prova_up_dw[j+1])
+		    //   	{
+		    //   		//std::cout<<"dentro if up_dw"<<std::endl;
+		    //   		test1.push_back(face[k]);
+		      		
+		    //   	}
+		    // }
     	}
-  
+	     
+    	  
 	    // Find the best split using vertical direction
+		area_min = area_total;
 	    
 	    for (unsigned int k = 0; k < face.size(); ++k)
 	    {    
@@ -339,42 +361,77 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 	      K::Iso_rectangle_2 left_bb = CGAL::bounding_box(left.begin(), left.end());
 	      area_right= right_bb.area();
 	      area_left= left_bb.area();
-	      A_sum=area_right + area_left;
-	      if ((A_sum < area_min) && (A_sum/area_total <gain))
-	      {
-	      	std::cout << "good by criterion" << std::endl;
-	        area_min = A_sum;   
-	        cutting_point = face[k];
-	        cutting_direction = 1;
-	      }
-	      
-    	}
- 
-     	std::cout<<"qui"<<std::endl;
-	     cutting_point_vec.push_back( cutting_point );
-	     area_min_vec.push_back(area_min);
-	     cutting_direction_vec.push_back(cutting_direction);
-
+	      A_sum2=area_right + area_left;
+	      // prova_lf_rg.push_back( area_total/A_sum2);
+	      //area_min = A_sum2;
 	   
-     	 
-  	}
+	   		 if (A_sum2 < gain*area_min)
+	      {
+	        std::cout << "good by criterion up" << std::endl;
+	        area_min = A_sum2;
+	        cutting_point = face[k];
+	        //cutting_direction = 0;
+	      }
+    	
+
+
+	   		// for(int j=0; j<prova_lf_rg.size();j++)
+		   	// {	
+		    //  	if(j== prova_up_dw.size()-1)
+		    //  		continue;
+		     	
+		    //   	if (prova_lf_rg[j]<prova_lf_rg[j+1])
+		    //   	{
+		    //   		test2.push_back(face[k]);		
+		    //   	}
+		    // }
+
+		   
+
+    	}
+ 		
+ 		int total_min_index = 0, total_min_direction;
+
+ 		for(int w=0; w<face.size();w++ )
+ 		{	
+	 		if(prova_up_dw[w] > prova_lf_rg[w])
+	 		{
+	 			cutting_point_vec.push_back( test2[w] );
+		      	cutting_direction = 0;
+	 			cutting_direction_vec.push_back(cutting_direction);
+	 			area_min_vec.push_back(A_sum2);
+	 			total_min_index = w;
+
+	 		}
+
+	 		else
+	 		{
+	 			cutting_point_vec.push_back( test1[w] );
+		      	cutting_direction = 1;
+	 			cutting_direction_vec.push_back(cutting_direction);
+	 			area_min_vec.push_back(A_sum1);
+	 			total_min_index = w;
+
+	 		}
+	 	}
+
+   	}
  
     
   //double total_area_min,ans;
-  int total_min_index = 0, total_min_direction;
-  //std::vector<double> test;
-	std::vector <Object3d> split;
-	double total_area_min = area_min_vec[0];
+  	int total_min_index = 0, total_min_direction;
+ 	std::vector <Object3d> split;
+	// double total_area_min = area_min_vec[0];
 
-		for (unsigned int i = 0; i < cutting_point_vec.size(); i++) 
-		 {
-     		if(area_min_vec[i]<total_area_min)
-          	{
-          		total_min_index = i;
-          		total_area_min=area_min_vec[i];
-     		}
+	// 	for (unsigned int i = 0; i < cutting_point_vec.size(); i++) 
+	// 	 {
+ //     		if(area_min_vec[i]<total_area_min)
+ //          	{
+ //          		total_min_index = i;
+ //          		total_area_min=area_min_vec[i];
+ //     		}
   		
-  		}
+ //  		}
 
 
 
@@ -484,13 +541,9 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
 
 				   	if(temp_object1.size()==0 && temp_object2.size()==0)
 				   	{
-				   		//condition=true;
 				   		std::cout << "void return" << std::endl;
 				   		split.clear();
-				   		//temp_object2.clear();
-				   		//split.push_back(temp_object1);
-				   		//split.push_back(temp_object2);
-
+				   
 				   	}	
 		
 				
