@@ -1,9 +1,7 @@
 #ifndef __PACMAN_BB_HPP_
 #define __PACMAN_BB_HPP_
 
-
 #include <eigen3/Eigen/Dense>
-
 
 namespace pacman
 {

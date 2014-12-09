@@ -30,3 +30,12 @@ add_executable(code src/code.cpp)
 #add_executable(code_p src/code_prova.cpp)
 add_executable(bounding_eigen_cycle src/bounding_eigen_cycle.cpp)
 add_executable(BoundingBox src/BoundingBox.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
+
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/doxygen.in @ONLY)
+	add_custom_target(doc
+	${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.in
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	COMMENT "Generating API documentation with Doxygen" VERBATIM)
+endif(DOXYGEN_FOUND)
