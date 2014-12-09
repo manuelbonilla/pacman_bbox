@@ -22,34 +22,34 @@ Object2d  Project2plane ( Object3d Object, int plane );
 
 int main()
 {
-  
-  int num_points;
-  float x, y;
-  std::cin >> num_points;
 
-  Object2d face;
-  Eigen::MatrixXd face_eigen(num_points,2);
-  
-  // Load object
-  for (unsigned int i = 0; i < num_points; ++i)
-  {
-    std::cin >> x;
-    std::cin >> y;
-    face.push_back(Point2d(x,y));
-    face_eigen(i,0) = x;
-    face_eigen(i,1) = y;  
-  }
+    int num_points;
+    float x, y;
+    std::cin >> num_points;
+
+    Object2d face;
+    Eigen::MatrixXd face_eigen ( num_points,2 );
+
+    // Load object
+    for ( unsigned int i = 0; i < num_points; ++i )
+    {
+        std::cin >> x;
+        std::cin >> y;
+        face.push_back ( Point2d ( x,y ) );
+        face_eigen ( i,0 ) = x;
+        face_eigen ( i,1 ) = y;
+    }
 
 
-std::cout << "Covariance matrix:" << std::endl << face_eigen.transpose()*face_eigen << std::endl;
-Eigen::JacobiSVD<MatrixXd> svd(face_eigen.transpose()*face_eigen, Eigen::ComputeThinU | Eigen::ComputeThinV);
-std::cout << "Its singular values are:" << std::endl << svd.singularValues() << std::endl;
-std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << svd.matrixU() << std::endl;
-std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << svd.matrixV() << std::endl;
+    std::cout << "Covariance matrix:" << std::endl << face_eigen.transpose() *face_eigen << std::endl;
+    Eigen::JacobiSVD<MatrixXd> svd ( face_eigen.transpose() *face_eigen, Eigen::ComputeThinU | Eigen::ComputeThinV );
+    std::cout << "Its singular values are:" << std::endl << svd.singularValues() << std::endl;
+    std::cout << "Its left singular vectors are the columns of the thin U matrix:" << std::endl << svd.matrixU() << std::endl;
+    std::cout << "Its right singular vectors are the columns of the thin V matrix:" << std::endl << svd.matrixV() << std::endl;
 
-Eigen::JacobiSVD<MatrixXd>::SingularValuesType invSingVals = svd.singularValues();
-std::cout << "Reconstructed covariance matrix:" << std::endl << svd.matrixV() * invSingVals.asDiagonal() * svd.matrixU().transpose()  << std::endl;
+    Eigen::JacobiSVD<MatrixXd>::SingularValuesType invSingVals = svd.singularValues();
+    std::cout << "Reconstructed covariance matrix:" << std::endl << svd.matrixV() * invSingVals.asDiagonal() * svd.matrixU().transpose()  << std::endl;
 
-  return 1;
-  
+    return 1;
+
 }

@@ -19,131 +19,132 @@ typedef std::vector<Point2d> Object2d;
 
 std::vector<Object3d> FindBestSplit ( Object3d Object );
 Object2d  Project2plane ( Object3d Object, int plane );
-Eigen::MatrixXd vec2Eigen(  const Object3d& vin );
+Eigen::MatrixXd vec2Eigen ( const Object3d& vin );
 
 bool condition;
 int indice;
 
 class CObject
 {
-  public:
-  Object3d Points;
-  Eigen::MatrixXd T;
+public:
+    Object3d Points;
+    Eigen::MatrixXd T;
 
-  //CObject();
-  void SetPoints(Eigen::MatrixXd& EigenPoints);
+    //CObject();
+    void SetPoints ( Eigen::MatrixXd& EigenPoints );
 
-  //~CObject();
-  
+    //~CObject();
+
 };
 
-void CObject::SetPoints(Eigen::MatrixXd& EigenPoints)
+void CObject::SetPoints ( Eigen::MatrixXd& EigenPoints )
 {
 
-  //creo vettore di punti in terna pca   
-  for ( int l=0; l<EigenPoints.rows(); l++ ) 
-  {
-    Points.push_back ( Point3d ( EigenPoints ( l,0 ), EigenPoints ( l,1 ), EigenPoints(l,2)));
+    //creo vettore di punti in terna pca
+    for ( int l=0; l<EigenPoints.rows(); l++ )
+    {
+        Points.push_back ( Point3d ( EigenPoints ( l,0 ), EigenPoints ( l,1 ), EigenPoints ( l,2 ) ) );
 
-  }
-  
+    }
+
 }
 
 
-CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object);
-void splitSingleDirection(const  Object2d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction);
+CObject PCA ( const Eigen::MatrixXd& object_eigen, const Object3d& Object );
+void splitSingleDirection ( const  Object2d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction );
 
 int main()
 {
-  	
-	  int num_points;
-	  float x, y, z;
-	  std::cin >> num_points;
 
-	  Object3d Object;
-	  Eigen::MatrixXd object_eigen (num_points,3);
-	  CObject box1;	
-  
-  	// Load object
-  	for (unsigned int i = 0; i < num_points; ++i)
-  	{
-   		std::cin >> x;
-   	 	std::cin >> y;
-    	std::cin >> z;
-    	Object.push_back(Point3d(x,y,z));
-    
-    	object_eigen(i,0) = x;
-    	object_eigen(i,1) = y;
-    	object_eigen(i,2) = z;
-  	}
-  
-	
-	CObject pca_eigen;
-	pca_eigen = PCA(object_eigen, Object);    
-	std::list<Object3d> taglio,results;
-	
-	taglio.push_front(Object);
-	
-  	while( !taglio.empty() )
-  	{ 
-  		std::vector<Object3d> SplitedObject;
-  		std::list<Object3d>::iterator it1;
+    int num_points;
+    float x, y, z;
+    std::cin >> num_points;
+
+    Object3d Object;
+    Eigen::MatrixXd object_eigen ( num_points,3 );
+    CObject box1;
+
+    // Load object
+    for ( unsigned int i = 0; i < num_points; ++i )
+    {
+        std::cin >> x;
+        std::cin >> y;
+        std::cin >> z;
+        Object.push_back ( Point3d ( x,y,z ) );
+
+        object_eigen ( i,0 ) = x;
+        object_eigen ( i,1 ) = y;
+        object_eigen ( i,2 ) = z;
+    }
+
+
+    CObject pca_eigen;
+    pca_eigen = PCA ( object_eigen, Object );
+    std::list<Object3d> taglio,results;
+
+    taglio.push_front ( Object );
+
+    while ( !taglio.empty() )
+    {
+        std::vector<Object3d> SplitedObject;
+        std::list<Object3d>::iterator it1;
         std::cout <<"entro nel while"<<std::endl;
 
         it1=taglio.begin();
-        
-	  	SplitedObject = FindBestSplit( taglio.front() );            
-	  	std::cout <<"dopo FindBestSplit"<<std::endl;
 
-	      	if(SplitedObject.size()<2)
-	        {	
-	            results.push_back(taglio.front());
-	            taglio.erase(it1);
-	            std::cout <<"dentro results"<<std::endl;
-	       	} 
+        SplitedObject = FindBestSplit ( taglio.front() );
+        std::cout <<"dopo FindBestSplit"<<std::endl;
 
-	       	else
-	       	{	
-	        	if(condition ==true)
-		        {	//assert(SplitedObject.size()==2);
-		        	taglio.erase(it1);
+        if ( SplitedObject.size() <2 )
+        {
+            results.push_back ( taglio.front() );
+            taglio.erase ( it1 );
+            std::cout <<"dentro results"<<std::endl;
+        }
 
-		        	taglio.push_back(SplitedObject[0]);
-		          	taglio.push_back(SplitedObject[1]);
-		          	std::cout <<"dentro else if"<<std::endl;
-		          	std::cout <<"SplitedObject[1]"<<SplitedObject[0].size()<<std::endl;
-		          	std::cout <<"SplitedObject[0]"<<SplitedObject[1].size()<<std::endl;
-		       	}
-		       	
-		       	// else
-		       	// {	
-		        //   	results.push_back(taglio.front());
-		        //   	taglio.erase(it1);
-		        //   	//taglio.push_back(SplitedObject[0]);
-		       	// 	std::cout <<"dentro else if else"<<std::endl;		          	
-		        // }	//results.push_back(taglio.front());
-	       		// 	//taglio.erase(it1);
-	        }
+        else
+        {
+            if ( condition ==true )
+            {
+                //assert(SplitedObject.size()==2);
+                taglio.erase ( it1 );
 
-	  	std::cout <<"taglio.size(): "<< taglio.size() <<std::endl;
-	}
+                taglio.push_back ( SplitedObject[0] );
+                taglio.push_back ( SplitedObject[1] );
+                std::cout <<"dentro else if"<<std::endl;
+                std::cout <<"SplitedObject[1]"<<SplitedObject[0].size() <<std::endl;
+                std::cout <<"SplitedObject[0]"<<SplitedObject[1].size() <<std::endl;
+            }
 
-	std::cout <<"esco while"<<std::endl;
-	std::list<Object3d>::iterator it;
+            // else
+            // {
+            //   	results.push_back(taglio.front());
+            //   	taglio.erase(it1);
+            //   	//taglio.push_back(SplitedObject[0]);
+            // 	std::cout <<"dentro else if else"<<std::endl;
+            // }	//results.push_back(taglio.front());
+            // 	//taglio.erase(it1);
+        }
 
-	for ( it=results.begin() ; it != results.end(); ++it)
-	{		
-			CObject box;
-	 		box=(PCA( vec2Eigen( *it ), *it));
-	 		std::cout <<"box.size()"<<box.Points.size()<<std::endl;	
-			std::cout << pca_eigen.T << std::endl;
-			std::cout << CGAL::bounding_box(pca_eigen.Points.begin(), pca_eigen.Points.end()) << std::endl;
-			std::cout << box1.T << std::endl;
-			std::cout << CGAL::bounding_box(box.Points.begin(), box.Points.end()) << std::endl;
-	}		
+        std::cout <<"taglio.size(): "<< taglio.size() <<std::endl;
+    }
+
+    std::cout <<"esco while"<<std::endl;
+    std::list<Object3d>::iterator it;
+
+    for ( it=results.begin() ; it != results.end(); ++it )
+    {
+        CObject box;
+        box= ( PCA ( vec2Eigen ( *it ), *it ) );
+        std::cout <<"box.size()"<<box.Points.size() <<std::endl;
+        std::cout << pca_eigen.T << std::endl;
+        std::cout << CGAL::bounding_box ( pca_eigen.Points.begin(), pca_eigen.Points.end() ) << std::endl;
+        std::cout << box1.T << std::endl;
+        std::cout << CGAL::bounding_box ( box.Points.begin(), box.Points.end() ) << std::endl;
+    }
 
 
-  return 0;
+    return 0;
 }
 
 // projections are defined as follows
@@ -153,87 +154,87 @@ int main()
 
 Object2d  Project2plane ( Object3d Object, int plane )
 {
-  
-  Object2d projection; 
-  
-  for (unsigned int i = 0; i < Object.size(); i++)
-  {
-    switch (plane)
+
+    Object2d projection;
+
+    for ( unsigned int i = 0; i < Object.size(); i++ )
     {
-      case 0:
-        projection.push_back(Point2d(Object[i].x(), Object[i].y()));
-        break;
-      case 1:
-        projection.push_back(Point2d(Object[i].x(), Object[i].z()));
-        break;
-      case 2:
-        projection.push_back(Point2d(Object[i].y(), Object[i].z()));
-        break;
-      default:
-        std::cout << "Error" << std::endl;
+        switch ( plane )
+        {
+        case 0:
+            projection.push_back ( Point2d ( Object[i].x(), Object[i].y() ) );
+            break;
+        case 1:
+            projection.push_back ( Point2d ( Object[i].x(), Object[i].z() ) );
+            break;
+        case 2:
+            projection.push_back ( Point2d ( Object[i].y(), Object[i].z() ) );
+            break;
+        default:
+            std::cout << "Error" << std::endl;
+        }
+
     }
-    
-  }
-  
- 
-  return projection;
-  
+
+
+    return projection;
+
 }
 
 
 //funzione che crea PCA tramite SVD
-CObject PCA(const Eigen::MatrixXd& object_eigen, const Object3d& Object)
+CObject PCA ( const Eigen::MatrixXd& object_eigen, const Object3d& Object )
 {
-    Eigen::MatrixXd object_pca_eigen ( Object.size(),3);
-    Eigen::JacobiSVD<Eigen::MatrixXd> SVD_eigen;       
-		Eigen::MatrixXd data_m(object_eigen.rows(),3);
-		Eigen::MatrixXd mean_data;
-		
-		mean_data = object_eigen.colwise().mean();
-		
-		for (int i = 0; i < object_eigen.rows(); i++)
-		{
-			data_m.block<1,3>(i,0) = object_eigen.block<1,3>(i,0) - mean_data;
+    Eigen::MatrixXd object_pca_eigen ( Object.size(),3 );
+    Eigen::JacobiSVD<Eigen::MatrixXd> SVD_eigen;
+    Eigen::MatrixXd data_m ( object_eigen.rows(),3 );
+    Eigen::MatrixXd mean_data;
 
-		}
-		
-		
-		Eigen::MatrixXd tempM2 = (data_m.transpose()*data_m)/(double )data_m.rows();
-		    
+    mean_data = object_eigen.colwise().mean();
+
+    for ( int i = 0; i < object_eigen.rows(); i++ )
+    {
+        data_m.block<1,3> ( i,0 ) = object_eigen.block<1,3> ( i,0 ) - mean_data;
+
+    }
+
+
+    Eigen::MatrixXd tempM2 = ( data_m.transpose() *data_m ) / ( double ) data_m.rows();
+
     SVD_eigen.compute ( tempM2, Eigen::ComputeFullU | Eigen::ComputeFullV );
 
     Eigen::MatrixXd U = SVD_eigen.matrixU();
- 
-		object_pca_eigen= data_m*U;
-				    
+
+    object_pca_eigen= data_m*U;
+
     CObject ObjectPCA;
-				    
-    Eigen::MatrixXd T = Eigen::MatrixXd::Identity(4,4);
-    T.block<3,3>(0,0) = U;
-  
-		ObjectPCA.SetPoints( object_pca_eigen );
-		T(0,3) = mean_data(0,0);
-		T(1,3) = mean_data(0,1);
-		T(2,3) = mean_data(0,2);
-		
+
+    Eigen::MatrixXd T = Eigen::MatrixXd::Identity ( 4,4 );
+    T.block<3,3> ( 0,0 ) = U;
+
+    ObjectPCA.SetPoints ( object_pca_eigen );
+    T ( 0,3 ) = mean_data ( 0,0 );
+    T ( 1,3 ) = mean_data ( 0,1 );
+    T ( 2,3 ) = mean_data ( 0,2 );
+
     ObjectPCA.T = T;
     return ObjectPCA;
 }
 
 
-Eigen::MatrixXd vec2Eigen(  const Object3d& vin )
+Eigen::MatrixXd vec2Eigen ( const Object3d& vin )
 {
 
-	Eigen::MatrixXd newObject(vin.size(),3);
-		
-	for (unsigned int i=0; i < vin.size(); i++)
-	{
-	  newObject(i,0) = vin[i].x();
-    newObject(i,1) = vin[i].y();
-    newObject(i,2) = vin[i].z();
-	}
-	
-	return newObject;
+    Eigen::MatrixXd newObject ( vin.size(),3 );
+
+    for ( unsigned int i=0; i < vin.size(); i++ )
+    {
+        newObject ( i,0 ) = vin[i].x();
+        newObject ( i,1 ) = vin[i].y();
+        newObject ( i,2 ) = vin[i].z();
+    }
+
+    return newObject;
 }
 
 
@@ -251,309 +252,325 @@ std::vector<Object3d> FindBestSplit ( Object3d Object )
     Object2d face;
 
 
-  for (unsigned int i = 0; i < 3; i++)
-  	{
-      
-	   switch (i)
-	    {
-	      case 0:
-	        face = Project2plane ( Object, 0); //xy
-	        break;
-	      case 1:
-	        face = Project2plane ( Object, 1);
-	        break;
-	      case 2:
-	        face = Project2plane ( Object, 2);
-	        break;
-	    }
-	    
+    for ( unsigned int i = 0; i < 3; i++ )
+    {
 
-	    K::Iso_rectangle_2 face_bb = CGAL::bounding_box( face.begin(), face.end() );
-	    double area_total = face_bb.area();
-	    
-	    area_min = area_total;
-	    int cutting_direction = 0;
-	   
-
-	    // Find the best split using horizontal direction
-	    
-	    for (unsigned int k = 0; k < face.size(); ++k)
-	    {    
-	      
-	      up.clear();
-	      down.clear();
-	      
-	      for (int t = 0; t < face.size(); ++t)
-	      {
-	        if (k==t)
-	          continue;
-	        
-	        if (face[t].y() > face[k].y())
-	          up.push_back(Point2d(face[t].x(), face[t].y()));
-	        
-	        else 
-	          down.push_back(Point2d(face[t].x() ,face[t].y()));
-	      }
-	      
-	      if (up.size()==0 || down.size()==0)
-	        continue;
-	      
-	      K::Iso_rectangle_2 up_bb = CGAL::bounding_box(up.begin(), up.end());
-	      K::Iso_rectangle_2 down_bb = CGAL::bounding_box(down.begin(), down.end());
-	      area_up= up_bb.area();
-	      area_down= down_bb.area();
-	      A_sum1=area_up + area_down;
+        switch ( i )
+        {
+        case 0:
+            face = Project2plane ( Object, 0 ); //xy
+            break;
+        case 1:
+            face = Project2plane ( Object, 1 );
+            break;
+        case 2:
+            face = Project2plane ( Object, 2 );
+            break;
+        }
 
 
-	       if (A_sum1 < gain*area_min)
-	      {
-	        std::cout << "good by criterion up" << std::endl;
-	        area_min = A_sum1;
-	        cutting_point = face[k];
-	        //cutting_direction = 0;
-	      }
-    	
+        K::Iso_rectangle_2 face_bb = CGAL::bounding_box ( face.begin(), face.end() );
+        double area_total = face_bb.area();
 
-	     //  prova_up_dw.push_back(area_total/A_sum1);
-	     //  area_min = A_sum1;
-	      	     
-		    // for(int j=0; j<prova_up_dw.size(); j++)
-		    // {	
-		    //  	if(j== prova_up_dw.size()-1)
-		    //  		continue;
-
-		    //   	if (prova_up_dw[j]<prova_up_dw[j+1])
-		    //   	{
-		    //   		//std::cout<<"dentro if up_dw"<<std::endl;
-		    //   		test1.push_back(face[k]);
-		      		
-		    //   	}
-		    // }
-    	}
-	     
-    	  
-	    // Find the best split using vertical direction
-		area_min = area_total;
-	    
-	    for (unsigned int k = 0; k < face.size(); ++k)
-	    {    
-	      
-	      right.clear();
-	      left.clear();
-	      
-	      for (int t = 0; t < face.size(); ++t)
-	      {
-	        if (k==t)
-	          continue;
-	        
-	        if (face[t].x() > face[k].x())
-	          right.push_back(Point2d(face[t].x(), face[t].y()));
-	        
-	        else 
-	          left.push_back(Point2d(face[t].x() ,face[t].y()));
-	        
-	      }
-	      
-	      if (right.size()==0 || left.size()==0)
-	        continue;
-	      
-	      K::Iso_rectangle_2 right_bb = CGAL::bounding_box(right.begin(), right.end());
-	      K::Iso_rectangle_2 left_bb = CGAL::bounding_box(left.begin(), left.end());
-	      area_right= right_bb.area();
-	      area_left= left_bb.area();
-	      A_sum2=area_right + area_left;
-	      // prova_lf_rg.push_back( area_total/A_sum2);
-	      //area_min = A_sum2;
-	   
-	   		 if (A_sum2 < gain*area_min)
-	      {
-	        std::cout << "good by criterion up" << std::endl;
-	        area_min = A_sum2;
-	        cutting_point = face[k];
-	        //cutting_direction = 0;
-	      }
-    	
+        area_min = area_total;
+        int cutting_direction = 0;
 
 
-	   		// for(int j=0; j<prova_lf_rg.size();j++)
-		   	// {	
-		    //  	if(j== prova_up_dw.size()-1)
-		    //  		continue;
-		     	
-		    //   	if (prova_lf_rg[j]<prova_lf_rg[j+1])
-		    //   	{
-		    //   		test2.push_back(face[k]);		
-		    //   	}
-		    // }
+        // Find the best split using horizontal direction
 
-		   
+        for ( unsigned int k = 0; k < face.size(); ++k )
+        {
 
-    	}
- 		
- 		int total_min_index = 0, total_min_direction;
+            up.clear();
+            down.clear();
 
- 		for(int w=0; w<face.size();w++ )
- 		{	
-	 		if(prova_up_dw[w] > prova_lf_rg[w])
-	 		{
-	 			cutting_point_vec.push_back( test2[w] );
-		      	cutting_direction = 0;
-	 			cutting_direction_vec.push_back(cutting_direction);
-	 			area_min_vec.push_back(A_sum2);
-	 			total_min_index = w;
+            for ( int t = 0; t < face.size(); ++t )
+            {
+                if ( k==t )
+                {
+                    continue;
+                }
 
-	 		}
+                if ( face[t].y() > face[k].y() )
+                {
+                    up.push_back ( Point2d ( face[t].x(), face[t].y() ) );
+                }
 
-	 		else
-	 		{
-	 			cutting_point_vec.push_back( test1[w] );
-		      	cutting_direction = 1;
-	 			cutting_direction_vec.push_back(cutting_direction);
-	 			area_min_vec.push_back(A_sum1);
-	 			total_min_index = w;
+                else
+                {
+                    down.push_back ( Point2d ( face[t].x() ,face[t].y() ) );
+                }
+            }
 
-	 		}
-	 	}
+            if ( up.size() ==0 || down.size() ==0 )
+            {
+                continue;
+            }
 
-   	}
- 
-    
-  //double total_area_min,ans;
-  	int total_min_index = 0, total_min_direction;
- 	std::vector <Object3d> split;
-	// double total_area_min = area_min_vec[0];
+            K::Iso_rectangle_2 up_bb = CGAL::bounding_box ( up.begin(), up.end() );
+            K::Iso_rectangle_2 down_bb = CGAL::bounding_box ( down.begin(), down.end() );
+            area_up= up_bb.area();
+            area_down= down_bb.area();
+            A_sum1=area_up + area_down;
 
-	// 	for (unsigned int i = 0; i < cutting_point_vec.size(); i++) 
-	// 	 {
- //     		if(area_min_vec[i]<total_area_min)
- //          	{
- //          		total_min_index = i;
- //          		total_area_min=area_min_vec[i];
- //     		}
-  		
- //  		}
+
+            if ( A_sum1 < gain*area_min )
+            {
+                std::cout << "good by criterion up" << std::endl;
+                area_min = A_sum1;
+                cutting_point = face[k];
+                //cutting_direction = 0;
+            }
+
+
+            //  prova_up_dw.push_back(area_total/A_sum1);
+            //  area_min = A_sum1;
+
+            // for(int j=0; j<prova_up_dw.size(); j++)
+            // {
+            //  	if(j== prova_up_dw.size()-1)
+            //  		continue;
+
+            //   	if (prova_up_dw[j]<prova_up_dw[j+1])
+            //   	{
+            //   		//std::cout<<"dentro if up_dw"<<std::endl;
+            //   		test1.push_back(face[k]);
+
+            //   	}
+            // }
+        }
+
+
+        // Find the best split using vertical direction
+        area_min = area_total;
+
+        for ( unsigned int k = 0; k < face.size(); ++k )
+        {
+
+            right.clear();
+            left.clear();
+
+            for ( int t = 0; t < face.size(); ++t )
+            {
+                if ( k==t )
+                {
+                    continue;
+                }
+
+                if ( face[t].x() > face[k].x() )
+                {
+                    right.push_back ( Point2d ( face[t].x(), face[t].y() ) );
+                }
+
+                else
+                {
+                    left.push_back ( Point2d ( face[t].x() ,face[t].y() ) );
+                }
+
+            }
+
+            if ( right.size() ==0 || left.size() ==0 )
+            {
+                continue;
+            }
+
+            K::Iso_rectangle_2 right_bb = CGAL::bounding_box ( right.begin(), right.end() );
+            K::Iso_rectangle_2 left_bb = CGAL::bounding_box ( left.begin(), left.end() );
+            area_right= right_bb.area();
+            area_left= left_bb.area();
+            A_sum2=area_right + area_left;
+            // prova_lf_rg.push_back( area_total/A_sum2);
+            //area_min = A_sum2;
+
+            if ( A_sum2 < gain*area_min )
+            {
+                std::cout << "good by criterion up" << std::endl;
+                area_min = A_sum2;
+                cutting_point = face[k];
+                //cutting_direction = 0;
+            }
+
+
+
+            // for(int j=0; j<prova_lf_rg.size();j++)
+            // {
+            //  	if(j== prova_up_dw.size()-1)
+            //  		continue;
+
+            //   	if (prova_lf_rg[j]<prova_lf_rg[j+1])
+            //   	{
+            //   		test2.push_back(face[k]);
+            //   	}
+            // }
+
+
+
+        }
+
+        int total_min_index = 0, total_min_direction;
+
+        for ( int w=0; w<face.size(); w++ )
+        {
+            if ( prova_up_dw[w] > prova_lf_rg[w] )
+            {
+                cutting_point_vec.push_back ( test2[w] );
+                cutting_direction = 0;
+                cutting_direction_vec.push_back ( cutting_direction );
+                area_min_vec.push_back ( A_sum2 );
+                total_min_index = w;
+
+            }
+
+            else
+            {
+                cutting_point_vec.push_back ( test1[w] );
+                cutting_direction = 1;
+                cutting_direction_vec.push_back ( cutting_direction );
+                area_min_vec.push_back ( A_sum1 );
+                total_min_index = w;
+
+            }
+        }
+
+    }
+
+
+    //double total_area_min,ans;
+    int total_min_index = 0, total_min_direction;
+    std::vector <Object3d> split;
+    // double total_area_min = area_min_vec[0];
+
+    // 	for (unsigned int i = 0; i < cutting_point_vec.size(); i++)
+    // 	 {
+//     		if(area_min_vec[i]<total_area_min)
+//          	{
+//          		total_min_index = i;
+//          		total_area_min=area_min_vec[i];
+//     		}
+
+//  		}
 
 
 
 //if(cutting_point_vec.size()>=1)
 //{
-	    //total_area_min = area_min_vec[total_min_index];
-	    Point2d best_point = cutting_point_vec[total_min_index];
-	    total_min_direction = cutting_direction_vec[total_min_index];
-	    
-	    Object3d temp_object1, temp_object2;
-	    
-	    for (unsigned int i = 0; i < Object.size(); i++)
-	    {
-	        switch (total_min_index)
-		        {
-		            case 0:
-		                if(total_min_direction == 0)
-		                {
-		                    if (Object[i].y() >= best_point.y())
-		                    {
-		                      temp_object1.push_back(Object[i]);                  
-		                    }
-		                    else
-		                    {
-		                        temp_object2.push_back(Object[i]);   
-		                    }
-		                }
-		                else
-		                {
-		                    if (Object[i].x() >= best_point.x())
-		                    {
-		                        temp_object1.push_back(Object[i]);                  
-		                    }
-		                      else
-		                      {
-		                          temp_object2.push_back(Object[i]);   
-		                      }
-		                }
-		                break;
-		                
-		            case 1:
-		                if(total_min_direction == 0)
-		                {
-		                    if (Object[i].z() >= best_point.y())
-		                    {
-		                        temp_object1.push_back(Object[i]);                  
-		                    }
-		                    else
-		                    {
-		                        temp_object2.push_back(Object[i]);   
-		                    }
-		                }
-		                else
-		                {
-		                    if (Object[i].x() >= best_point.x())
-		                    {
-		                        temp_object1.push_back(Object[i]);                  
-		                    }
-		                    else
-		                    {
-		                        temp_object2.push_back(Object[i]);   
-		                    }
-		                }
-		                break;
-		                
-		            case 2:
-		                if(total_min_direction == 0)
-		                {
-		                    if (Object[i].z() >= best_point.y())
-		                    {
-		                        temp_object1.push_back(Object[i]);                  
-		                    }
-		                    else
-		                    {
-		                        temp_object2.push_back(Object[i]);   
-		                    }
-		                }
-		                else
-		                {
-		                    if (Object[i].y() >= best_point.x())
-		                    {
-		                        temp_object1.push_back(Object[i]);                  
-		                    }
-		                    else
-		                    {
-		                        temp_object2.push_back(Object[i]);   
-		                    }
-		                }
-		                break;
-		        }
-		}
-		    		     
-				if(temp_object1.size()==0 && temp_object2.size()>0)
-					{		
-					 	condition=false;
-					 	split.push_back(temp_object2);
-					 	//indice=1;
-					}
-					
-					 if(temp_object2.size()==0 && temp_object1.size()>0)
-					{	
-					    condition=false;
-					    split.push_back(temp_object1);
-					    //indice=0;
-					}
-				
+    //total_area_min = area_min_vec[total_min_index];
+    Point2d best_point = cutting_point_vec[total_min_index];
+    total_min_direction = cutting_direction_vec[total_min_index];
 
-				   	if(temp_object1.size()==0 && temp_object2.size()==0)
-				   	{
-				   		std::cout << "void return" << std::endl;
-				   		split.clear();
-				   
-				   	}	
-		
-				
-				   	if(temp_object1.size()>0 && temp_object2.size()>0)
-				   	{
-				   		split.push_back(temp_object1);
-						split.push_back(temp_object2);
-						condition=true;
-					}
-  return split;
-  
+    Object3d temp_object1, temp_object2;
+
+    for ( unsigned int i = 0; i < Object.size(); i++ )
+    {
+        switch ( total_min_index )
+        {
+        case 0:
+            if ( total_min_direction == 0 )
+            {
+                if ( Object[i].y() >= best_point.y() )
+                {
+                    temp_object1.push_back ( Object[i] );
+                }
+                else
+                {
+                    temp_object2.push_back ( Object[i] );
+                }
+            }
+            else
+            {
+                if ( Object[i].x() >= best_point.x() )
+                {
+                    temp_object1.push_back ( Object[i] );
+                }
+                else
+                {
+                    temp_object2.push_back ( Object[i] );
+                }
+            }
+            break;
+
+        case 1:
+            if ( total_min_direction == 0 )
+            {
+                if ( Object[i].z() >= best_point.y() )
+                {
+                    temp_object1.push_back ( Object[i] );
+                }
+                else
+                {
+                    temp_object2.push_back ( Object[i] );
+                }
+            }
+            else
+            {
+                if ( Object[i].x() >= best_point.x() )
+                {
+                    temp_object1.push_back ( Object[i] );
+                }
+                else
+                {
+                    temp_object2.push_back ( Object[i] );
+                }
+            }
+            break;
+
+        case 2:
+            if ( total_min_direction == 0 )
+            {
+                if ( Object[i].z() >= best_point.y() )
+                {
+                    temp_object1.push_back ( Object[i] );
+                }
+                else
+                {
+                    temp_object2.push_back ( Object[i] );
+                }
+            }
+            else
+            {
+                if ( Object[i].y() >= best_point.x() )
+                {
+                    temp_object1.push_back ( Object[i] );
+                }
+                else
+                {
+                    temp_object2.push_back ( Object[i] );
+                }
+            }
+            break;
+        }
+    }
+
+    if ( temp_object1.size() ==0 && temp_object2.size() >0 )
+    {
+        condition=false;
+        split.push_back ( temp_object2 );
+        //indice=1;
+    }
+
+    if ( temp_object2.size() ==0 && temp_object1.size() >0 )
+    {
+        condition=false;
+        split.push_back ( temp_object1 );
+        //indice=0;
+    }
+
+
+    if ( temp_object1.size() ==0 && temp_object2.size() ==0 )
+    {
+        std::cout << "void return" << std::endl;
+        split.clear();
+
+    }
+
+
+    if ( temp_object1.size() >0 && temp_object2.size() >0 )
+    {
+        split.push_back ( temp_object1 );
+        split.push_back ( temp_object2 );
+        condition=true;
+    }
+    return split;
+
 }
 

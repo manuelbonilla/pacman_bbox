@@ -18,18 +18,18 @@ using namespace CGAL::parameters;
 
 int main()
 {
-  // Loads image
-  CGAL::Image_3 image;
-  image.read("p.bmp");
-  // Domain
-  Mesh_domain domain(image);
-  // Mesh criteria
-  Mesh_criteria criteria(facet_angle=30, facet_size=6, facet_distance=4,
-                         cell_radius_edge_ratio=3, cell_size=8);
-  // Meshing
-  C3t3 c3t3 = CGAL::make_mesh_3<C3t3>(domain, criteria);
-  // Output
-  std::ofstream medit_file("out.mesh");
-  c3t3.output_to_medit(medit_file);
-  return 0;
+    // Loads image
+    CGAL::Image_3 image;
+    image.read ( "p.bmp" );
+    // Domain
+    Mesh_domain domain ( image );
+    // Mesh criteria
+    Mesh_criteria criteria ( facet_angle=30, facet_size=6, facet_distance=4,
+                             cell_radius_edge_ratio=3, cell_size=8 );
+    // Meshing
+    C3t3 c3t3 = CGAL::make_mesh_3<C3t3> ( domain, criteria );
+    // Output
+    std::ofstream medit_file ( "out.mesh" );
+    c3t3.output_to_medit ( medit_file );
+    return 0;
 }
