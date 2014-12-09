@@ -16,7 +16,7 @@ namespace pacman{
 	typedef std::vector<Point3d> Object3d;
 	typedef std::vector<Point2d> Object2d;
 
-	std::vector<Box> FindBestSplit ( Box Object_in );
+	std::vector<Box> FindBestSplit ( Box Object_in, double gain );
 	Object2d  Project2plane ( Object3d Object, int plane );
 	Eigen::MatrixXd vec2Eigen( Object3d& vin );
 	Object3d Eigen2cgalvec(  const Eigen::MatrixXd &Mat );

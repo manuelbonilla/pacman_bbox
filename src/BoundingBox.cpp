@@ -1,16 +1,14 @@
-// Example program for the bounding_box() function for 2D points and 3D points.
 #include <pacman_bb.hpp>
 #include <pacman_bb_utils.hpp>
 #include <iostream>
 
 using namespace pacman;
 
-double gain;
-
-
 int main()
 {
-  gain = 0.9;
+  double gain = 0.9;
+	double  vol_gain = 0.98;
+	int max_points = 100;
   int num_points;
   float x, y, z;
   std::cin >> num_points;
@@ -41,40 +39,46 @@ int main()
     while( !cue.empty() )
     { 
         	
-					SplitedObject = FindBestSplit( cue.front() ); 
-					SplitedObject[0].doPCA( cue.front().T );
-					SplitedObject[1].doPCA( cue.front().T );
+					SplitedObject = FindBestSplit( cue.front(), gain ); 
 					
-          std::cout << cue.front().T << std::endl;
-					std::cout << cue.front().Isobox.block(0,0,1,3) << " " << cue.front().Isobox.block(1,0,1,3) << std::endl;
-          std::cout << SplitedObject[0].T << std::endl;
-					SplitedObject[0] = ComputeBoundingBox ( SplitedObject[0] );
-					std::cout << SplitedObject[0].Isobox.block(0,0,1,3) << " " << SplitedObject[0].Isobox.block(1,0,1,3) << std::endl;
-					SplitedObject[1] = ComputeBoundingBox ( SplitedObject[1] );
-					std::cout << SplitedObject[1].T << std::endl;
-					std::cout << SplitedObject[1].Isobox.block(0,0,1,3) << " " << SplitedObject[1].Isobox.block(1,0,1,3) << std::endl;
-					
-				  //std::cout << CGAL::bounding_box(box1.Points.begin(), box1.Points.end()) << std::endl;
-  /*
-            if (SplitedObject[0].size() > 100 && SplitedObject[1].size() > 100)
-            {
-                cue.push_back(SplitedObject[0]);
-                cue.push_back(SplitedObject[1]);
-								
-//                 box1 = PCA( vec2Eigen( SplitedObject[0] ), SplitedObject[0] );
-//                 box2 = PCA( vec2Eigen( SplitedObject[1] ), SplitedObject[1] );
-//                 std::cout << box1.T << std::endl;
-//                 std::cout << CGAL::bounding_box(box1.Points.begin(), box1.Points.end()) << std::endl;
-//                 std::cout << box2.T  << std::endl;
-//                 std::cout << CGAL::bounding_box(box2.Points.begin(), box2.Points.end()) << std::endl;
-							
+					if (SplitedObject[0].Points.rows() > max_points && SplitedObject[1].Points.rows() > max_points )
+					{
+
+						SplitedObject[0].doPCA( cue.front().T );
+						SplitedObject[0] = ComputeBoundingBox ( SplitedObject[0] );
 						
-            }*/
+						SplitedObject[1].doPCA( cue.front().T );
+						SplitedObject[1] = ComputeBoundingBox ( SplitedObject[1] );
+					
+					
+//             if ( (SplitedObject[0].Isobox_volume + SplitedObject[1].Isobox_volume) < vol_gain * cue.front().Isobox_volume  )
+// 						{
+							
+                cue.push_back(SplitedObject[0]);
+                cue.push_back(SplitedObject[1]);							
+						
+//             }
+//             else
+// 						{
+							
+// 							std::cout << cue.front().T << std::endl;
+// 							std::cout << cue.front().Isobox.block(0,0,1,3) << " " << cue.front().Isobox.block(1,0,1,3) << std::endl;
+							
+// 						}
             
- return 0;
+            
+					}
+					else
+					{
+						
+						std::cout << cue.front().T << std::endl;
+						std::cout << cue.front().Isobox.block(0,0,1,3) << " " << cue.front().Isobox.block(1,0,1,3) << std::endl;
+						
+					}
+					
+					cue.pop_front();
 
     }
 
   return 0;
 }
-

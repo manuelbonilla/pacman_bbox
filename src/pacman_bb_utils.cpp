@@ -70,7 +70,7 @@ Object3d Eigen2cgalvec(  const Eigen::MatrixXd &Mat ){
 }
 
 
-std::vector<Box> FindBestSplit ( Box Object_in )
+std::vector<Box> FindBestSplit ( Box Object_in, double gain )
 {
 	
 		Object3d Object = Eigen2cgalvec ( Object_in.Points );
@@ -136,7 +136,7 @@ std::vector<Box> FindBestSplit ( Box Object_in )
     area_up= up_bb.area();
     area_down= down_bb.area();
     
-    if (area_up + area_down < area_min)
+    if (area_up + area_down < gain * area_min)
     {
       area_min = area_up + area_down;
       cutting_point = face[k];
@@ -175,7 +175,7 @@ std::vector<Box> FindBestSplit ( Box Object_in )
     area_right= right_bb.area();
     area_left= left_bb.area();
     
-    if (area_right + area_left < area_min)
+    if (area_right + area_left < gain * area_min)
     {
       area_min = area_right + area_left;   
       cutting_point = face[k];
