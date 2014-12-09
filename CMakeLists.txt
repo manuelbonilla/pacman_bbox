@@ -6,6 +6,8 @@ cmake_minimum_required(VERSION 2.6.2)
 find_package(CGAL QUIET COMPONENTS Core )
 find_package(Eigen3 REQUIRED COMPONENTS Dense Geometry)
 
+
+
 if ( EIGEN3_FOUND )
   INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIRS})
 else()
@@ -19,7 +21,7 @@ else()
     message(STATUS "This program requires the CGAL library, and will not be compiled.")
 endif()
 
-#include( CMAKE_CURRENT_SOURCE_DIR/include )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 #add_executable(bounding src/bounding.cpp)
 add_executable(bounding_eigen src/bounding_eigen.cpp)
@@ -27,3 +29,4 @@ add_executable(bounding_eigen src/bounding_eigen.cpp)
 add_executable(code src/code.cpp)
 #add_executable(code_p src/code_prova.cpp)
 add_executable(bounding_eigen_cycle src/bounding_eigen_cycle.cpp)
+add_executable(BoundingBox src/BoundingBox.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
