@@ -330,6 +330,6 @@ std::vector<Box> FindBestSplit ( Box Object_in )
 	Box_in.Isobox_volume = c3.volume();
 	
 	return Box_in;
-}
+	}
 
 }

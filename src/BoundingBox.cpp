@@ -29,11 +29,7 @@ int main()
     ObjectOriginal.SetPoint( i, x, y, z);
   
   }
-  
-  //Apply a first PCA to te Object
-  
-  //std::cout << ObjectOriginal.Points << std::endl;
-	
+  	
   ObjectOriginal.doPCA( Eigen::Matrix<double, 4, 4>::Identity() ); 
 	ObjectOriginal = ComputeBoundingBox ( ObjectOriginal );
 
@@ -79,8 +75,6 @@ int main()
 
     }
 
-     
-  
   return 0;
 }
 
