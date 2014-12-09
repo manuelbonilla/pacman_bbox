@@ -6,6 +6,11 @@
 namespace pacman
 {
 
+/**
+*  A test class. A more elaborate class description.
+*/
+
+    
 class Box
 {
 public:
