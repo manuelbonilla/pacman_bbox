@@ -38,7 +38,9 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 add_executable(BoundingBox src/BoundingBox.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
 
 add_executable(pcltest test/testPCL.cpp)
-target_link_libraries(pcltest ${PCL_LIBRARIES})
+target_link_libraries(pcltest ${PCL_LIBRARIES} )
+target_link_libraries(BoundingBox ${PCL_LIBRARIES})
+
 
 find_package(Doxygen)
 if(DOXYGEN_FOUND)

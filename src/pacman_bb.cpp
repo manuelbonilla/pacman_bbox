@@ -1,4 +1,18 @@
 #include <pacman_bb.hpp>
+#include <pcl/common/centroid.h>
+#include <pcl/point_traits.h>
+#include <pcl/PointIndices.h>
+#include <pcl/cloud_iterator.h>
+//#include <pcl/impl/point_types.hpp>
+#include <pcl/point_types.h>
+#include <pcl/point_cloud.h>
+#include <pcl/common/common.h>
+#include <pcl/common/transforms.h>
+#include <pcl/visualization/pcl_visualizer.h>
+#include <pcl/console/parse.h>
+#include <pcl/console/print.h>
+#include <pcl/io/pcd_io.h>
+//#include <boost/system.hpp>
 
 namespace pacman
 {
@@ -68,6 +82,22 @@ void Box::doPCA ( const Eigen::Matrix<double, 4, 4>& Told )
     T ( 2,3 ) = mean_data ( 0,2 );
 
     T = Told*T;
+
+    pcl::PointCloud< pcl::PointXYZ > cloud_xyz;
+    Eigen::Vector4f centroid_local;
+
+    for ( unsigned int i = 0; i < object_pca_eigen.rows(); i++)
+    {
+       cloud_xyz.push_back( pcl::PointXYZ(object_pca_eigen(i,0), object_pca_eigen(i,1), object_pca_eigen(i,2)));
+    }
+
+    pcl::compute3DCentroid ( cloud_xyz, centroid_local);
+    centroid(0,0) = centroid_local(0);
+    centroid(1,0) = centroid_local(1);
+    centroid(2,0) = centroid_local(2);
+    centroid(3,0) = 1;
+
+    centroid = T*centroid;
 
 
 }

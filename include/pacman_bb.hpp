@@ -3,6 +3,8 @@
 
 #include <eigen3/Eigen/Dense>
 
+
+
 namespace pacman
 {
 
@@ -19,6 +21,7 @@ namespace pacman
         Eigen::MatrixXd Points;
         Eigen::Matrix<double, 2,3> Isobox;
         double Isobox_volume;
+        Eigen::Matrix<double, 4, 1> centroid;
 
         //CObject();
         Box ( int num_points );
