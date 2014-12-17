@@ -3,7 +3,7 @@
 #include <pcl/point_traits.h>
 #include <pcl/PointIndices.h>
 #include <pcl/cloud_iterator.h>
-//#include <pcl/impl/point_types.hpp>
+#include <pacman_bb_utils.hpp>
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/common/common.h>
@@ -88,7 +88,7 @@ namespace pacman
         Eigen::Vector4f centroid_local;
         Eigen::Matrix<double, 4, 1> centroid;
         Eigen::Matrix<double, 3, 1> cm_mass;
-        std::list< Box > center;
+        std::list< Object3d> center;
                
         for ( unsigned int i = 0; i < object_pca_eigen.rows(); i++)
         {
@@ -107,26 +107,33 @@ namespace pacman
         cm_mass(0,0)=centroid(0,0);
         cm_mass(1,0)=centroid(1,0);
         cm_mass(2,0)=centroid(2,0);
+        center.push_back(cm_mass);
         
-        
-        center.push_back(( Eigen2vect ( cm_mass ) );
-
+      
     }
+  
 
 
- void box_sort (std::list< Box > center )
+ void box_sort (std::list< Object3d > center )
     {
-        std::list< Box > center,distance;
-
+        std::list< Object3d > distance;
+        std::vector<Object3d> cm_vect;
+        Object3d cm_cloud;
        
-        for (std::list<int>::iterator it=center.begin() ; it != center.end(); ++it)
+        cm_cloud=center.front();
+
+        for (std::list<int>::iterator it=center.begin()+1 ; it != center.end(); ++it)
         {
-            distance.push_back( center.front()-center(it))
+        
+            cm_vect.push_back(center(it));
 
         }
 
-        distance.sort(std::greater<int>());
-
+        for (unsigned int i=1; i<=cm_vect.size();i++)
+        {    
+            distance.push_back(sqrt((cm_cloud.x()-cm_vect(i).x())^2+(cm_cloud.y()-cm_vect(i).y())^2+(cm_cloud.z()-cm_vect(i).z())^2);
+            distance.sort(std::greater<int>());
+        }
              
         
 

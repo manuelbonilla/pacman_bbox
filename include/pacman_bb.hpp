@@ -60,7 +60,7 @@ namespace pacman
      void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
 
 
-     void box_sort ( const Eigen::Matrix<double, 4, 4>& T,Eigen::MatrixXd object_pca_eigen);
+     void box_sort ( std::list< Object3d > center);
      /** Function: box_sort
      *
      */
