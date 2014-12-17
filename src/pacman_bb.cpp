@@ -84,18 +84,11 @@ namespace pacman
 
         T = Told*T;
 
-        
-
-    }
-
-
- void box_sort (const Eigen::Matrix<double, 4, 4>& T, Eigen::MatrixXd object_pca_eigen)
-    {
-
         pcl::PointCloud< pcl::PointXYZ > cloud_xyz;
         Eigen::Vector4f centroid_local;
         Eigen::Matrix<double, 4, 1> centroid;
-        Eigen::Matrix<double,3,1> distance,cm_cloud;
+        Eigen::Matrix<double, 3, 1> cm_mass;
+        std::list< Box > center;
                
         for ( unsigned int i = 0; i < object_pca_eigen.rows(); i++)
         {
@@ -111,21 +104,30 @@ namespace pacman
 
         centroid = T*centroid;
 
-        cm_cloud(0,0)=centroid(0,0);
-        cm_cloud(1,0)=centroid(1,0);
-        cm_cloud(2,0)=centroid(2,0);
+        cm_mass(0,0)=centroid(0,0);
+        cm_mass(1,0)=centroid(1,0);
+        cm_mass(2,0)=centroid(2,0);
         
         
-        for(int i=1;i<centroid.rows()-1;i++)
-        {
+        center.push_back(( Eigen2vect ( cm_mass ) );
 
-            distance(i,0)= cm_cloud(i,0)-centroid(i,0);
-          
+    }
+
+
+ void box_sort (std::list< Box > center )
+    {
+        std::list< Box > center,distance;
+
+       
+        for (std::list<int>::iterator it=center.begin() ; it != center.end(); ++it)
+        {
+            distance.push_back( center.front()-center(it))
+
         }
 
-        
-        std::sort(distance.begin(),distance.end());
-       
+        distance.sort(std::greater<int>());
+
+             
         
 
 
