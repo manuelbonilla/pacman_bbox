@@ -1,7 +1,7 @@
 #ifndef __PACMAN_BB_UTILS_HPP_
 #define __PACMAN_BB_UTILS_HPP_
 
-#include<pacman_bb.hpp>
+#include <pacman_bb.hpp>
 
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/bounding_box.h>
@@ -17,8 +17,7 @@ typedef K::Point_3                 Point3d;
 typedef std::vector<Point3d> Object3d;
 typedef std::vector<Point2d> Object2d;
 
-std::vector<Box> FindBestSplit ( Box Object_in, double gain );
- /** Function: FindBestSplit 
+/** Function: FindBestSplit 
     * Inputs: gain, matrix
     * Output: vector 3d
     * Description: mapping points in three-dimensional space to points on a two-dimensional projection plane. 
@@ -27,33 +26,39 @@ std::vector<Box> FindBestSplit ( Box Object_in, double gain );
 	*			$)1 = xz
 	*			$)2 = yz
     */
-Object2d  Project2plane ( Object3d Object, int plane );
- /** Function: Project2plane 
+std::vector<Box> FindBestSplit ( Box Object_in, double gain );
+ 
+/** Function: Project2plane 
     * Inputs: constant, vector 3d
     * Output: vector 2d
     * Description: Finds the best split using horizontal and vertical direction. For determinate the best split uses a 
     * 			   criterion based on the percentage of area 
     */
-Eigen::MatrixXd vec2Eigen ( Object3d& vin );
+Object2d  Project2plane ( Object3d Object, int plane );
+ 
  /** Function: vec2Eigen
  	* Input: vector 3d
  	* Outpur: matrix
  	* Description: this function trasform vector to matrix
  */
-Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
- /** Function: Eigen2cgalvec
+Eigen::MatrixXd vec2Eigen ( Object3d& vin );
+
+/** Function: Eigen2cgalvec
  	* Input: matrix 
  	* Outpur: vector 3d
  	* Description: this function trasform matrix to vector
  */
-//void splitSingleDirection ( const  Object2d& vect_pca, double& area_min, Point2d& cutting_point, int& best_cutting_direction, int cutting_direction );
-Box ComputeBoundingBox ( Box Box_in );
+
+Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
+ 
 /** Function: ComputeBoundingBox
  	* Input: matrix 
- 	* Outpur: matrix
+ 	* Outpur: vector
  	* Description: this function calculates isobox
  */
+Box ComputeBoundingBox ( Box Box_in );
 
+ 
 }
 
 #endif
