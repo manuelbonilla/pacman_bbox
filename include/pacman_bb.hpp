@@ -38,13 +38,13 @@ namespace pacman
 
         /**Function: SetPoint
             * Input: constant, variable
-            * Description: initializes the points with the mesh values             
+            * Description: Initializes the points with the mesh values             
             */
         void SetPoint ( int i, double x, double y, double z );
         
         /**Function: SetT
             * Input: transform
-            * Description:  calculates the new transformation          
+            * Description: Calculates the new transformation          
             */
         void SetT ( Eigen::Matrix<double , 4, 4>& Tnew );
        
@@ -61,10 +61,13 @@ namespace pacman
      void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
 
 
+     
+      /** Function: box_sort
+        * Input: Original object, list boxes
+        * Description: Calculates distance between original object and boxes, and organize them in decrescent order
+        */
      void box_sort ( Box bigestbox, std::list< Box > results);
-     /** Function: box_sort
-     *
-     */
+    
     
        
 

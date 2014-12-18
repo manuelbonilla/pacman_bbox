@@ -86,10 +86,7 @@ namespace pacman
 
         pcl::PointCloud< pcl::PointXYZ > cloud_xyz;
         Eigen::Vector4f centroid_local;
-//         Eigen::Matrix<double, 4, 1> centroid;
-//         Eigen::Matrix<double, 3, 1> cm_mass;
-        std::list< Object3d> center;
-               
+                       
         for ( unsigned int i = 0; i < object_pca_eigen.rows(); i++)
         {
            cloud_xyz.push_back( pcl::PointXYZ(object_pca_eigen(i,0), object_pca_eigen(i,1), object_pca_eigen(i,2)));
@@ -104,24 +101,31 @@ namespace pacman
 
         centroid = T*centroid;
 
-//         cm_mass(0,0)=centroid(0,0);
-//         cm_mass(1,0)=centroid(1,0);
-//         cm_mass(2,0)=centroid(2,0);
-       // center.push_back(cm_mass);
-        
+    
       
     }
   
+    bool compare (Box(i), Box(y));
 
+    bool compare (Box i, Box y) 
+    {
+        return (Box.distance_cm_orig(i)> Box.distance_cm_orig(y); 
+    }
 
- void Box::box_sort (Box bigestbox, std::list< Box > results )
+    void Box::box_sort (Box bigestbox, std::list< Box > results )
     {
         
-			 distance_cm_orig = 0;
-       /* distance_cm_orig = std::sqrt( std::pow(	bigestbox.centroid(0,0) - cm_mass(0,0) , 2)  +
-																			std::pow(	bigestbox.centroid(1,0) - cm_mass(1,0) , 2)  + 
-																			std::pow(	bigestbox.centroid(2,0) - cm_mass(2,0) , 2) );
-				*/								
-
+		//distance_cm_orig = 0;
+        for (std::list<int>::iterator it=results.begin() ; it != results.end(); ++it)
+        {
+            distance_cm_orig = std::sqrt( std::pow( bigestbox.centroid(0,0) - results(*it).centroid(0,0) , 2)  +
+                                          std::pow( bigestbox.centroid(1,0) - results(*it).centroid(1,0) , 2)  + 
+                                          std::pow( bigestbox.centroid(2,0) - results(*it).centroid(2,0) , 2) );
+        
+             std::sort (results.begin(), results.end(), compare);
+        }
     }
+
+
+  
 }

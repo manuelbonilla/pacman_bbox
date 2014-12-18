@@ -1,6 +1,7 @@
 #include <pacman_bb.hpp>
 #include <pacman_bb_utils.hpp>
 #include <iostream>
+#include <list>
 
 using namespace pacman;
 
@@ -32,7 +33,7 @@ int main ( int argc, char* argv[] )
 
     Box ObjectOriginal ( num_points );
 
-// Get the Object from the Original Shl file
+    // Get the Object from the Original Shl file
 
     for ( unsigned int i = 0; i < num_points; ++i )
     {
@@ -50,7 +51,7 @@ int main ( int argc, char* argv[] )
     ObjectOriginal.doPCA ( Eigen::Matrix<double, 4, 4>::Identity() );
     ObjectOriginal = ComputeBoundingBox ( ObjectOriginal );
 
-    std::list< Box > cue, resulst;
+    std::list< Box > cue, results;
     std::vector< Box > SplitedObject;
 
     cue.push_back ( ObjectOriginal );
@@ -84,22 +85,23 @@ int main ( int argc, char* argv[] )
             else
             {
                 printBox ( cue.front() );
-								resulst.push_back  ( cue.front() );
+				results.push_back  ( cue.front() );
             }
 
         }
         else
         {
             printBox ( cue.front() );
-						resulst.push_back  ( cue.front() );
+			results.push_back  ( cue.front() );
         }
 
         cue.pop_front();
 
     }
     
-//     std::list sorted_boxes;
-//     sorted_boxes = box_sort( ObjectOriginal, results );
+    std::list< Box > sorted_boxes;
+    sorted_boxes.push_back(results);
+    sorted_boxes.box_sort( ObjectOriginal, results );
 
     return 0;
 }
