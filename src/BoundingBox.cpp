@@ -50,7 +50,7 @@ int main ( int argc, char* argv[] )
     ObjectOriginal.doPCA ( Eigen::Matrix<double, 4, 4>::Identity() );
     ObjectOriginal = ComputeBoundingBox ( ObjectOriginal );
 
-    std::list< Box > cue;
+    std::list< Box > cue, resulst;
     std::vector< Box > SplitedObject;
 
     cue.push_back ( ObjectOriginal );
@@ -84,17 +84,22 @@ int main ( int argc, char* argv[] )
             else
             {
                 printBox ( cue.front() );
+								resulst.push_back  ( cue.front() );
             }
 
         }
         else
         {
             printBox ( cue.front() );
+						resulst.push_back  ( cue.front() );
         }
 
         cue.pop_front();
 
     }
+    
+//     std::list sorted_boxes;
+//     sorted_boxes = box_sort( ObjectOriginal, results );
 
     return 0;
 }

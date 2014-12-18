@@ -2,6 +2,7 @@
 #define __PACMAN_BB_HPP_
 
 #include <eigen3/Eigen/Dense>
+#include <list>
 
 
 
@@ -22,7 +23,7 @@ namespace pacman
         Eigen::Matrix<double, 2,3> Isobox;
         double Isobox_volume;
         Eigen::Matrix<double, 4, 1> centroid;
-        Eigen::Matrix<double,3,1> distance;
+        double distance_cm_orig;
 
         //CObject();
         Box ( int num_points );
@@ -60,7 +61,7 @@ namespace pacman
      void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
 
 
-     void box_sort ( std::list< Object3d > center);
+     void box_sort ( Box bigestbox, std::list< Box > results);
      /** Function: box_sort
      *
      */
