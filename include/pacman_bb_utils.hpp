@@ -58,7 +58,9 @@ Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
  */
 Box ComputeBoundingBox ( Box Box_in );
 
+std::list< Box > box_sort ( Box bigestbox, std::list< Box > results);
 
+bool compare_box (Box i, Box j);
 
  
 }

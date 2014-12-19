@@ -105,26 +105,6 @@ namespace pacman
       
     }
   
-    bool compare (Box(i), Box(y));
-
-    bool compare (Box i, Box y) 
-    {
-        return (Box.distance_cm_orig(i)> Box.distance_cm_orig(y); 
-    }
-
-    void Box::box_sort (Box bigestbox, std::list< Box > results )
-    {
-        
-		//distance_cm_orig = 0;
-        for (std::list<int>::iterator it=results.begin() ; it != results.end(); ++it)
-        {
-            distance_cm_orig = std::sqrt( std::pow( bigestbox.centroid(0,0) - results(*it).centroid(0,0) , 2)  +
-                                          std::pow( bigestbox.centroid(1,0) - results(*it).centroid(1,0) , 2)  + 
-                                          std::pow( bigestbox.centroid(2,0) - results(*it).centroid(2,0) , 2) );
-        
-             std::sort (results.begin(), results.end(), compare);
-        }
-    }
 
 
   

@@ -100,8 +100,7 @@ int main ( int argc, char* argv[] )
     }
     
     std::list< Box > sorted_boxes;
-    sorted_boxes.push_back(results);
-    sorted_boxes.box_sort( ObjectOriginal, results );
+    sorted_boxes = box_sort( ObjectOriginal, results );
 
     return 0;
 }

@@ -66,7 +66,7 @@ namespace pacman
         * Input: Original object, list boxes
         * Description: Calculates distance between original object and boxes, and organize them in decrescent order
         */
-     void box_sort ( Box bigestbox, std::list< Box > results);
+     
     
     
        

@@ -362,34 +362,30 @@ Box ComputeBoundingBox ( Box Box_in )
 }
 
 
-   
+bool compare_box (Box i, Box j) 
+{
+		return (i.distance_cm_orig > j.distance_cm_orig); 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+std::list< Box > box_sort ( Box bigestbox, std::list< Box > results)
+{
+		
+//distance_cm_orig = 0;
+		for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
+			
+		{
+				Box actual = *it;
+				actual.distance_cm_orig = std::sqrt( std::pow( bigestbox.centroid(0,0) - actual.centroid(0,0) , 2)  +
+																			std::pow( bigestbox.centroid(1,0) -  actual.centroid(1,0) , 2)  + 
+																			std::pow( bigestbox.centroid(2,0) - actual.centroid(2,0) , 2) );
+		
+			
+		}
+		
+		results.sort(compare_box);
+		
+		return results;
+}
 
 
 }
