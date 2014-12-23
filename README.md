@@ -27,4 +27,6 @@ to compile just
 to execute the code example
 
     ./bounding < ../input_files/cup.shl
+
+This file needs to be updated
   
