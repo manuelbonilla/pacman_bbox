@@ -56,11 +56,11 @@ int main ( int argc, char* argv[] )
 
     cue.push_back ( ObjectOriginal );
 
-
+    
 
     while ( !cue.empty() )
     {
-
+        
         SplitedObject = FindBestSplit ( cue.front(), gain );
         // Condition of gain*area is checked inside FindBestSplit fuction.
         // Each component in SplitedObject showld contain at least 2 point to compute the area and PCA
@@ -85,14 +85,18 @@ int main ( int argc, char* argv[] )
             else
             {
                 printBox ( cue.front() );
-				results.push_back  ( cue.front() );
+                cue.front().box_distance( ObjectOriginal, cue.front()  );
+                results.push_back  ( cue.front() );
+
             }
 
         }
         else
         {
             printBox ( cue.front() );
-			results.push_back  ( cue.front() );
+    		//results.push_back  ( cue.front() );
+            cue.front().box_distance( ObjectOriginal, cue.front()  );
+            results.push_back  ( cue.front() );
         }
 
         cue.pop_front();
@@ -100,7 +104,7 @@ int main ( int argc, char* argv[] )
     }
     
     std::list< Box > sorted_boxes;
-    sorted_boxes = box_sort( ObjectOriginal, results );
+    sorted_boxes = box_sort(  results );
 
     return 0;
 }

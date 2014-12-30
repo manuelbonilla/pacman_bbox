@@ -357,6 +357,7 @@ Box ComputeBoundingBox ( Box Box_in )
     Box_in.Isobox = isobox;
 
     Box_in.Isobox_volume = c3.volume();
+    
 
     return Box_in;
 }
@@ -367,25 +368,47 @@ bool compare_box (Box i, Box j)
 		return (i.distance_cm_orig > j.distance_cm_orig); 
 }
 
-std::list< Box > box_sort ( Box bigestbox, std::list< Box > results)
-{
+std::list< Box > box_sort (std::list< Box > results)
+ {
+ 	for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
+ 	{
+ 		Box actual = *it;
+// 		actual.distance_cm_orig = std::sqrt( std::pow( bigestbox.centroid(0,0) - actual.centroid(0,0) , 2)  +
+// 											 std::pow( bigestbox.centroid(1,0) -  actual.centroid(1,0) , 2)  + 
+// 											 std::pow( bigestbox.centroid(2,0) - actual.centroid(2,0) , 2) );
 		
-//distance_cm_orig = 0;
-		for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
-			
-		{
-				Box actual = *it;
-				actual.distance_cm_orig = std::sqrt( std::pow( bigestbox.centroid(0,0) - actual.centroid(0,0) , 2)  +
-																			std::pow( bigestbox.centroid(1,0) -  actual.centroid(1,0) , 2)  + 
-																			std::pow( bigestbox.centroid(2,0) - actual.centroid(2,0) , 2) );
+// 		std::cout<<"distanze "<<actual.distance_cm_orig<<std::endl;	
+// 	//}
+// 		return actual;
 		
-			
-		}
-		
-		results.sort(compare_box);
-		
-		return results;
-}
+//     //  for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
+
+//     // {
+//     //     Box actual = *it;       
+    //     std::cout<< " ordinata "<<actual.distance_cm_orig<<std::endl;
+        
+
+    // }
+
+        results.sort(compare_box);
+        std::cout<< " ordinata "<<actual.distance_cm_orig<<std::endl;
+        //std::cout<< " tranf "<<actual.Isobox_volume<<std::endl;
+    }
+
+    
+    // for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
+
+    // {
+    //     Box actual = *it;       
+    //     std::cout<< " ordinata "<<actual.distance_cm_orig<<std::endl;
 
 
+    // }
+
+
+		
+	return results;
 }
+
+}
+

@@ -105,7 +105,25 @@ namespace pacman
       
     }
   
+void Box::box_distance ( Box bigestbox, Box actual)
+{
+    //for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
+    //{
+        //Box actual = *it;
+        actual.distance_cm_orig = std::sqrt( std::pow( bigestbox.centroid(0,0) - actual.centroid(0,0) , 2)  +
+                                             std::pow( bigestbox.centroid(1,0) -  actual.centroid(1,0) , 2)  + 
+                                             std::pow( bigestbox.centroid(2,0) - actual.centroid(2,0) , 2) );
+        
+        std::cout<<"distanze "<<actual.distance_cm_orig<<std::endl; 
+    //}
+        //return actual;
+        
+    //  for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
 
+    // {
+    //     Box actual = *it;    
 
   
+}
+
 }

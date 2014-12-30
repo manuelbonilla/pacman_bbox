@@ -58,8 +58,21 @@ Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
  */
 Box ComputeBoundingBox ( Box Box_in );
 
-std::list< Box > box_sort ( Box bigestbox, std::list< Box > results);
 
+ /** Function: box_sort
+        * Input: Original object, list boxes
+        * Output: Boxes list
+        * Description: Calculates distance between original object and boxes, and Organize boxes in decrescent 
+        *			order whit compare_box function
+        */   
+//std::list< Box > box_sort ( Box bigestbox, std::list< Box > results);
+ std::list< Box > box_sort ( std::list< Box > results);
+ /** Function: compare_box 
+ 	* Input: Box
+ 	* Output: Boolean
+ 	* Description: This function is utilized for the box sort. Give in output true or false if 
+ 	*				distance box i>distance box y
+ 	*/
 bool compare_box (Box i, Box j);
 
  

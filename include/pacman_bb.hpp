@@ -60,14 +60,11 @@ namespace pacman
         //~CObject();
      void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
 
+      void box_distance ( Box bigestbox, Box actual);
+
 
      
-      /** Function: box_sort
-        * Input: Original object, list boxes
-        * Description: Calculates distance between original object and boxes, and organize them in decrescent order
-        */
      
-    
     
        
 
