@@ -100,7 +100,6 @@ namespace pacman
         centroid(3,0) = 1;
 
         centroid = T*centroid;
-     //.........
     
       
     }
