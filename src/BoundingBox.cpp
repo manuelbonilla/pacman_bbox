@@ -84,8 +84,9 @@ int main ( int argc, char* argv[] )
             }
             else
             {
-                printBox ( cue.front() );
+                // printBox ( cue.front() );
                 cue.front().box_distance( ObjectOriginal, cue.front()  );
+// 		std::cout<<"distanze2 "<< cue.front().distance_cm_orig <<std::endl;	
                 results.push_back  ( cue.front() );
 
             }
@@ -93,9 +94,10 @@ int main ( int argc, char* argv[] )
         }
         else
         {
-            printBox ( cue.front() );
+            // printBox ( cue.front() );
     		//results.push_back  ( cue.front() );
             cue.front().box_distance( ObjectOriginal, cue.front()  );
+// 	    std::cout<<"distanze2 "<< cue.front().distance_cm_orig <<std::endl;	
             results.push_back  ( cue.front() );
         }
 
@@ -105,6 +107,22 @@ int main ( int argc, char* argv[] )
     
     std::list< Box > sorted_boxes;
     sorted_boxes = box_sort(  results );
+    
+    
+ //      for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
+ // 	{
+ // 		Box actual = *it;
+	// 	std::cout<<"distanze "<< actual.distance_cm_orig <<std::endl;	
+	// }
+	
+	
+	// std::cout << "List after sort" << std::endl;
+	
+  for (std::list<Box>::iterator it=sorted_boxes.begin() ; it != sorted_boxes.end(); ++it)
+ 	{
+ 		Box actual = *it;
+		printBox(actual);
+	}
 
     return 0;
 }
