@@ -26,5 +26,7 @@ to compile just
   
 to execute the code example
 
-    ./bounding volume_value area_value< ../input_files/cup.shl
+    ./bounding < ../input_files/cup.shl
+
+This file needs to be updated
   
