@@ -10,14 +10,13 @@ namespace pacman
 {
 
     /** class: Box
-    *   this class is used to create a structure for bounding box
+        *Description:This class is used to create a structure for bounding box
     */
 
     
     class Box
     {
         public:
-        //Object3d Points;
         Eigen::Matrix<double, 4, 4> T;
         Eigen::MatrixXd Points;
         Eigen::Matrix<double, 2,3> Isobox;
@@ -31,7 +30,7 @@ namespace pacman
         /**Function: SetPoint
             * Input: constant, variable
             * Description: initializes the points and transformation           
-            */
+        */
         void SetPoints ( const Eigen::MatrixXd& EigenPoints );
         
 
@@ -39,13 +38,13 @@ namespace pacman
         /**Function: SetPoint
             * Input: constant, variable
             * Description: Initializes the points with the mesh values             
-            */
+        */
         void SetPoint ( int i, double x, double y, double z );
         
         /**Function: SetT
             * Input: transform
             * Description: Calculates the new transformation          
-            */
+        */
         void SetT ( Eigen::Matrix<double , 4, 4>& Tnew );
        
 
@@ -56,8 +55,7 @@ namespace pacman
             *        2)Calculate the covariance matrix
             *        3)Find the principal components "using Singular Value Decomposition (SVD)"
             *        4)Reduce the data using the selected principal components
-            */
-        //~CObject();
+        */
         void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
 
         
@@ -69,7 +67,7 @@ namespace pacman
 
 
      
-     
+     //~CObject();
     
        
 
