@@ -11,69 +11,83 @@
 namespace pacman
 {
 
-typedef CGAL::Simple_cartesian<double> K;
-typedef K::Point_2                 Point2d;
-typedef K::Point_3                 Point3d;
-typedef std::vector<Point3d> Object3d;
-typedef std::vector<Point2d> Object2d;
+	typedef CGAL::Simple_cartesian<double> K;
+	typedef K::Point_2                 Point2d;
+	typedef K::Point_3                 Point3d;
+	typedef std::vector<Point3d> Object3d;
+	typedef std::vector<Point2d> Object2d;
 
-/** Function: FindBestSplit 
-    * Inputs: gain, matrix
-    * Output: vector 3d
-    * Description: mapping points in three-dimensional space to points on a two-dimensional projection plane. 
-    *			Our projections are defined as follows
-	*			$)0 = xy 
-	*			$)1 = xz
-	*			$)2 = yz
-    */
-std::vector<Box> FindBestSplit ( Box Object_in, double gain );
- 
-/** Function: Project2plane 
-    * Inputs: constant, vector 3d
-    * Output: vector 2d
-    * Description: Finds the best split using horizontal and vertical direction. For determinate the best split uses a 
-    * 			   criterion based on the percentage of area 
-    */
-Object2d  Project2plane ( Object3d Object, int plane );
- 
- /** Function: vec2Eigen
- 	* Input: vector 3d
- 	* Outpur: matrix
- 	* Description: this function trasform vector to matrix
- */
-Eigen::MatrixXd vec2Eigen ( Object3d& vin );
+	/** Function: FindBestSplit 
+	    * Inputs: gain, matrix
+	    * Output: vector 3d
+	    * Description: mapping points in three-dimensional space to points on a two-dimensional projection plane. 
+	    *			Our projections are defined as follows
+		*			$)0 = xy 
+		*			$)1 = xz
+		*			$)2 = yz
+	    */
+	std::vector<Box> FindBestSplit ( Box Object_in, double gain );
+	 
+	/** Function: Project2plane 
+	    * Inputs: constant, vector 3d
+	    * Output: vector 2d
+	    * Description: Finds the best split using horizontal and vertical direction. For determinate the best split uses a 
+	    * 			   criterion based on the percentage of area 
+	    */
+	Object2d  Project2plane ( Object3d Object, int plane );
+	 
+	 /** Function: vec2Eigen
+	 	* Input: vector 3d
+	 	* Outpur: matrix
+	 	* Description: this function trasform vector to matrix
+	 */
+	Eigen::MatrixXd vec2Eigen ( Object3d& vin );
 
-/** Function: Eigen2cgalvec
- 	* Input: matrix 
- 	* Outpur: vector 3d
- 	* Description: this function trasform matrix to vector
- */
+	/** Function: Eigen2cgalvec
+	 	* Input: matrix 
+	 	* Outpur: vector 3d
+	 	* Description: this function trasform matrix to vector
+	 */
 
-Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
- 
-/** Function: ComputeBoundingBox
- 	* Input: matrix 
- 	* Outpur: vector
- 	* Description: this function calculates isobox
- */
-Box ComputeBoundingBox ( Box Box_in );
+	Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
+	 
+	/** Function: ComputeBoundingBox
+	 	* Input: matrix 
+	 	* Outpur: vector
+	 	* Description: this function calculates isobox (bounding box)
+	*/
+	Box ComputeBoundingBox ( Box Box_in );
+  
+	
+	/**Function: Box_sort
+		*Input: Boxes list
+		*Output: Sorted Boxes list
+		*Descprition: Organize boxes list in decrescent order whit compare_box function
+	*/
+	 std::list< Box > box_sort ( std::list< Box > results);
+	 
+
+	 /** Function: compare_box 
+	 	* Input: Box
+	 	* Output: Boolean
+	 	* Description: This function is utilized for the box sort. Give in output true or false if 
+	 	*				distance box i>distance box y
+	 	*/
+	bool compare_box (Box i, Box j);
 
 
- /** Function: box_sort
-        * Input: Original object, list boxes
-        * Output: Boxes list
-        * Description: Calculates distance between original object and boxes, and Organize boxes in decrescent 
-        *			order whit compare_box function
-        */   
-//std::list< Box > box_sort ( Box bigestbox, std::list< Box > results);
- std::list< Box > box_sort ( std::list< Box > results);
- /** Function: compare_box 
- 	* Input: Box
- 	* Output: Boolean
- 	* Description: This function is utilized for the box sort. Give in output true or false if 
- 	*				distance box i>distance box y
- 	*/
-bool compare_box (Box i, Box j);
+	/**Function: info_adams
+		*Inputs: first sorted box, distance for the hand to box
+		*Ouput: eigen matrix
+		*Descprition: Calculates orientation and position matrix (SE(3)) for the soft hand.
+		*			1) calculates intersection between box centroid and center of mass of the original object
+		*			2) calculates perpendicular vector to this intersection
+		*			3) calculates the long side of the box
+		*			this three information give the position and orientation for the hand. 
+
+	*/
+	Eigen::MatrixXd info_adams( Box first_boxes, int distance ); 
+
 
  
 }

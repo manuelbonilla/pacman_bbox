@@ -84,9 +84,7 @@ int main ( int argc, char* argv[] )
             }
             else
             {
-                // printBox ( cue.front() );
                 cue.front().box_distance( ObjectOriginal, cue.front()  );
-// 		std::cout<<"distanze2 "<< cue.front().distance_cm_orig <<std::endl;	
                 results.push_back  ( cue.front() );
 
             }
@@ -94,10 +92,9 @@ int main ( int argc, char* argv[] )
         }
         else
         {
-            // printBox ( cue.front() );
-    		//results.push_back  ( cue.front() );
+          
             cue.front().box_distance( ObjectOriginal, cue.front()  );
-// 	    std::cout<<"distanze2 "<< cue.front().distance_cm_orig <<std::endl;	
+
             results.push_back  ( cue.front() );
         }
 
@@ -108,15 +105,9 @@ int main ( int argc, char* argv[] )
     std::list< Box > sorted_boxes;
     sorted_boxes = box_sort(  results );
     
-    
- //      for (std::list<Box>::iterator it=results.begin() ; it != results.end(); ++it)
- // 	{
- // 		Box actual = *it;
-	// 	std::cout<<"distanze "<< actual.distance_cm_orig <<std::endl;	
-	// }
-	
-	
-	// std::cout << "List after sort" << std::endl;
+    Eigen::Matrix<double, 4, 4> T_adams;
+    T_adams= info_adams(sorted_boxes.front(), 5);
+    std::cout<<"T T_adams "<<T_adams<<std::endl;
 	
   for (std::list<Box>::iterator it=sorted_boxes.begin() ; it != sorted_boxes.end(); ++it)
  	{

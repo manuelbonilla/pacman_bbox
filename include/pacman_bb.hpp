@@ -16,7 +16,7 @@ namespace pacman
     
     class Box
     {
-    public:
+        public:
         //Object3d Points;
         Eigen::Matrix<double, 4, 4> T;
         Eigen::MatrixXd Points;
@@ -58,9 +58,14 @@ namespace pacman
             *        4)Reduce the data using the selected principal components
             */
         //~CObject();
-     void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
+        void doPCA ( const Eigen::Matrix<double, 4, 4>& Told );
 
-      void box_distance ( Box bigestbox, Box actual);
+        
+        /**Function: box_distance
+            *Inputs: first box, actual box
+            *Description: Calculates distance between original object and actual boxes
+        */
+        void box_distance ( Box bigestbox, Box actual);
 
 
      
