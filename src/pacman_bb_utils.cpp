@@ -2,6 +2,8 @@
 #include<pacman_bb_utils.hpp>
 #include<pacman_bb.hpp>
 #include <boost/concept_check.hpp>
+#include <Eigen/LU> 
+
 
 namespace pacman
 {
@@ -375,6 +377,215 @@ namespace pacman
     		
     	return results;
     }
+
+
+    Eigen::MatrixXd info_adams( Box  first_boxes)
+    {
+        double side_x, side_y,side_z;
+        Eigen::Matrix<double, 4, 4> T_l;
+        Eigen::Matrix<double, 3, 2> angle;
+        
+
+        // isobox ( 0,0 ) vertex ( 0 ).x();  
+        // isobox ( 0,1 ) vertex ( 0 ).y();
+        // isobox ( 0,2 ) vertex ( 0 ).z();
+        // isobox ( 1,0 ) vertex ( 7 ).x();
+        // isobox ( 1,1 ) vertex ( 7 ).y();
+        // isobox ( 1,2 ) vertex ( 7 ).z();
+
+        //distance between vertex 0 and 7
+        side_x = std::sqrt( std::pow( first_boxes.Isobox ( 0,0 ) - first_boxes.Isobox ( 1,0 ) , 2) );
+        side_y = std::sqrt( std::pow( first_boxes.Isobox ( 0,1 ) -  first_boxes.Isobox ( 1,1 ) , 2) ); 
+        side_z = std::sqrt( std::pow( first_boxes.Isobox ( 0,2 ) - first_boxes.Isobox ( 1,2 ),2) );
+
+        std::vector<double> figure;
+        double max;
+        int ori;
+
+        figure.push_back(side_x);   //user will input side values
+        figure.push_back(side_y);
+        figure.push_back(side_z);   
+  
+        
+        max=figure[0];  //assign max a value to avoid garbage
+        
+        for (int k=0; k<figure.size(); k++)
+        {
+            //if 'max' is less than figure[k] then assign it that value
+            if (max <= figure[k])
+            {
+                max=figure[k];
+                ori=k;  
+            }
+        }
+        
+        //ori=0 axis x
+        //ori=1 axis y
+        //ori=2 axis z
+
+        Eigen::Matrix<double, 4, 1> F;  //auxiliary variables
+        Eigen::Matrix<double, 3, 1> R;  
+
+        //find vector D and R. D is used for translation and R is longest axis it used for orientation
+        switch(ori) 
+        {
+            case 0:
+                
+                F=first_boxes.T.col(0);
+                
+                break;
+
+            case 1:
+
+                F=first_boxes.T.col(1);
+               
+                break;
+
+            case 2:
+
+                F=first_boxes.T.col(2);
+               
+                break;
+        }
+        
+        R.row(0)=F.row(0);
+        R.row(1)=F.row(1);
+        R.row(2)=F.row(2);
+        
+        angle=FInd_angle(first_boxes,figure,0.5);
+
+        Eigen::Matrix<double, 3, 1> third_col,axis_x;
+        Eigen::Matrix<double, 2, 3> Orto;   //it used for calculates orthogonal vector
+        double i,j,k;
+        
+        third_col=angle.col(0);    
+
+        Orto.row(0)=R.transpose();
+        Orto.row(1)=third_col.transpose();
+
+        //vector products
+                    
+        axis_x=Orto.row(0).cross(Orto.row(1));
+
+        //make a transformation
+        T_l.block<3,1> (0,0)= axis_x;
+        T_l.block<3,1> (0,1)= R;
+        T_l.block<3,2> (0,2)=angle;
+        T_l.block<1,3> (3,0)= Eigen::MatrixXd:: Zero(1,3);
+        T_l (3,3)= 1.0;
+
+        // double det;
+        // det=T_l.block<3,3> (0,0).determinant();
+        // std::cout<<"det "<< det<<std::endl;
+
+        return T_l;
+
+    }
+
+
+
+    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, int distance)
+    {
+        Eigen::Matrix<double, 3, 1> Normal,Col3,D;
+        double PI=3.14159265;
+        int ori;
+        double x,y,z,sum,L1,min;
+        std::vector<double> angle;
+        Eigen::Matrix<double,4,1> T; 
+       
+        Normal(0,0)=0;
+        Normal(1,0)=0;
+        Normal(2,0)=1;
+
+      
+        for(int i=0; i<=2; i++)
+        {  
+            //scalar product
+            x=Normal(0,0)*first_boxes.T(0,i);
+            y=Normal(1,0)*first_boxes.T(1,i);
+            z=Normal(2,0)*first_boxes.T(2,i);
+
+            sum=x+y+z;
+
+            //length
+
+            L1=abs(sqrt(pow(first_boxes.T(0,i),2)+pow(first_boxes.T(1,i),2)+pow(first_boxes.T(2,i),2)));
+
+            angle.push_back( acos (sum / L1) * 180.0 / PI);
+
+        }
+
+        //find min angle
+
+        min=angle[0];  //assign min a value to avoid garbage
+        
+        for (int k=0; k<angle.size(); k++)
+        {
+            //if 'min' is less than angle[k] then assign it that value
+            if (min >= angle[k])
+            {
+                min=angle[k];
+                ori=k;  
+            }
+        }
+
+        switch(ori) 
+        {
+            case 0:
+
+                D(0,0)=(figure[0]/2)+distance;
+                D(1,0)=0;
+                D(2,0)=0;
+                T= first_boxes.T.col(0);
+
+                break;
+
+            case 1:
+
+                D(0,0)=0;
+                D(1,0)=(figure[1]/2)+distance;
+                D(2,0)=0;
+                T= first_boxes.T.col(1);
+
+                break;
+
+            case 2:
+
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=(figure[2]/2)+distance;
+                T= first_boxes.T.col(2);
+
+                break;
+        }
+
+
+        Col3.row(0)=T.row(0);
+        Col3.row(1)=T.row(1);
+        Col3.row(2)=T.row(2);
+
+        Eigen::Matrix<double,3,1> R,L;
+        Eigen::Matrix<double,3,3> O;
+
+        O=first_boxes.T.block<3,3>(0,0);
+        L=first_boxes.T.block<3,1>(0,4);
+        R=L+(O*D);
+
+
+        Eigen::Matrix<double,3,2> Union;
+
+        Union.block<3,1>(0,0)=-Col3;
+        Union.block<3,1>(0,1)=R;
+
+
+
+        return Union;
+
+
+    }
+
+
+
 
 }
 

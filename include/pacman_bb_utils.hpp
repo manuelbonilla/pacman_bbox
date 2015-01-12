@@ -77,7 +77,7 @@ namespace pacman
 
 
 	/**Function: info_adams
-		*Inputs: First sorted box, distance for the hand to box
+		*Inputs: First sorted box
 		*Ouput: Eigen matrix
 		*Descprition: Calculates orientation and position matrix (SE(3)) for the soft hand.
 		*			1) calculates the long side of the box
@@ -85,13 +85,13 @@ namespace pacman
 		*				$) first column --> orthogonal vector and zeros for the last row
 		*				$) second column --> longest axis and zeros for the last row
 		*				$) third column --> axis with minimun angle and zeros for the last row
-		*				$) fourth column --> long side/2 plus distance for the hand and one for the last row
+		*				$) fourth column --> length side with minimun angle/2 plus distance for the hand and one for the last row
 	*/
-	Eigen::MatrixXd info_adams( Box first_boxes, int distance ); 
+	Eigen::MatrixXd info_adams( Box first_boxes ); 
 
 	
 	/**Function: FInd_angle
-		*Input: Box
+		*Inputs: Box, vector of the lenghts side, distance for put the hand
 		*Output: Matrix
 		*Description: Calculates axis that has the minimum angle fron normal vector.
 		*			1) calculates the scalar vetor
@@ -99,7 +99,7 @@ namespace pacman
 		*			3) make the column for the Transformation matrix  
 
 	*/
-	Eigen::MatrixXd FInd_angle( Box first_boxes);
+	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,int distance);
 
 
  

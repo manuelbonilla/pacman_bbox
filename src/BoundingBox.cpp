@@ -106,7 +106,7 @@ int main ( int argc, char* argv[] )
     sorted_boxes = box_sort(  results );
     
     Eigen::Matrix<double, 4, 4> T_adams;
-    T_adams= info_adams(sorted_boxes.front(), 5);
+    T_adams= info_adams(sorted_boxes.front());
     std::cout<<" T_adams "<<T_adams<<std::endl;
 	
   for (std::list<Box>::iterator it=sorted_boxes.begin() ; it != sorted_boxes.end(); ++it)
