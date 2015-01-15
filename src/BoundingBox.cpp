@@ -43,7 +43,6 @@ int main ( int argc, char* argv[] )
         std::cin >> z;
 
         ObjectOriginal.SetPoint ( i, x, y, z );
-
     }
 
     // Perform an initial PCA, to aling the object to the best PCA. This make the code invariant to not suitable definitions in CAD Files.
@@ -65,7 +64,7 @@ int main ( int argc, char* argv[] )
         // Condition of gain*area is checked inside FindBestSplit fuction.
         // Each component in SplitedObject showld contain at least 2 point to compute the area and PCA
         if ( SplitedObject.size() == 2 &&
-                ( SplitedObject[0].Points.rows() > min_points && SplitedObject[1].Points.rows() > min_points ) )
+            ( SplitedObject[0].Points.rows() > min_points && SplitedObject[1].Points.rows() > min_points ) )
         {
 
             SplitedObject[0].doPCA ( cue.front().T );
@@ -109,7 +108,7 @@ int main ( int argc, char* argv[] )
     T_adams= info_adams(sorted_boxes.front());
     std::cout<<" T_adams "<<T_adams<<std::endl;
 	
-  for (std::list<Box>::iterator it=sorted_boxes.begin() ; it != sorted_boxes.end(); ++it)
+    for (std::list<Box>::iterator it=sorted_boxes.begin() ; it != sorted_boxes.end(); ++it)
  	{
  		Box actual = *it;
 		printBox(actual);

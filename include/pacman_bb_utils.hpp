@@ -25,7 +25,7 @@ namespace pacman
 		*			$)0 = xy 
 		*			$)1 = xz
 		*			$)2 = yz
-	    */
+	*/
 	std::vector<Box> FindBestSplit ( Box Object_in, double gain );
 	 
 	/** Function: Project2plane 
@@ -33,22 +33,21 @@ namespace pacman
 	    * Output: Vector 2d
 	    * Description: Finds the best split using horizontal and vertical direction. For determinate the best split uses a 
 	    * 			   criterion based on the percentage of area 
-	    */
+	*/
 	Object2d  Project2plane ( Object3d Object, int plane );
 	 
-	 /** Function: vec2Eigen
+	/** Function: vec2Eigen
 	 	* Input: Vector 3d
 	 	* Outpur: Matrix
 	 	* Description: This function trasform vector to matrix
-	 */
+	*/
 	Eigen::MatrixXd vec2Eigen ( Object3d& vin );
 
 	/** Function: Eigen2cgalvec
 	 	* Input: Matrix 
 	 	* Outpur: Vector 3d
 	 	* Description: This function trasform matrix to vector
-	 */
-
+	*/
 	Object3d Eigen2cgalvec ( const Eigen::MatrixXd &Mat );
 	 
 	/** Function: ComputeBoundingBox
@@ -64,15 +63,15 @@ namespace pacman
 		*Output: Sorted Boxes list
 		*Descprition: Organize boxes list in decrescent order whit compare_box function
 	*/
-	 std::list< Box > box_sort ( std::list< Box > results);
+	std::list< Box > box_sort ( std::list< Box > results);
 	 
 
-	 /** Function: compare_box 
+	/** Function: compare_box 
 	 	* Input: Box
 	 	* Output: Boolean
 	 	* Description: This function is utilized for the box sort. Give in output true or false if 
 	 	*				distance box i>distance box y
-	 	*/
+	*/
 	bool compare_box (Box i, Box j);
 
 
@@ -97,7 +96,6 @@ namespace pacman
 		*			1) calculates the scalar vetor
 		*			2) find min angle and take the respective axis
 		*			3) make the column for the Transformation matrix  
-
 	*/
 	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,int distance);
 

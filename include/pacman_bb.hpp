@@ -48,7 +48,7 @@ namespace pacman
         void SetT ( Eigen::Matrix<double , 4, 4>& Tnew );
        
 
-      /** Function: doPCA
+        /** Function: doPCA
             * Inputs: Matrix, tranformation
             * Description: Finds the PCA axis. The steps to perform PCA for the purpose of visualisation are
             *        1)Translate the data so that the centre is at the origin
