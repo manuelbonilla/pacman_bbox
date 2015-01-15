@@ -422,6 +422,7 @@ namespace pacman
         //ori=0 axis x
         //ori=1 axis y
         //ori=2 axis z
+        int flag_axis=ori;
 
         Eigen::Matrix<double, 4, 1> F;  //auxiliary variables
         Eigen::Matrix<double, 3, 1> R;  
@@ -480,7 +481,7 @@ namespace pacman
 
 
 
-    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, int distance)
+    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, int distance, int flag_axis)
     {
         Eigen::Matrix<double, 3, 1> Normal,Col3,D;
         double PI=3.14159265;
@@ -513,8 +514,11 @@ namespace pacman
 
         //find min angle
 
+        //problema quando asse lungo è allineato con z
+
         min=angle[0];  //assign min a value to avoid garbage
-        
+        int p=2;
+
         for (int k=0; k<angle.size(); k++)
         {
             //if 'min' is less than angle[k] then assign it that value
@@ -523,7 +527,52 @@ namespace pacman
                 min=angle[k];
                 ori=k;  
             }
+
+            if(k==flag_axis)
+            {
+                angle[k].erase();
+                min=angle[0];
+                for(int j=0;j<ori;j++)
+                {
+                    
+                    if (min >= angle[j])
+                    {
+                        min=angle[j];
+                        p=j;  
+                    }
+
+                }
+
+
+            }
         }
+
+            
+        switch(p)
+        {
+            case 0:
+            
+                D(0,0)=-((figure[0]/2)+distance);
+                D(1,0)=0;
+                D(2,0)=0;
+            break;
+
+            case 1:
+            
+                D(0,0)=0;
+                D(1,0)=-((figure[1]/2)+distance);
+                D(2,0)=0;
+            break;
+
+            case 2:
+
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[2]/2)+distance);
+
+        }
+
+
 
         switch(ori) 
         {
@@ -533,9 +582,9 @@ namespace pacman
                 // D(1,0)=0;
                 // D(2,0)=0;
 
-                D(0,0)=0;
-                D(1,0)=0;
-                D(2,0)=-((figure[0]/2)+distance);
+                // D(0,0)=0;
+                // D(1,0)=0;
+                // D(2,0)=-((figure[0]/2)+distance);
                 T= first_boxes.T.col(0);
 
                 break;
@@ -546,18 +595,18 @@ namespace pacman
                 // D(1,0)=(figure[1]/2)+distance;
                 // D(2,0)=0;
 
-                D(0,0)=0;
-                D(1,0)=0;
-                D(2,0)=-((figure[1]/2)+distance);
+                // D(0,0)=0;
+                // D(1,0)=0;
+                // D(2,0)=-((figure[1]/2)+distance);
                 T= first_boxes.T.col(1);
 
                 break;
 
             case 2:
 
-                D(0,0)=0;
-                D(1,0)=0;
-                D(2,0)=-((figure[2]/2)+distance);
+                // D(0,0)=0;
+                // D(1,0)=0;
+                // D(2,0)=-((figure[2]/2)+distance);
                 T= first_boxes.T.col(2);
 
                 break;
