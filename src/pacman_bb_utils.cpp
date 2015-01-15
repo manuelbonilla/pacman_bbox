@@ -452,7 +452,7 @@ namespace pacman
         R.row(1)=F.row(1);
         R.row(2)=F.row(2);
         
-        angle=FInd_angle(first_boxes,figure,0.5);
+        angle=FInd_angle(first_boxes,figure,0.005);
 
         Eigen::Matrix<double, 3, 1> third_col,axis_x;
         Eigen::Matrix<double, 2, 3> Orto;   //it used for calculates orthogonal vector
@@ -468,9 +468,10 @@ namespace pacman
         axis_x=Orto.row(0).cross(Orto.row(1));
 
         //make a transformation
-        T_l.block<3,1> (0,0)= axis_x;
-        T_l.block<3,1> (0,1)= R;
-        T_l.block<3,2> (0,2)=angle;
+        T_l.block<3,1> (0,0)= R;
+        T_l.block<3,1> (0,1)= -axis_x; // it is negative 'cause we need a right handed cordinate system
+        T_l.block<3,1> (0,2)=angle.col(0);
+        T_l.block<3,1> (0,3)= first_boxes.T.block<3,1> (0,3) + T_l.block<3,3> (0,0)*angle.col(1);
         T_l.block<1,3> (3,0)= Eigen::MatrixXd:: Zero(1,3);
         T_l (3,3)= 1.0;
 
@@ -533,18 +534,26 @@ namespace pacman
         {
             case 0:
 
-                D(0,0)=(figure[0]/2)+distance;
+                // D(0,0)=(figure[0]/2)+distance;
+                // D(1,0)=0;
+                // D(2,0)=0;
+
+                D(0,0)=0;
                 D(1,0)=0;
-                D(2,0)=0;
+                D(2,0)=-((figure[0]/2)+distance);
                 T= first_boxes.T.col(0);
 
                 break;
 
             case 1:
 
+                // D(0,0)=0;
+                // D(1,0)=(figure[1]/2)+distance;
+                // D(2,0)=0;
+
                 D(0,0)=0;
-                D(1,0)=(figure[1]/2)+distance;
-                D(2,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[1]/2)+distance);
                 T= first_boxes.T.col(1);
 
                 break;
@@ -553,7 +562,7 @@ namespace pacman
 
                 D(0,0)=0;
                 D(1,0)=0;
-                D(2,0)=(figure[2]/2)+distance;
+                D(2,0)=-((figure[2]/2)+distance);
                 T= first_boxes.T.col(2);
 
                 break;
@@ -568,8 +577,8 @@ namespace pacman
         Eigen::Matrix<double,3,3> O;
 
         O=first_boxes.T.block<3,3>(0,0);
-        L=first_boxes.T.block<3,1>(0,4);
-        R=L+(O*D);
+        L=first_boxes.T.block<3,1>(0,3);
+        R=D;
 
 
         Eigen::Matrix<double,3,2> Union;

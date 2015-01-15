@@ -13,11 +13,12 @@ xlabel('x');  ylabel('y');  zlabel('z');
 
 res = import_bbox_results( bb_results );
 
-for i=1: size(res,2)
+%for i=1: size(res,2)
+    for i=1: 2
    
     plotOrientedIsobox(res{i}.X, res{i}.Y, res{i}.T)
-    pause
-    %plotCSYS(res{i}.T, .12);
+    %pause
+    plotCSYS(res{i}.T, .12);
     
 end
 
