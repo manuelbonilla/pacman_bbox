@@ -455,17 +455,12 @@ namespace pacman
         angle=FInd_angle(first_boxes,figure,0.005);
 
         Eigen::Matrix<double, 3, 1> third_col,axis_x;
-        Eigen::Matrix<double, 2, 3> Orto;   //it used for calculates orthogonal vector
+          
         double i,j,k;
         
         third_col=angle.col(0);    
 
-        Orto.row(0)=R.transpose();
-        Orto.row(1)=third_col.transpose();
-
-        //vector products
-                    
-        axis_x=Orto.row(0).cross(Orto.row(1));
+        axis_x=R.transpose().cross(third_col.transpose()); // calculates orthogonal vector
 
         //make a transformation
         T_l.block<3,1> (0,0)= R;
@@ -509,9 +504,9 @@ namespace pacman
             sum=x+y+z;
 
             //length
-
             L1=abs(sqrt(pow(first_boxes.T(0,i),2)+pow(first_boxes.T(1,i),2)+pow(first_boxes.T(2,i),2)));
 
+            //angle
             angle.push_back( acos (sum / L1) * 180.0 / PI);
 
         }
