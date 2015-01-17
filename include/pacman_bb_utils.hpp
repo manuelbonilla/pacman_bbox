@@ -97,7 +97,7 @@ namespace pacman
 		*			2) find min angle and take the respective axis
 		*			3) make the column for the Transformation matrix  
 	*/
-	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,int distance);
+	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,int distance, int flag_axis);
 
 
  

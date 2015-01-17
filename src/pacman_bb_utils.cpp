@@ -427,7 +427,7 @@ namespace pacman
         Eigen::Matrix<double, 4, 1> F;  //auxiliary variables
         Eigen::Matrix<double, 3, 1> R;  
 
-        //find vector D and R. D is used for translation and R is longest axis it used for orientation
+        //find vector x is nothing more than longest axis. 
         switch(ori) 
         {
             case 0:
@@ -453,7 +453,7 @@ namespace pacman
         R.row(1)=F.row(1);
         R.row(2)=F.row(2);
         
-        angle=FInd_angle(first_boxes,figure,0.005);
+        angle=FInd_angle(first_boxes,figure,0.005,flag_axis);
 
         Eigen::Matrix<double, 3, 1> third_col,axis_x;
           
@@ -519,32 +519,37 @@ namespace pacman
         min=angle[0];  //assign min a value to avoid garbage
         int p=2;
 
+
         for (int k=0; k<angle.size(); k++)
         {
-            //if 'min' is less than angle[k] then assign it that value
-            if (min >= angle[k])
+             //if 'min' is less than angle[k] then assign it that value
+             if (min >= angle[k])
             {
-                min=angle[k];
-                ori=k;  
+                 min=angle[k];
+                 ori=k;  
             }
+        
+        }
 
-            if(k==flag_axis)
+        //std::cout<<"ori"<<ori<<std::endl;
+
+        
+
+        if(ori==flag_axis)
+        {
+
+            angle.erase(angle.begin()+ori); //delete kth position
+            min=angle[0]; 
+            p=0;         
+            
+            if (min >= angle[1])
             {
-                angle[k].erase();
-                min=angle[0];
-                for(int j=0;j<ori;j++)
-                {
-                    
-                    if (min >= angle[j])
-                    {
-                        min=angle[j];
-                        p=j;  
-                    }
-
-                }
-
-
+                min=angle[1];
+                p=1;  
             }
+      
+        //std::cout<<"ori uguale a flag"<<std::endl;   
+
         }
 
             
@@ -617,15 +622,10 @@ namespace pacman
         Col3.row(1)=T.row(1);
         Col3.row(2)=T.row(2);
 
-        Eigen::Matrix<double,3,1> R,L;
-        Eigen::Matrix<double,3,3> O;
-
-        O=first_boxes.T.block<3,3>(0,0);
-        L=first_boxes.T.block<3,1>(0,3);
-        R=D;
-
-
+        Eigen::Matrix<double,3,1> R;
         Eigen::Matrix<double,3,2> Union;
+
+        R=D;     
 
         Union.block<3,1>(0,0)=-Col3;
         Union.block<3,1>(0,1)=R;
