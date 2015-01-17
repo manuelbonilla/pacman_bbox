@@ -531,27 +531,35 @@ namespace pacman
         
         }
 
-        //std::cout<<"ori"<<ori<<std::endl;
+        std::cout<<"ori"<<ori<<std::endl;
 
         
 
         if(ori==flag_axis)
         {
-
+            std::cout<<"ori uguale a flag"<<std::endl; 
             angle.erase(angle.begin()+ori); //delete kth position
             min=angle[0]; 
-            p=0;         
+            p=0;    
             
             if (min >= angle[1])
             {
                 min=angle[1];
-                p=1;  
-            }
-      
-        //std::cout<<"ori uguale a flag"<<std::endl;   
+                p=1;
 
+            }
+        
+            if(p>=ori)
+            {
+
+                p+=1;   
+            }
+        
+        std::cout<<"nuovo asse"<< p <<std::endl; 
+          
         }
 
+       
             
         switch(p)
         {
