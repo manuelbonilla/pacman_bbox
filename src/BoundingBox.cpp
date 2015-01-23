@@ -127,7 +127,7 @@ int main ( int argc, char* argv[] )
 void printBox ( Box Box_in )
 {
 
-    //std::cout << Box_in.T << std::endl;
+    std::cout << Box_in.T << std::endl;
     std::cout << Box_in.Isobox.block ( 0,0,1,3 ) << " " << Box_in.Isobox.block ( 1,0,1,3 ) << std::endl;
 
     return;

@@ -1,0 +1,1200 @@
+File/Model = prova_r0al0az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az0el0.sav
+
+File/Model = prova_r0al0az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az0el90.sav
+
+File/Model = prova_r0al0az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az0el180.sav
+
+File/Model = prova_r0al0az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az0el270.sav
+
+File/Model = prova_r0al0az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az0el360.sav
+
+File/Model = prova_r0al0az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az90el0.sav
+
+File/Model = prova_r0al0az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az90el90.sav
+
+File/Model = prova_r0al0az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az90el180.sav
+
+File/Model = prova_r0al0az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az90el270.sav
+
+File/Model = prova_r0al0az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az90el360.sav
+
+File/Model = prova_r0al0az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az180el0.sav
+
+File/Model = prova_r0al0az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az180el90.sav
+
+File/Model = prova_r0al0az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az180el180.sav
+
+File/Model = prova_r0al0az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az180el270.sav
+
+File/Model = prova_r0al0az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az180el360.sav
+
+File/Model = prova_r0al0az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az270el0.sav
+
+File/Model = prova_r0al0az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az270el90.sav
+
+File/Model = prova_r0al0az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az270el180.sav
+
+File/Model = prova_r0al0az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az270el270.sav
+
+File/Model = prova_r0al0az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az270el360.sav
+
+File/Model = prova_r0al0az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az360el0.sav
+
+File/Model = prova_r0al0az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az360el90.sav
+
+File/Model = prova_r0al0az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az360el180.sav
+
+File/Model = prova_r0al0az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az360el270.sav
+
+File/Model = prova_r0al0az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al0az360el360.sav
+
+File/Model = prova_r0al45az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az0el0.sav
+
+File/Model = prova_r0al45az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az0el90.sav
+
+File/Model = prova_r0al45az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az0el180.sav
+
+File/Model = prova_r0al45az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az0el270.sav
+
+File/Model = prova_r0al45az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az0el360.sav
+
+File/Model = prova_r0al45az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az90el0.sav
+
+File/Model = prova_r0al45az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az90el90.sav
+
+File/Model = prova_r0al45az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az90el180.sav
+
+File/Model = prova_r0al45az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az90el270.sav
+
+File/Model = prova_r0al45az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az90el360.sav
+
+File/Model = prova_r0al45az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az180el0.sav
+
+File/Model = prova_r0al45az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az180el90.sav
+
+File/Model = prova_r0al45az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az180el180.sav
+
+File/Model = prova_r0al45az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az180el270.sav
+
+File/Model = prova_r0al45az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az180el360.sav
+
+File/Model = prova_r0al45az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az270el0.sav
+
+File/Model = prova_r0al45az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az270el90.sav
+
+File/Model = prova_r0al45az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az270el180.sav
+
+File/Model = prova_r0al45az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az270el270.sav
+
+File/Model = prova_r0al45az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az270el360.sav
+
+File/Model = prova_r0al45az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az360el0.sav
+
+File/Model = prova_r0al45az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az360el90.sav
+
+File/Model = prova_r0al45az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az360el180.sav
+
+File/Model = prova_r0al45az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az360el270.sav
+
+File/Model = prova_r0al45az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al45az360el360.sav
+
+File/Model = prova_r0al90az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az0el0.sav
+
+File/Model = prova_r0al90az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az0el90.sav
+
+File/Model = prova_r0al90az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az0el180.sav
+
+File/Model = prova_r0al90az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az0el270.sav
+
+File/Model = prova_r0al90az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az0el360.sav
+
+File/Model = prova_r0al90az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az90el0.sav
+
+File/Model = prova_r0al90az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az90el90.sav
+
+File/Model = prova_r0al90az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az90el180.sav
+
+File/Model = prova_r0al90az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az90el270.sav
+
+File/Model = prova_r0al90az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az90el360.sav
+
+File/Model = prova_r0al90az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az180el0.sav
+
+File/Model = prova_r0al90az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az180el90.sav
+
+File/Model = prova_r0al90az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az180el180.sav
+
+File/Model = prova_r0al90az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az180el270.sav
+
+File/Model = prova_r0al90az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az180el360.sav
+
+File/Model = prova_r0al90az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az270el0.sav
+
+File/Model = prova_r0al90az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az270el90.sav
+
+File/Model = prova_r0al90az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az270el180.sav
+
+File/Model = prova_r0al90az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az270el270.sav
+
+File/Model = prova_r0al90az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az270el360.sav
+
+File/Model = prova_r0al90az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az360el0.sav
+
+File/Model = prova_r0al90az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az360el90.sav
+
+File/Model = prova_r0al90az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az360el180.sav
+
+File/Model = prova_r0al90az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az360el270.sav
+
+File/Model = prova_r0al90az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r0al90az360el360.sav
+
+File/Model = prova_r10al0az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az0el0.sav
+
+File/Model = prova_r10al0az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az0el90.sav
+
+File/Model = prova_r10al0az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az0el180.sav
+
+File/Model = prova_r10al0az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az0el270.sav
+
+File/Model = prova_r10al0az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az0el360.sav
+
+File/Model = prova_r10al0az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az90el0.sav
+
+File/Model = prova_r10al0az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az90el90.sav
+
+File/Model = prova_r10al0az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az90el180.sav
+
+File/Model = prova_r10al0az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az90el270.sav
+
+File/Model = prova_r10al0az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az90el360.sav
+
+File/Model = prova_r10al0az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az180el0.sav
+
+File/Model = prova_r10al0az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az180el90.sav
+
+File/Model = prova_r10al0az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az180el180.sav
+
+File/Model = prova_r10al0az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az180el270.sav
+
+File/Model = prova_r10al0az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az180el360.sav
+
+File/Model = prova_r10al0az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az270el0.sav
+
+File/Model = prova_r10al0az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az270el90.sav
+
+File/Model = prova_r10al0az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az270el180.sav
+
+File/Model = prova_r10al0az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az270el270.sav
+
+File/Model = prova_r10al0az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az270el360.sav
+
+File/Model = prova_r10al0az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az360el0.sav
+
+File/Model = prova_r10al0az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az360el90.sav
+
+File/Model = prova_r10al0az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az360el180.sav
+
+File/Model = prova_r10al0az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az360el270.sav
+
+File/Model = prova_r10al0az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al0az360el360.sav
+
+File/Model = prova_r10al45az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az0el0.sav
+
+File/Model = prova_r10al45az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az0el90.sav
+
+File/Model = prova_r10al45az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az0el180.sav
+
+File/Model = prova_r10al45az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az0el270.sav
+
+File/Model = prova_r10al45az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az0el360.sav
+
+File/Model = prova_r10al45az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az90el0.sav
+
+File/Model = prova_r10al45az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az90el90.sav
+
+File/Model = prova_r10al45az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az90el180.sav
+
+File/Model = prova_r10al45az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az90el270.sav
+
+File/Model = prova_r10al45az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az90el360.sav
+
+File/Model = prova_r10al45az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az180el0.sav
+
+File/Model = prova_r10al45az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az180el90.sav
+
+File/Model = prova_r10al45az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az180el180.sav
+
+File/Model = prova_r10al45az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az180el270.sav
+
+File/Model = prova_r10al45az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az180el360.sav
+
+File/Model = prova_r10al45az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az270el0.sav
+
+File/Model = prova_r10al45az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az270el90.sav
+
+File/Model = prova_r10al45az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az270el180.sav
+
+File/Model = prova_r10al45az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az270el270.sav
+
+File/Model = prova_r10al45az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az270el360.sav
+
+File/Model = prova_r10al45az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az360el0.sav
+
+File/Model = prova_r10al45az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az360el90.sav
+
+File/Model = prova_r10al45az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az360el180.sav
+
+File/Model = prova_r10al45az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az360el270.sav
+
+File/Model = prova_r10al45az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al45az360el360.sav
+
+File/Model = prova_r10al90az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az0el0.sav
+
+File/Model = prova_r10al90az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az0el90.sav
+
+File/Model = prova_r10al90az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az0el180.sav
+
+File/Model = prova_r10al90az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az0el270.sav
+
+File/Model = prova_r10al90az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az0el360.sav
+
+File/Model = prova_r10al90az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az90el0.sav
+
+File/Model = prova_r10al90az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az90el90.sav
+
+File/Model = prova_r10al90az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az90el180.sav
+
+File/Model = prova_r10al90az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az90el270.sav
+
+File/Model = prova_r10al90az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az90el360.sav
+
+File/Model = prova_r10al90az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az180el0.sav
+
+File/Model = prova_r10al90az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az180el90.sav
+
+File/Model = prova_r10al90az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az180el180.sav
+
+File/Model = prova_r10al90az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az180el270.sav
+
+File/Model = prova_r10al90az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az180el360.sav
+
+File/Model = prova_r10al90az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az270el0.sav
+
+File/Model = prova_r10al90az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az270el90.sav
+
+File/Model = prova_r10al90az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az270el180.sav
+
+File/Model = prova_r10al90az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az270el270.sav
+
+File/Model = prova_r10al90az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az270el360.sav
+
+File/Model = prova_r10al90az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az360el0.sav
+
+File/Model = prova_r10al90az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az360el90.sav
+
+File/Model = prova_r10al90az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az360el180.sav
+
+File/Model = prova_r10al90az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az360el270.sav
+
+File/Model = prova_r10al90az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r10al90az360el360.sav
+
+File/Model = prova_r20al0az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az0el0.sav
+
+File/Model = prova_r20al0az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az0el90.sav
+
+File/Model = prova_r20al0az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az0el180.sav
+
+File/Model = prova_r20al0az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az0el270.sav
+
+File/Model = prova_r20al0az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az0el360.sav
+
+File/Model = prova_r20al0az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az90el0.sav
+
+File/Model = prova_r20al0az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az90el90.sav
+
+File/Model = prova_r20al0az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az90el180.sav
+
+File/Model = prova_r20al0az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az90el270.sav
+
+File/Model = prova_r20al0az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az90el360.sav
+
+File/Model = prova_r20al0az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az180el0.sav
+
+File/Model = prova_r20al0az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az180el90.sav
+
+File/Model = prova_r20al0az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az180el180.sav
+
+File/Model = prova_r20al0az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az180el270.sav
+
+File/Model = prova_r20al0az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az180el360.sav
+
+File/Model = prova_r20al0az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az270el0.sav
+
+File/Model = prova_r20al0az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az270el90.sav
+
+File/Model = prova_r20al0az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az270el180.sav
+
+File/Model = prova_r20al0az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az270el270.sav
+
+File/Model = prova_r20al0az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az270el360.sav
+
+File/Model = prova_r20al0az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az360el0.sav
+
+File/Model = prova_r20al0az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az360el90.sav
+
+File/Model = prova_r20al0az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az360el180.sav
+
+File/Model = prova_r20al0az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az360el270.sav
+
+File/Model = prova_r20al0az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al0az360el360.sav
+
+File/Model = prova_r20al45az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az0el0.sav
+
+File/Model = prova_r20al45az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az0el90.sav
+
+File/Model = prova_r20al45az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az0el180.sav
+
+File/Model = prova_r20al45az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az0el270.sav
+
+File/Model = prova_r20al45az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az0el360.sav
+
+File/Model = prova_r20al45az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az90el0.sav
+
+File/Model = prova_r20al45az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az90el90.sav
+
+File/Model = prova_r20al45az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az90el180.sav
+
+File/Model = prova_r20al45az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az90el270.sav
+
+File/Model = prova_r20al45az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az90el360.sav
+
+File/Model = prova_r20al45az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az180el0.sav
+
+File/Model = prova_r20al45az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az180el90.sav
+
+File/Model = prova_r20al45az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az180el180.sav
+
+File/Model = prova_r20al45az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az180el270.sav
+
+File/Model = prova_r20al45az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az180el360.sav
+
+File/Model = prova_r20al45az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az270el0.sav
+
+File/Model = prova_r20al45az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az270el90.sav
+
+File/Model = prova_r20al45az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az270el180.sav
+
+File/Model = prova_r20al45az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az270el270.sav
+
+File/Model = prova_r20al45az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az270el360.sav
+
+File/Model = prova_r20al45az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az360el0.sav
+
+File/Model = prova_r20al45az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az360el90.sav
+
+File/Model = prova_r20al45az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az360el180.sav
+
+File/Model = prova_r20al45az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az360el270.sav
+
+File/Model = prova_r20al45az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al45az360el360.sav
+
+File/Model = prova_r20al90az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az0el0.sav
+
+File/Model = prova_r20al90az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az0el90.sav
+
+File/Model = prova_r20al90az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az0el180.sav
+
+File/Model = prova_r20al90az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az0el270.sav
+
+File/Model = prova_r20al90az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az0el360.sav
+
+File/Model = prova_r20al90az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az90el0.sav
+
+File/Model = prova_r20al90az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az90el90.sav
+
+File/Model = prova_r20al90az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az90el180.sav
+
+File/Model = prova_r20al90az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az90el270.sav
+
+File/Model = prova_r20al90az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az90el360.sav
+
+File/Model = prova_r20al90az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az180el0.sav
+
+File/Model = prova_r20al90az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az180el90.sav
+
+File/Model = prova_r20al90az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az180el180.sav
+
+File/Model = prova_r20al90az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az180el270.sav
+
+File/Model = prova_r20al90az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az180el360.sav
+
+File/Model = prova_r20al90az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az270el0.sav
+
+File/Model = prova_r20al90az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az270el90.sav
+
+File/Model = prova_r20al90az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az270el180.sav
+
+File/Model = prova_r20al90az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az270el270.sav
+
+File/Model = prova_r20al90az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az270el360.sav
+
+File/Model = prova_r20al90az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az360el0.sav
+
+File/Model = prova_r20al90az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az360el90.sav
+
+File/Model = prova_r20al90az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az360el180.sav
+
+File/Model = prova_r20al90az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az360el270.sav
+
+File/Model = prova_r20al90az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r20al90az360el360.sav
+
+File/Model = prova_r30al0az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az0el0.sav
+
+File/Model = prova_r30al0az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az0el90.sav
+
+File/Model = prova_r30al0az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az0el180.sav
+
+File/Model = prova_r30al0az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az0el270.sav
+
+File/Model = prova_r30al0az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az0el360.sav
+
+File/Model = prova_r30al0az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az90el0.sav
+
+File/Model = prova_r30al0az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az90el90.sav
+
+File/Model = prova_r30al0az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az90el180.sav
+
+File/Model = prova_r30al0az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az90el270.sav
+
+File/Model = prova_r30al0az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az90el360.sav
+
+File/Model = prova_r30al0az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az180el0.sav
+
+File/Model = prova_r30al0az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az180el90.sav
+
+File/Model = prova_r30al0az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az180el180.sav
+
+File/Model = prova_r30al0az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az180el270.sav
+
+File/Model = prova_r30al0az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az180el360.sav
+
+File/Model = prova_r30al0az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az270el0.sav
+
+File/Model = prova_r30al0az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az270el90.sav
+
+File/Model = prova_r30al0az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az270el180.sav
+
+File/Model = prova_r30al0az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az270el270.sav
+
+File/Model = prova_r30al0az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az270el360.sav
+
+File/Model = prova_r30al0az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az360el0.sav
+
+File/Model = prova_r30al0az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az360el90.sav
+
+File/Model = prova_r30al0az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az360el180.sav
+
+File/Model = prova_r30al0az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az360el270.sav
+
+File/Model = prova_r30al0az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al0az360el360.sav
+
+File/Model = prova_r30al45az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az0el0.sav
+
+File/Model = prova_r30al45az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az0el90.sav
+
+File/Model = prova_r30al45az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az0el180.sav
+
+File/Model = prova_r30al45az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az0el270.sav
+
+File/Model = prova_r30al45az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az0el360.sav
+
+File/Model = prova_r30al45az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az90el0.sav
+
+File/Model = prova_r30al45az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az90el90.sav
+
+File/Model = prova_r30al45az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az90el180.sav
+
+File/Model = prova_r30al45az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az90el270.sav
+
+File/Model = prova_r30al45az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az90el360.sav
+
+File/Model = prova_r30al45az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az180el0.sav
+
+File/Model = prova_r30al45az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az180el90.sav
+
+File/Model = prova_r30al45az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az180el180.sav
+
+File/Model = prova_r30al45az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az180el270.sav
+
+File/Model = prova_r30al45az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az180el360.sav
+
+File/Model = prova_r30al45az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az270el0.sav
+
+File/Model = prova_r30al45az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az270el90.sav
+
+File/Model = prova_r30al45az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az270el180.sav
+
+File/Model = prova_r30al45az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az270el270.sav
+
+File/Model = prova_r30al45az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az270el360.sav
+
+File/Model = prova_r30al45az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az360el0.sav
+
+File/Model = prova_r30al45az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az360el90.sav
+
+File/Model = prova_r30al45az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az360el180.sav
+
+File/Model = prova_r30al45az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az360el270.sav
+
+File/Model = prova_r30al45az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al45az360el360.sav
+
+File/Model = prova_r30al90az0el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az0el0.sav
+
+File/Model = prova_r30al90az0el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az0el90.sav
+
+File/Model = prova_r30al90az0el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az0el180.sav
+
+File/Model = prova_r30al90az0el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az0el270.sav
+
+File/Model = prova_r30al90az0el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az0el360.sav
+
+File/Model = prova_r30al90az90el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az90el0.sav
+
+File/Model = prova_r30al90az90el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az90el90.sav
+
+File/Model = prova_r30al90az90el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az90el180.sav
+
+File/Model = prova_r30al90az90el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az90el270.sav
+
+File/Model = prova_r30al90az90el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az90el360.sav
+
+File/Model = prova_r30al90az180el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az180el0.sav
+
+File/Model = prova_r30al90az180el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az180el90.sav
+
+File/Model = prova_r30al90az180el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az180el180.sav
+
+File/Model = prova_r30al90az180el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az180el270.sav
+
+File/Model = prova_r30al90az180el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az180el360.sav
+
+File/Model = prova_r30al90az270el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az270el0.sav
+
+File/Model = prova_r30al90az270el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az270el90.sav
+
+File/Model = prova_r30al90az270el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az270el180.sav
+
+File/Model = prova_r30al90az270el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az270el270.sav
+
+File/Model = prova_r30al90az270el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az270el360.sav
+
+File/Model = prova_r30al90az360el0.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az360el0.sav
+
+File/Model = prova_r30al90az360el90.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az360el90.sav
+
+File/Model = prova_r30al90az360el180.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az360el180.sav
+
+File/Model = prova_r30al90az360el270.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az360el270.sav
+
+File/Model = prova_r30al90az360el360.adm
+SIMULATE/DYNAMIC,DURATION=10,STEPS=1500
+save/system, file=prova_r30al90az360el360.sav
+

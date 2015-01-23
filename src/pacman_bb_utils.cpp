@@ -481,7 +481,7 @@ namespace pacman
 
 
 
-    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, int distance, int flag_axis)
+    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double distance, int flag_axis)
     {
         Eigen::Matrix<double, 3, 1> Normal,Col3,D;
         double PI=3.14159265;
@@ -531,13 +531,13 @@ namespace pacman
         
         }
 
-        std::cout<<"ori"<<ori<<std::endl;
+      //  std::cout<<"ori"<<ori<<std::endl;
 
         
 
         if(ori==flag_axis)
         {
-            std::cout<<"ori uguale a flag"<<std::endl; 
+            //std::cout<<"ori uguale a flag"<<std::endl; 
             angle.erase(angle.begin()+ori); //delete kth position
             min=angle[0]; 
             p=0;    
@@ -549,45 +549,45 @@ namespace pacman
 
             }
         
-            if(p>=ori)
+            if(p >= ori)
             {
 
                 p+=1;   
             }
         
-        std::cout<<"nuovo asse"<< p <<std::endl; 
+        //std::cout<<"nuovo asse"<< p <<std::endl; 
+
+            switch(p)
+            {
+                case 0:
+                
+                    D(0,0)=-((figure[0]/2)+distance);
+                    D(1,0)=0;
+                    D(2,0)=0;
+                    T= first_boxes.T.col(0);
+                break;
+
+                case 1:
+                
+                    D(0,0)=0;
+                    D(1,0)=-((figure[1]/2)+distance);
+                    D(2,0)=0;
+                    T= first_boxes.T.col(1);
+                break;
+
+                case 2:
+
+                    D(0,0)=0;
+                    D(1,0)=0;
+                    D(2,0)=-((figure[2]/2)+distance);
+                    T= first_boxes.T.col(2);
+
+            }
           
         }
+        else{
 
-       
-            
-        switch(p)
-        {
-            case 0:
-            
-                D(0,0)=-((figure[0]/2)+distance);
-                D(1,0)=0;
-                D(2,0)=0;
-            break;
-
-            case 1:
-            
-                D(0,0)=0;
-                D(1,0)=-((figure[1]/2)+distance);
-                D(2,0)=0;
-            break;
-
-            case 2:
-
-                D(0,0)=0;
-                D(1,0)=0;
-                D(2,0)=-((figure[2]/2)+distance);
-
-        }
-
-
-
-        switch(ori) 
+                    switch(ori) 
         {
             case 0:
 
@@ -595,9 +595,9 @@ namespace pacman
                 // D(1,0)=0;
                 // D(2,0)=0;
 
-                // D(0,0)=0;
-                // D(1,0)=0;
-                // D(2,0)=-((figure[0]/2)+distance);
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[0]/2)+distance);
                 T= first_boxes.T.col(0);
 
                 break;
@@ -608,22 +608,33 @@ namespace pacman
                 // D(1,0)=(figure[1]/2)+distance;
                 // D(2,0)=0;
 
-                // D(0,0)=0;
-                // D(1,0)=0;
-                // D(2,0)=-((figure[1]/2)+distance);
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[1]/2)+distance);
                 T= first_boxes.T.col(1);
 
                 break;
 
             case 2:
 
-                // D(0,0)=0;
-                // D(1,0)=0;
-                // D(2,0)=-((figure[2]/2)+distance);
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[2]/2)+distance);
                 T= first_boxes.T.col(2);
 
                 break;
         }
+
+
+        }
+
+       
+            
+
+
+
+
+
 
 
         Col3.row(0)=T.row(0);
