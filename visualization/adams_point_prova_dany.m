@@ -41,14 +41,16 @@ rot_z3 = phi ;
 selected_points_temp = [] ;
 selected_index_temp= [] ;
 To_Adams = [] ;
-To_Adams_temp = [adams_point , rot_z1, rot_x2, rot_z3] ;
+%To_Adams_temp = [adams_point , rot_z1, rot_x2, rot_z3] ;
 
-To_Adams = To_Adams_temp;
+%To_Adams = To_Adams_temp;
+
+To_Adams = adams_point;
 
 R_reconstructed = zeros(3,3,size(To_Adams,1));
 
 for i=1:size(To_Adams,1)
-    R_reconstructed(:,:,i) = ROTZ( To_Adams(i,4))*ROTX(To_Adams(i,5))*ROTZ(To_Adams(i,6));
+    R_reconstructed(:,:,i) = ROTZ( To_Adams(psi))*ROTX(To_Adams(theta))*ROTZ(To_Adams(phi));
 end
 %
 if show_plot == 1

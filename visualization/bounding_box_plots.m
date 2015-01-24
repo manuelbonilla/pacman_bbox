@@ -26,7 +26,7 @@ for i=1: 5
     if (mod(i,2) == 1)
         
      R(:,:,k) = [res{i}.T(1:3,1:3)]
-     palm_points(k,:) = [(res{i}.T(1:3,4)).'];
+     palm_points(k,:) = [(res{i}.T(1:3,4)).']
      k = k+1;
     end
     
