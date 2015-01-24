@@ -14,7 +14,7 @@ xlabel('x');  ylabel('y');  zlabel('z');
 res = import_bbox_results( bb_results );
 
 k=1;
-for i=1: 2
+for i=1: 5
 %for i=1: 2
 %    if (i/2 > maxbox)
 %        break;
