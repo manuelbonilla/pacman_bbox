@@ -65,7 +65,7 @@ for i = 1:size(selected_normals,1)
         sigma     =  [sigma      ;   acos(cos_sigma_temp)      ];
     else
         theta     =  [theta      ;   0      ];
-        psi       =  [psi        ;   0      ] ;
+        psi       =  [psi        ;   0      ];
         sigma     =  [sigma      ;   0      ];
     end
 end
