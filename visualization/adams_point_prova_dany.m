@@ -19,9 +19,6 @@ for i=1:size(R,3)
         adams_point_inv(i,:)=(-R(1:3,1:3,i).'*adams_point(i,:).').';
 end
 
- 
-
-
 
 for i = 1:size(adams_point,1)
     
