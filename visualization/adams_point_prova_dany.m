@@ -3,7 +3,7 @@ close all
 clc
 
 show_plot     = 1;
-[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/res_20150119.txt',5);
+[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/res_20150119.txt',3);
 
 %% eulero angles
 cos_theta =[];
@@ -21,12 +21,25 @@ end
 
 
 for i = 1:size(adams_point,1)
+%     
+%    val_phi1 = R(3,1,i)/R(3,2,i);
+%    val_phi2 = R(1,3,i)/R(2,3,i);  
+%    phi = [phi; atan(val_phi1)];
+%    theta = [theta; acos(R(3,3,i))]; 
+%    psi= [psi; atan(-val_phi2)];
+
     
-   val_phi1 = R(3,1,i)/R(3,2,i);
-   val_phi2 = R(1,3,i)/R(2,3,i);  
-   phi = [phi; atan(val_phi1)];
-   theta = [theta; acos(R(3,3,i))]; 
-   psi= [psi; atan(-val_phi2)];
+%    val_phi1 = R(3,1,i)/R(3,2,i);
+%    val_phi2 = R(1,3,i)/R(2,3,i);  
+   
+   theta = [theta; acos(R(3,3,i))];
+   cospsi = -R(2,3)/sin(theta);
+   sinpsi = R(1,3)/sin(theta);
+   psi = [phi; atan( sinpsi,cospsi)];
+   cosphi = R(3,2)/sin(theta);
+   sinphi = R(3,1)/sin(theta);
+   phi= [psi; atan(sinphi, cosphi)];
+
  
 end
 
