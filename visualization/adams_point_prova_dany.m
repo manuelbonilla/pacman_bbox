@@ -3,7 +3,7 @@ close all
 clc
 
 show_plot     = 1;
-[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/res_20150119.txt');
+[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/res_20150119.txt',5);
 
 %% eulero angles
 cos_theta =[];
@@ -44,7 +44,7 @@ hold on
 R_reconstructed = zeros(3,3,size(To_Adams,1));
 
 for i=1:size(To_Adams,1)
-    R_reconstructed(:,:,i) = ROTZ(To_Adams(i,4))*ROTX(To_Adams(i,5))*ROTZ(To_Adams(i,6))
+    R_reconstructed(:,:,i) = ROTZ(To_Adams(i,4))*ROTX(To_Adams(i,5))*ROTZ(To_Adams(i,6));
 end
 
 if show_plot == 1
