@@ -86,7 +86,7 @@ n_variations = size(Var,3);
         R(:,:,k) = R_local(1:3,1:3,j);
         palm_points(k,:) =R_local(1:3,4,j).';
          k = k+1;
-         plotCSYS(R_local(:,:,j), .05);
+         plotCSYS(R_local(:,:,j), .01);
    end
 
  end

@@ -6,19 +6,12 @@ show_plot     = 1;
 [R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/res_20150119.txt',3);
 
 %% eulero angles
-cos_theta =[];
-theta = [];
-cos_psi = [];
-psi =[] ;
-cos_phi = [];
-phi=[];
+
+vtheta = [];
+vpsi =[] ;
+vphi=[];
 
 adams_point_old = adams_point;
-
-for i=1:size(R,3)
-        adams_point_inv(i,:)=(-R(1:3,1:3,i).'*adams_point(i,:).').';
-end
-
 
 for i = 1:size(adams_point,1)
 %     
@@ -32,21 +25,31 @@ for i = 1:size(adams_point,1)
 %    val_phi1 = R(3,1,i)/R(3,2,i);
 %    val_phi2 = R(1,3,i)/R(2,3,i);  
    
-   theta = [theta; acos(R(3,3,i))];
-   cospsi = -R(2,3)/sin(theta);
-   sinpsi = R(1,3)/sin(theta);
-   psi = [phi; atan( sinpsi,cospsi)];
-   cosphi = R(3,2)/sin(theta);
-   sinphi = R(3,1)/sin(theta);
-   phi= [psi; atan(sinphi, cosphi)];
+   theta =  acos(R(3,3,i));
+   
+   cospsi = -R(2,3,i)/sin(theta);
+   sinpsi = R(1,3,i)/sin(theta);
+   psi = atan( sinpsi/cospsi);
+   
+   cosphi = R(3,2,i)/sin(theta);
+   sinphi = R(3,1,i)/sin(theta);
+   phi= atan(sinphi/cosphi);
+   
+   vtheta = [vtheta;theta];
+   vpsi = [vpsi; psi];
+   vphi = [vphi; phi];
+   
+   R_reconstructed(:,:,i) = ROTZ(-phi)*ROTX(-theta)*ROTZ(-psi);
 
+   adams_point_inv(i,:)=(-R_reconstructed(:,:,i)*adams_point(i,:).').';
  
-end
+   end
 
 
-rot_z1 = psi ;
-rot_x2 = theta ;
-rot_z3 = phi ;
+
+rot_z1 = vpsi ;
+rot_x2 = vtheta ;
+rot_z3 = vphi ;
 
 To_Adams = [adams_point_inv , -rot_z3, -rot_x2, -rot_z1] ;
 
@@ -54,11 +57,12 @@ hold on
 
 %% transformation matrix 313 ROT_313=ROTZ(psi)*ROTX(theta)*ROTZ(phi);
 
-R_reconstructed = zeros(3,3,size(To_Adams,1));
-
-for i=1:size(To_Adams,1)
-    R_reconstructed(:,:,i) = ROTZ(To_Adams(i,4))*ROTX(To_Adams(i,5))*ROTZ(To_Adams(i,6));
-end
+% R_reconstructed = zeros(3,3,size(To_Adams,1));
+% 
+% for i=1:size(To_Adams,1)
+%     R_reconstructed(:,:,i) = ROTZ(To_Adams(i,4))*ROTX(To_Adams(i,5))*ROTZ(To_Adams(i,6));
+% 
+% end
 
 if show_plot == 1
      hold on
