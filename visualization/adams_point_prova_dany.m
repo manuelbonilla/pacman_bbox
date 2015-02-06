@@ -14,7 +14,7 @@ vphi=[];
 adams_point_old = adams_point;
 
 for i = 1:size(adams_point,1)
-%     
+ %% dol solution    
 %    val_phi1 = R(3,1,i)/R(3,2,i);
 %    val_phi2 = R(1,3,i)/R(2,3,i);  
 %    phi = [phi; atan(val_phi1)];
