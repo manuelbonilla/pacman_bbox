@@ -6083,6 +6083,7 @@ contact create  &
 !
 force attributes  &
    force_name = .PISAIIT_HAND.CONTACT_thumb_palm  &
+   active = off  &
    visibility = off  &
    name_visibility = off
 !
@@ -8292,7 +8293,7 @@ variable create  &
 simulation script create  &
    sim_script_name = .PISAIIT_HAND.Last_Sim  &
    commands =   &
-              "simulation single_run transient type=auto_select initial_static=no end_time=5.0 number_of_steps=50 model_name=.PISAIIT_HAND"
+              "simulation single_run transient type=auto_select initial_static=no end_time=3.0 number_of_steps=300 model_name=.PISAIIT_HAND"
 !
 simulation script create  &
    sim_script_name = .PISAIIT_HAND.SIM_SCRIPT_1  &
@@ -9689,6 +9690,7 @@ geometry create shape gcontact  &
 !
 geometry attributes  &
    geometry_name = .PISAIIT_HAND.GCONTACT_140  &
+   active = off  &
    color = RED
 !
 geometry create shape gcontact  &
@@ -10044,6 +10046,10 @@ force attributes  &
 !
 !----------------------------- Analysis settings ------------------------------!
 !
+!
+executive_control set numerical_integration_parameters  &
+   model_name = PISAIIT_HAND  &
+   maxit_corrector_iterations = 2
 !
 executive_control set kinematics_parameters  &
    model_name = PISAIIT_HAND  &
@@ -10702,21 +10708,21 @@ variable create  &
    real_value = -13.38894
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_x_little  &
+   variable_name = .PISAIIT_HAND.angle_z1_little  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_y_little  &
+   variable_name = .PISAIIT_HAND.angle_x2_little  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_z_little  &
+   variable_name = .PISAIIT_HAND.angle_z3_little  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
@@ -10744,21 +10750,21 @@ variable create  &
    real_value = -13.8894
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_x_ring  &
+   variable_name = .PISAIIT_HAND.angle_z1_ring  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_y_ring  &
+   variable_name = .PISAIIT_HAND.angle_x2_ring  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_z_ring  &
+   variable_name = .PISAIIT_HAND.angle_z3_ring  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
@@ -10786,21 +10792,21 @@ variable create  &
    real_value = -13.8894
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_x_middle  &
+   variable_name = .PISAIIT_HAND.angle_z1_middle  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_y_middle  &
+   variable_name = .PISAIIT_HAND.angle_x2_middle  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_z_middle  &
+   variable_name = .PISAIIT_HAND.angle_z3_middle  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
@@ -10828,21 +10834,21 @@ variable create  &
    real_value = -13.8894
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_x_index  &
+   variable_name = .PISAIIT_HAND.angle_z1_index  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_y_index  &
+   variable_name = .PISAIIT_HAND.angle_x2_index  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 0.0
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_z_index  &
+   variable_name = .PISAIIT_HAND.angle_z3_index  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
@@ -10870,21 +10876,21 @@ variable create  &
    real_value = -4.91972
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_x_thumb  &
+   variable_name = .PISAIIT_HAND.angle_z1_thumb  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = -0.436332313
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_y_thumb  &
+   variable_name = .PISAIIT_HAND.angle_x2_thumb  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
    real_value = 1.5707963268
 !
 variable create  &
-   variable_name = .PISAIIT_HAND.angle_z_thumb  &
+   variable_name = .PISAIIT_HAND.angle_z3_thumb  &
    units = "no_units"  &
    range = -3.1415926536, 3.1415926536  &
    use_allowed_values = no  &
@@ -12221,7 +12227,7 @@ marker modify  &
    location =   &
       (LOC_RELATIVE_TO({.PISAIIT_HAND.pos_x_index, .PISAIIT_HAND.pos_y_index, .PISAIIT_HAND.pos_z_index}, .PISAIIT_HAND.palm.grasp_marker))  &
    orientation =   &
-      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_x_index, .PISAIIT_HAND.angle_y_index, .PISAIIT_HAND.angle_z_index}, .PISAIIT_HAND.ground.MARKER_549))  &
+      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_z1_index, .PISAIIT_HAND.angle_x2_index, .PISAIIT_HAND.angle_z3_index}, .PISAIIT_HAND.ground.MARKER_549))  &
    relative_to = .PISAIIT_HAND.palm
 !
 defaults coordinate_system  &
@@ -12232,7 +12238,7 @@ marker modify  &
    location =   &
       (LOC_RELATIVE_TO({.PISAIIT_HAND.pos_x_middle, .PISAIIT_HAND.pos_y_middle, .PISAIIT_HAND.pos_z_middle}, .PISAIIT_HAND.palm.grasp_marker))  &
    orientation =   &
-      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_x_middle, .PISAIIT_HAND.angle_y_middle, .PISAIIT_HAND.angle_z_middle}, .PISAIIT_HAND.ground.MARKER_549))  &
+      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_z1_middle, .PISAIIT_HAND.angle_x2_middle, .PISAIIT_HAND.angle_z3_middle}, .PISAIIT_HAND.ground.MARKER_549))  &
    relative_to = .PISAIIT_HAND.palm
 !
 defaults coordinate_system  &
@@ -12243,7 +12249,7 @@ marker modify  &
    location =   &
       (LOC_RELATIVE_TO({.PISAIIT_HAND.pos_x_ring, .PISAIIT_HAND.pos_y_ring, .PISAIIT_HAND.pos_z_ring}, .PISAIIT_HAND.palm.grasp_marker))  &
    orientation =   &
-      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_x_ring, .PISAIIT_HAND.angle_y_ring, .PISAIIT_HAND.angle_z_ring}, .PISAIIT_HAND.ground.MARKER_549))  &
+      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_z1_ring, .PISAIIT_HAND.angle_x2_ring, .PISAIIT_HAND.angle_z3_ring}, .PISAIIT_HAND.ground.MARKER_549))  &
    relative_to = .PISAIIT_HAND.palm
 !
 defaults coordinate_system  &
@@ -12254,7 +12260,7 @@ marker modify  &
    location =   &
       (LOC_RELATIVE_TO({.PISAIIT_HAND.pos_x_little, .PISAIIT_HAND.pos_y_little, .PISAIIT_HAND.pos_z_little}, .PISAIIT_HAND.palm.grasp_marker))  &
    orientation =   &
-      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_x_little, .PISAIIT_HAND.angle_y_little, .PISAIIT_HAND.angle_z_little}, .PISAIIT_HAND.ground.MARKER_549))  &
+      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_z1_little, .PISAIIT_HAND.angle_x2_little, .PISAIIT_HAND.angle_z3_little}, .PISAIIT_HAND.ground.MARKER_549))  &
    relative_to = .PISAIIT_HAND.palm
 !
 defaults coordinate_system  &
@@ -12276,7 +12282,7 @@ marker modify  &
    location =   &
       (LOC_RELATIVE_TO({.PISAIIT_HAND.pos_x_thumb, .PISAIIT_HAND.pos_y_thumb, .PISAIIT_HAND.pos_z_thumb}, .PISAIIT_HAND.palm.grasp_marker))  &
    orientation =   &
-      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_x_thumb, .PISAIIT_HAND.angle_y_thumb, .PISAIIT_HAND.angle_z_thumb}, .PISAIIT_HAND.ground.MARKER_549))  &
+      (ORI_RELATIVE_TO({.PISAIIT_HAND.angle_z1_thumb, .PISAIIT_HAND.angle_x2_thumb, .PISAIIT_HAND.angle_z3_thumb}, .PISAIIT_HAND.ground.MARKER_549))  &
    relative_to = .PISAIIT_HAND.palm
 !
 defaults coordinate_system  &
@@ -15998,93 +16004,93 @@ geometry modify shape force  &
    applied_at_marker_name = (.PISAIIT_HAND.wrist.i)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_x_little  &
+   variable_name = .PISAIIT_HAND.angle_z1_little  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_y_little  &
+   variable_name = .PISAIIT_HAND.angle_x2_little  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_z_little  &
+   variable_name = .PISAIIT_HAND.angle_z3_little  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_x_ring  &
+   variable_name = .PISAIIT_HAND.angle_z1_ring  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_y_ring  &
+   variable_name = .PISAIIT_HAND.angle_x2_ring  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_z_ring  &
+   variable_name = .PISAIIT_HAND.angle_z3_ring  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_x_middle  &
+   variable_name = .PISAIIT_HAND.angle_z1_middle  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_y_middle  &
+   variable_name = .PISAIIT_HAND.angle_x2_middle  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_z_middle  &
+   variable_name = .PISAIIT_HAND.angle_z3_middle  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_x_index  &
+   variable_name = .PISAIIT_HAND.angle_z1_index  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_y_index  &
+   variable_name = .PISAIIT_HAND.angle_x2_index  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_z_index  &
+   variable_name = .PISAIIT_HAND.angle_z3_index  &
    range =   &
       (-PI),  &
       (PI)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_x_thumb  &
+   variable_name = .PISAIIT_HAND.angle_z1_thumb  &
    range =   &
       (-PI),  &
       (PI)  &
    real_value = (-25 * PI / 180)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_y_thumb  &
+   variable_name = .PISAIIT_HAND.angle_x2_thumb  &
    range =   &
       (-PI),  &
       (PI)  &
    real_value = (90 * PI / 180)
 !
 variable modify  &
-   variable_name = .PISAIIT_HAND.angle_z_thumb  &
+   variable_name = .PISAIIT_HAND.angle_z3_thumb  &
    range =   &
       (-PI),  &
       (PI)

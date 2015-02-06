@@ -57,12 +57,6 @@ hold on
 
 %% transformation matrix 313 ROT_313=ROTZ(psi)*ROTX(theta)*ROTZ(phi);
 
-% R_reconstructed = zeros(3,3,size(To_Adams,1));
-% 
-% for i=1:size(To_Adams,1)
-%     R_reconstructed(:,:,i) = ROTZ(To_Adams(i,4))*ROTX(To_Adams(i,5))*ROTZ(To_Adams(i,6));
-% 
-% end
 
 if show_plot == 1
      hold on
