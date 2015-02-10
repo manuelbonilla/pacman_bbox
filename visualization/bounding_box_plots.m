@@ -53,7 +53,7 @@ for i=1:n_scatole*2
     Var(:,:,3)= res{i}.T* [eye(3) [2*dim ;D_back ;0];0 0 0 1];
     Var(:,:,4)= res{i}.T* [eye(3) [-dim ;D_back ;0];0 0 0 1];
     Var(:,:,5)= res{i}.T* [eye(3) [-2*dim ;D_back ;0];0 0 0 1];
-    Var(:,:,6)= res{i}.T* [eye(3) [3*dim ;D_back ;0];0 0 0 1];
+   % Var(:,:,6)= res{i}.T* [eye(3) [3*dim ;D_back ;0];0 0 0 1];
     
     %rotation
     degree=10*pi/180;   %angle in rad
@@ -66,7 +66,7 @@ for i=1:n_scatole*2
     Var(:,:,8)= res{i}.T* [ rot_x(:,:) [2*dim ;D_back ;0];0 0 0 1];
     Var(:,:,9)= res{i}.T* [ rot_x(:,:) [-dim ;D_back ;0];0 0 0 1];
     Var(:,:,10)= res{i}.T* [ rot_x(:,:) [-2*dim ;D_back ;0];0 0 0 1];
-    Var(:,:,11)= res{i}.T* [ rot_x(:,:) [3*dim ;D_back ;0];0 0 0 1];
+  %  Var(:,:,11)= res{i}.T* [ rot_x(:,:) [3*dim ;D_back ;0];0 0 0 1];
     
 
     R_variation{k}=Var;

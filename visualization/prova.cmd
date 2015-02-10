@@ -63,12 +63,12 @@ file adams_data_set write  &
  write_to_terminal = off
 
 
-variable set variable =.PISAIIT_HAND.dist_x real_value = -40.274467
-variable set variable =.PISAIIT_HAND.dist_y real_value = 21.505939
-variable set variable =.PISAIIT_HAND.dist_z real_value = 117.990759
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = 0.079884
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.917625
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.555195
+variable set variable =.PISAIIT_HAND.dist_x real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_y real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_z real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_z1 real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.570796
+variable set variable =.PISAIIT_HAND.rot_z3 real_value = NaN
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
  file_name = prova6 &
@@ -123,18 +123,6 @@ file adams_data_set write  &
  write_to_terminal = off
 
 
-variable set variable =.PISAIIT_HAND.dist_x real_value = -40.274441
-variable set variable =.PISAIIT_HAND.dist_y real_value = 41.668005
-variable set variable =.PISAIIT_HAND.dist_z real_value = 112.463791
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = 0.348922
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -3.089728
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.825788
-file adams_data_set write  &
- model_name = .PISAIIT_HAND &
- file_name = prova11 &
- write_to_terminal = off
-
-
 variable set variable =.PISAIIT_HAND.dist_x real_value = -54.792700
 variable set variable =.PISAIIT_HAND.dist_y real_value = 26.985820
 variable set variable =.PISAIIT_HAND.dist_z real_value = 102.670786
@@ -143,7 +131,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.534328
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.207227
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova12 &
+ file_name = prova11 &
  write_to_terminal = off
 
 
@@ -155,7 +143,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.534328
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.207227
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova13 &
+ file_name = prova12 &
  write_to_terminal = off
 
 
@@ -167,7 +155,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.534328
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.207227
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova14 &
+ file_name = prova13 &
  write_to_terminal = off
 
 
@@ -179,7 +167,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.534328
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.207227
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova15 &
+ file_name = prova14 &
  write_to_terminal = off
 
 
@@ -191,19 +179,19 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.534328
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.207227
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova16 &
+ file_name = prova15 &
  write_to_terminal = off
 
 
-variable set variable =.PISAIIT_HAND.dist_x real_value = -27.942763
-variable set variable =.PISAIIT_HAND.dist_y real_value = 26.985814
-variable set variable =.PISAIIT_HAND.dist_z real_value = 102.670773
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = -1.248985
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.534328
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.207227
+variable set variable =.PISAIIT_HAND.dist_x real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_y real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_z real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_z1 real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.570796
+variable set variable =.PISAIIT_HAND.rot_z3 real_value = NaN
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova17 &
+ file_name = prova16 &
  write_to_terminal = off
 
 
@@ -215,7 +203,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.461312
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.472210
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova18 &
+ file_name = prova17 &
  write_to_terminal = off
 
 
@@ -227,7 +215,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.461312
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.472210
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova19 &
+ file_name = prova18 &
  write_to_terminal = off
 
 
@@ -239,7 +227,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.461312
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.472210
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova20 &
+ file_name = prova19 &
  write_to_terminal = off
 
 
@@ -251,19 +239,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.461312
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.472210
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova21 &
- write_to_terminal = off
-
-
-variable set variable =.PISAIIT_HAND.dist_x real_value = -27.942768
-variable set variable =.PISAIIT_HAND.dist_y real_value = 8.747250
-variable set variable =.PISAIIT_HAND.dist_z real_value = 105.797009
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = -1.036454
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.461312
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.472210
-file adams_data_set write  &
- model_name = .PISAIIT_HAND &
- file_name = prova22 &
+ file_name = prova20 &
  write_to_terminal = off
 
 
@@ -275,7 +251,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.502293
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.758498
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova23 &
+ file_name = prova21 &
  write_to_terminal = off
 
 
@@ -287,7 +263,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.502293
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.758498
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova24 &
+ file_name = prova22 &
  write_to_terminal = off
 
 
@@ -299,7 +275,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.502293
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.758498
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova25 &
+ file_name = prova23 &
  write_to_terminal = off
 
 
@@ -311,7 +287,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.502293
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.758498
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova26 &
+ file_name = prova24 &
  write_to_terminal = off
 
 
@@ -323,19 +299,19 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.502293
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.758498
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova27 &
+ file_name = prova25 &
  write_to_terminal = off
 
 
-variable set variable =.PISAIIT_HAND.dist_x real_value = 29.925147
-variable set variable =.PISAIIT_HAND.dist_y real_value = 26.557782
-variable set variable =.PISAIIT_HAND.dist_z real_value = 99.809860
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = 1.248420
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.502293
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = 0.758498
+variable set variable =.PISAIIT_HAND.dist_x real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_y real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_z real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_z1 real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.570796
+variable set variable =.PISAIIT_HAND.rot_z3 real_value = NaN
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova28 &
+ file_name = prova26 &
  write_to_terminal = off
 
 
@@ -347,7 +323,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.537726
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 1.052784
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova29 &
+ file_name = prova27 &
  write_to_terminal = off
 
 
@@ -359,7 +335,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.537726
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 1.052784
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova30 &
+ file_name = prova28 &
  write_to_terminal = off
 
 
@@ -371,7 +347,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.537726
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 1.052784
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova31 &
+ file_name = prova29 &
  write_to_terminal = off
 
 
@@ -383,19 +359,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.537726
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = 1.052784
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova32 &
- write_to_terminal = off
-
-
-variable set variable =.PISAIIT_HAND.dist_x real_value = 29.925148
-variable set variable =.PISAIIT_HAND.dist_y real_value = 43.486127
-variable set variable =.PISAIIT_HAND.dist_z real_value = 93.681806
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = 1.488285
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -2.537726
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = 1.052784
-file adams_data_set write  &
- model_name = .PISAIIT_HAND &
- file_name = prova33 &
+ file_name = prova30 &
  write_to_terminal = off
 
 
@@ -407,7 +371,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.222307
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.339432
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova34 &
+ file_name = prova31 &
  write_to_terminal = off
 
 
@@ -419,7 +383,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.222307
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.339432
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova35 &
+ file_name = prova32 &
  write_to_terminal = off
 
 
@@ -431,7 +395,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.222307
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.339432
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova36 &
+ file_name = prova33 &
  write_to_terminal = off
 
 
@@ -443,7 +407,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.222307
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.339432
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova37 &
+ file_name = prova34 &
  write_to_terminal = off
 
 
@@ -455,19 +419,19 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.222307
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.339432
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova38 &
+ file_name = prova35 &
  write_to_terminal = off
 
 
-variable set variable =.PISAIIT_HAND.dist_x real_value = -30.861596
-variable set variable =.PISAIIT_HAND.dist_y real_value = -77.875091
-variable set variable =.PISAIIT_HAND.dist_z real_value = -100.417829
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = -1.258458
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.222307
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.339432
+variable set variable =.PISAIIT_HAND.dist_x real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_y real_value = NaN
+variable set variable =.PISAIIT_HAND.dist_z real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_z1 real_value = NaN
+variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.570796
+variable set variable =.PISAIIT_HAND.rot_z3 real_value = NaN
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova39 &
+ file_name = prova36 &
  write_to_terminal = off
 
 
@@ -479,7 +443,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.280602
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.512756
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova40 &
+ file_name = prova37 &
  write_to_terminal = off
 
 
@@ -491,7 +455,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.280602
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.512756
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova41 &
+ file_name = prova38 &
  write_to_terminal = off
 
 
@@ -503,7 +467,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.280602
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.512756
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova42 &
+ file_name = prova39 &
  write_to_terminal = off
 
 
@@ -515,19 +479,7 @@ variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.280602
 variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.512756
 file adams_data_set write  &
  model_name = .PISAIIT_HAND &
- file_name = prova43 &
- write_to_terminal = off
-
-
-variable set variable =.PISAIIT_HAND.dist_x real_value = -30.861600
-variable set variable =.PISAIIT_HAND.dist_y real_value = -94.129371
-variable set variable =.PISAIIT_HAND.dist_z real_value = -85.369382
-variable set variable =.PISAIIT_HAND.rot_z1 real_value = -1.203898
-variable set variable =.PISAIIT_HAND.rot_x2 real_value = -1.280602
-variable set variable =.PISAIIT_HAND.rot_z3 real_value = -0.512756
-file adams_data_set write  &
- model_name = .PISAIIT_HAND &
- file_name = prova44 &
+ file_name = prova40 &
  write_to_terminal = off
 
 
