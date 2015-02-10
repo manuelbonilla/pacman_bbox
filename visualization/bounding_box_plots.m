@@ -62,10 +62,10 @@ for i=1:n_scatole*2
         0, cos(degree), -sin(degree);
         0, sin(degree), cos(degree)];
     
-    Var(:,:,7)= res{i}.T* [ rot_x(:,:) [dim ;D_back ;0]; 0 0 0 1];
-    Var(:,:,8)= res{i}.T* [ rot_x(:,:) [2*dim ;D_back ;0];0 0 0 1];
-    Var(:,:,9)= res{i}.T* [ rot_x(:,:) [-dim ;D_back ;0];0 0 0 1];
-    Var(:,:,10)= res{i}.T* [ rot_x(:,:) [-2*dim ;D_back ;0];0 0 0 1];
+    Var(:,:,6)= res{i}.T* [ rot_x(:,:) [dim ;D_back ;0]; 0 0 0 1];
+    Var(:,:,7)= res{i}.T* [ rot_x(:,:) [2*dim ;D_back ;0];0 0 0 1];
+    Var(:,:,8)= res{i}.T* [ rot_x(:,:) [-dim ;D_back ;0];0 0 0 1];
+    Var(:,:,9)= res{i}.T* [ rot_x(:,:) [-2*dim ;D_back ;0];0 0 0 1];
   %  Var(:,:,11)= res{i}.T* [ rot_x(:,:) [3*dim ;D_back ;0];0 0 0 1];
     
 

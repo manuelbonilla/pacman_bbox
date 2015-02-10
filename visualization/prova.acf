@@ -182,23 +182,3 @@ INTEGRATOR/GSTIFF , MAXIT=2
 SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
 save/system, file=prova36.sav
 
-File/Model = prova37.adm
-INTEGRATOR/GSTIFF , MAXIT=2
-SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
-save/system, file=prova37.sav
-
-File/Model = prova38.adm
-INTEGRATOR/GSTIFF , MAXIT=2
-SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
-save/system, file=prova38.sav
-
-File/Model = prova39.adm
-INTEGRATOR/GSTIFF , MAXIT=2
-SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
-save/system, file=prova39.sav
-
-File/Model = prova40.adm
-INTEGRATOR/GSTIFF , MAXIT=2
-SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
-save/system, file=prova40.sav
-
