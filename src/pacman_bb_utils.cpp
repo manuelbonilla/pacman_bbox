@@ -379,7 +379,7 @@ namespace pacman
     }
 
 
-    Eigen::MatrixXd info_adams( Box  first_boxes)
+    Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     {
         double side_x, side_y,side_z;
         Eigen::Matrix<double, 4, 4> T_l;
@@ -453,7 +453,7 @@ namespace pacman
         R.row(1)=F.row(1);
         R.row(2)=F.row(2);
         
-        angle=FInd_angle(first_boxes,figure,0.005,flag_axis);
+        angle=FInd_angle(first_boxes,figure,0.005,flag_axis, ObjectOriginal);
 
         Eigen::Matrix<double, 3, 1> third_col,axis_x;
           
@@ -481,7 +481,7 @@ namespace pacman
 
 
 
-    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double distance, int flag_axis)
+    Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double distance, int flag_axis, Box ObjectOriginal)
     {
         Eigen::Matrix<double, 3, 1> Normal,Col3,D;
         double PI=3.14159265;
@@ -509,6 +509,7 @@ namespace pacman
 
             //angle
             angle.push_back( acos (sum / L1) * 180.0 / PI);
+// 						std::cout << "Angle : " << acos (sum / L1) * 180.0 / PI <<  std::endl;
 
         }
 
@@ -537,52 +538,106 @@ namespace pacman
 
         if(ori==flag_axis)
         {
-            //std::cout<<"ori uguale a flag"<<std::endl; 
-            angle.erase(angle.begin()+ori); //delete kth position
-            min=angle[0]; 
-            p=0;    
-            
-            if (min >= angle[1])
-            {
-                min=angle[1];
-                p=1;
+					
+					angle.clear();
 
+					
+					/**************************************************************/
+					
+				Normal(0,0)= -ObjectOriginal.centroid(0,0) + first_boxes.centroid(0,0);
+        Normal(1,0)= -ObjectOriginal.centroid(1,0) + first_boxes.centroid(1,0);
+        Normal(2,0)= -ObjectOriginal.centroid(2,0) + first_boxes.centroid(2,0);
+				
+				double normNormal = std::sqrt(Normal(0,0)*Normal(0,0) + Normal(1,0)*Normal(1,0) + Normal(2,0)*Normal(2,0));
+				
+				Normal(0,0) = Normal(0,0)/normNormal;
+				Normal(1,0) = Normal(1,0)/normNormal;
+				Normal(2,0) = Normal(2,0)/normNormal;
+				
+// 				std::cout << "Problem happenning" << std::endl;
+
+      
+        for(int i=0; i<=2; i++)
+        {  
+            //scalar product
+            x=Normal(0,0)*first_boxes.T(0,i);
+             y=Normal(1,0)*first_boxes.T(1,i);
+             z=Normal(2,0)*first_boxes.T(2,i);
+ 
+             sum=x+y+z;
+
+            //length
+            L1=abs(sqrt(pow(first_boxes.T(0,i),2)+pow(first_boxes.T(1,i),2)+pow(first_boxes.T(2,i),2)));
+
+            //angle
+            angle.push_back( acos (sum / L1) * 180.0 / PI);
+// 					double dotv1v2 = 0;
+// 					dotv1v2 = sum;
+// 						angle.push_back( acos (dotv1v2) * 180.0 / PI);
+// 						std::cout << "Angle : " << acos (sum / L1) * 180.0 / PI <<  std::endl;
+
+        }
+
+        //find min angle
+
+        //problema quando asse lungo è allineato con z
+        angle[flag_axis] = 360; // just to force the method to avoid selecting the same axis
+        min=angle[0];  //assign min a value to avoid garbage
+
+
+
+        for (int k=0; k<angle.size(); k++)
+        {
+             //if 'min' is less than angle[k] then assign it that value
+             if (min >= angle[k])
+            {
+                 min=angle[k];
+                 ori=k;  
             }
         
-            if(p >= ori)
-            {
+        }
 
-                p+=1;   
-            }
-        
-        //std::cout<<"nuovo asse"<< p <<std::endl; 
+					
+// 				std::cout << "flag :" << flag_axis << " \t Axis : "  <<  ori << std::endl;
+				switch(ori) 
+        {
+            case 0:
 
-            switch(p)
-            {
-                case 0:
-                
-                    D(0,0)=-((figure[0]/2)+distance);
-                    D(1,0)=0;
-                    D(2,0)=0;
-                    T= first_boxes.T.col(0);
+                // D(0,0)=(figure[0]/2)+distance;
+                // D(1,0)=0;
+                // D(2,0)=0;
+
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[0]/2)+distance);
+                T= first_boxes.T.col(0);
+
                 break;
 
-                case 1:
-                
-                    D(0,0)=0;
-                    D(1,0)=-((figure[1]/2)+distance);
-                    D(2,0)=0;
-                    T= first_boxes.T.col(1);
+            case 1:
+
+                // D(0,0)=0;
+                // D(1,0)=(figure[1]/2)+distance;
+                // D(2,0)=0;
+
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[1]/2)+distance);
+                T= first_boxes.T.col(1);
+
                 break;
 
-                case 2:
+            case 2:
 
-                    D(0,0)=0;
-                    D(1,0)=0;
-                    D(2,0)=-((figure[2]/2)+distance);
-                    T= first_boxes.T.col(2);
+                D(0,0)=0;
+                D(1,0)=0;
+                D(2,0)=-((figure[2]/2)+distance);
+                T= first_boxes.T.col(2);
 
-            }
+                break;
+        }
+
+        /**************************************************************/
           
         }
         else{
@@ -629,13 +684,6 @@ namespace pacman
         }
 
        
-            
-
-
-
-
-
-
 
         Col3.row(0)=T.row(0);
         Col3.row(1)=T.row(1);
@@ -649,6 +697,7 @@ namespace pacman
         Union.block<3,1>(0,0)=-Col3;
         Union.block<3,1>(0,1)=R;
 
+// 				std::cout << "T = " << T <<  std::endl;
 
 
         return Union;

@@ -107,7 +107,7 @@ int main ( int argc, char* argv[] )
     while(!sorted_boxes.empty() )
     {
         Eigen::Matrix<double, 4, 4> T_adams;
-        T_adams= info_adams(sorted_boxes.front());
+        T_adams= info_adams(sorted_boxes.front(), ObjectOriginal);
         std::cout<< T_adams <<std::endl;
         std::cout<< "0 0 0 0 0 0" <<std::endl;
         printBox(sorted_boxes.front());

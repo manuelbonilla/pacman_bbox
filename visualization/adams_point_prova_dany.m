@@ -3,7 +3,7 @@ close all
 clc
 
 show_plot     = 1;
-[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/res_20150119.txt',3);
+[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/resuls_cup.txt',4);
 
 %% eulero angles
 
@@ -65,7 +65,7 @@ if show_plot == 1
 
         T = [ R_reconstructed(1:3,1:3,i) [To_Adams(i,1); To_Adams(i,2); To_Adams(i,3)]; 0 0 0 1];
         T=inv(T);
-        plotCSYS( T , .1);
+        plotCSYS( T , .005);
         
      end
 end

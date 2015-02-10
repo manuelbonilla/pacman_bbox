@@ -86,7 +86,7 @@ namespace pacman
 		*				$) third column --> axis with minimun angle and zeros for the last row
 		*				$) fourth column --> length side with minimun angle/2 plus distance for the hand and one for the last row
 	*/
-	Eigen::MatrixXd info_adams( Box first_boxes ); 
+	Eigen::MatrixXd info_adams( Box first_boxes, Box ObjectOriginal ); 
 
 	
 	/**Function: FInd_angle
@@ -97,7 +97,7 @@ namespace pacman
 		*			2) find min angle and take the respective axis
 		*			3) make the column for the Transformation matrix  
 	*/
-	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,double distance, int flag_axis);
+	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,double distance, int flag_axis, Box ObjectOriginal);
 
 
  
