@@ -1,4 +1,4 @@
-function [R, palm_points] = bounding_box_plots(filename_object, bb_results, num_scatole_input)
+function [R, palm_points, points] = bounding_box_plots(filename_object, bb_results, num_scatole_input)
 
 
 %% import mesh 
