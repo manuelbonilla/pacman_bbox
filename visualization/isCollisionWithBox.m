@@ -1,5 +1,5 @@
-function [ collision ] = isCollision( ObjectMesh, T_hand_object )
-%ISCOLLISION This function checks if there is a collision betwen an object
+function [ collision ] = isCollisionWithBox( ObjectMesh, T_hand_object, box_center, dimensions )
+%ISCOLLISIONWITHBOX This function checks if there is a collision betwen an object
 %and the hand
 %   mesh is the point cloud of the object
 %   hand Hand is the points defining the vertices of th bounding box of the
@@ -9,8 +9,7 @@ function [ collision ] = isCollision( ObjectMesh, T_hand_object )
     
 collision = true;
 
-T_box_hand = [eye(3) [0.0165;.001;-0.0095];
-    [0 0 0 1]];
+T_box_hand = box_center;
 %T_box_hand = eye(4);
 
 T_box_object = T_hand_object * T_box_hand;
@@ -27,9 +26,9 @@ mesh_in_box_frame = ( T_object_box * [ ObjectMesh ones( size( ObjectMesh,1 ),1 )
 %zmin = -0.026;
 %zmax = 0.007;
 
-xlength = 0.075 + 0.108;
-ylength = 0.090 + 0.092;
-zlength = 0.026 + 0.007;
+xlength = dimensions(1);
+ylength = dimensions(2);
+zlength = dimensions(3);
 
 xmin = -xlength/2;
 xmax = xlength/2;
@@ -53,18 +52,18 @@ end
 
 
 %% section just for test
-% X1_box = [xmin;ymin;zmin];
-% X2_box = [xmax;ymax;zmax];
+X1_box = [xmin;ymin;zmin];
+X2_box = [xmax;ymax;zmax];
 % 
-% X1_object = T_box_object * [X1_box;1];
-% X2_object = T_box_object * [X2_box;1];
+X1_object = T_box_object * [X1_box;1];
+X2_object = T_box_object * [X2_box;1];
 % 
 % 
 % figure();
 %  plot3(ObjectMesh(:,1), ObjectMesh(:,2), ObjectMesh(:,3),'*'); 
 %  title('Original_object'); grid on
-%  hold on
-%  plotOrientedIsobox( X1_box,X2_box,T_box_object);
+hold on
+plotOrientedIsobox( X1_box,X2_box,T_box_object);
 %  xlabel( 'x' );
 %  ylabel( 'y' );
 %  zlabel( 'z' );
