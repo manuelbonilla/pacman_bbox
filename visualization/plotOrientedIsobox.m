@@ -53,6 +53,7 @@ l(10) = line(lines{10}(:,1), lines{10}(:,2), lines{10}(:,3));
 l(11) = line(lines{11}(:,1), lines{11}(:,2), lines{11}(:,3));
 l(12) = line(lines{12}(:,1), lines{12}(:,2), lines{12}(:,3));
 set(l, 'Color', RGBColor)
+set(l,'LineWidth', 2)
 hold off
 
 end

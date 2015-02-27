@@ -62,8 +62,10 @@ X2_object = T_box_object * [X2_box;1];
 % figure();
 %  plot3(ObjectMesh(:,1), ObjectMesh(:,2), ObjectMesh(:,3),'*'); 
 %  title('Original_object'); grid on
-hold on
-plotOrientedIsobox( X1_box,X2_box,T_box_object);
+% if ~collision
+%     hold on
+%     plotOrientedIsobox( X1_box,X2_box,T_box_object);
+% end
 %  xlabel( 'x' );
 %  ylabel( 'y' );
 %  zlabel( 'z' );

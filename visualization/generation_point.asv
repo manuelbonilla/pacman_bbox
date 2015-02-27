@@ -1,0 +1,196 @@
+
+
+function [ variations ] = generate_variations( ObjectMesh, To_Adams, box_lenght )
+
+variation_linear =[0 [-box_lenght/2:.002:box_lenght/2]];
+variation_angle = [0 [-30*pi/180:1*pi/180:30*pi/180]];
+variations_main_axis = [variation_linear zeros(size(variation_linear,1),1); zeros(size(variation_angle,1),1) variation_angle ];
+
+originalT = To_Adams;
+
+for i=1:size(variations_main_axis,1)
+   
+    variations{i} = toTHomogenia(originalT) * toTHomogenia(variations_ma )
+    
+end
+% var ausiliaria
+f=1;
+a=0;
+
+count=[];
+
+%% Traslation
+
+for i=1:size(index,1)
+   
+%     switch
+       
+        
+
+        T=[ T_rec(1:3, 1:3,i)  [To_Adams(i,1); To_Adams(i,2); To_Adams(i,3)]; 0 0 0 1];
+        T=inv(T);
+        
+   
+        count=5;
+        Step=dim/count;
+        side=dim*5;
+        for k=2:count
+            
+            if(k <5)
+                V_cs(:,:,1)= T* [eye(3) [0 ;0 ;0];0 0 0 1];
+                if(Step*k < (side/2))
+                V_cs(:,:,k)=T* [eye(3) [Step*k ;0 ;0];0 0 0 1];
+                end
+                
+            else
+                if(Step*a < (side/2))
+                V_cs(:,:,k)= T* [eye(3) [-Step*a ;0 ;0];0 0 0 1];
+                a=a+1;
+                end
+            end
+        end  
+            R_Vcs{f}=V_cs;
+            
+            f=f+1;
+            
+%         end
+   % end
+end
+
+k=1;
+n_variations = size(V_cs,3);
+index_rot=[];
+Adams_point=[];
+for p=1: size(R_Vcs,2)
+    
+    R_cs = R_Vcs{p};
+    
+    for j=1:n_variations
+        
+        R(:,:,k) = R_cs(1:3,1:3,j);
+        data(k,:) =R_cs(1:3,4,j).';
+      
+        
+    %end
+       
+      [Rot, point]=  eulero_angle(R, data);     
+                 
+        T = [Rot(1:3,1:3,k) [point(j,1); point(j,2); point(j,3)]; 0 0 0 1];
+        T=inv(T);   
+         k = k+1; 
+        if ( ~isCollisionHand( mesh, T) )
+            
+         Adams_point=[Adams_point; point(j,:) ];
+         index_rot=[index_rot; j];
+           
+        else
+            continue;
+        end
+    end
+    
+    
+ end
+
+%% Rotation variation
+
+f=1;
+l=0;
+
+for i=1:size(index,1)%-1
+    for h=0:5:20
+        degree=h;
+        
+        rot_x=[1, 0, 0;
+    0, cos(degree), -sin(degree);
+    0, sin(degree), cos(degree)];
+
+   % if((index(i+1)-index(i))==1)
+        
+          T=[ T_rec(1:3, 1:3,i)  [To_Adams(i,1); To_Adams(i,2); To_Adams(i,3)]; 0 0 0 1];
+        T=inv(T);
+        
+    for k=2:count
+        
+        if(k <=5)
+            V_rot_cs(:,:,1)= T* [rot_x(:,:) [0 ;0 ;0];0 0 0 1];
+            V_rot_cs(:,:,k)= T* [rot_x(:,:) [Step*k ;0 ;0];0 0 0 1];
+            
+        else
+            V_rot_cs(:,:,k)= T* [rot_x(:,:) [-Step*l ;0 ;0];0 0 0 1];
+            l=l+1;
+            
+        end
+    end
+        R_rot_Vcs{f}=V_rot_cs;
+        
+        f=f+1;
+        
+%     end
+    end
+    %end
+end
+
+    
+    
+k=1;
+n_variations2 = size(V_rot_cs,3);
+index_var=[];
+Adams_point_var=[];
+for p=1: size(R_rot_Vcs,2)
+    
+    RV_cs = R_rot_Vcs{p};
+    
+    for j=1:n_variations2
+        
+        R_rot_pos(:,:,k) = R_cs(1:3,1:3,j);
+        data_rot_pos(k,:) =R_cs(1:3,4,j).';
+       
+        
+    %end
+       
+       
+      [Rot_var, point_var]=  eulero_angle(R_rot_pos, data_rot_pos);     
+        
+        a = [Rot_var(1:3, 1:3, k) [point_var(j,1); point_var(j,2); point_var(j,3)]; 0 0 0 1];
+        a=inv(a);   
+         k = k+1;
+         
+        if ( ~isCollision( mesh, a) )
+            
+         Adams_point_var=[Adams_point_var; point_var(j,:) ];
+            
+           index_var=[index_var; j];
+           
+        else
+            continue;
+        end
+    %end
+    end
+    
+end
+    
+
+% h=1;   
+ 
+ for i=1:size(Adams_point,1)
+    To_adams_free_collision_cs(i,:)=Adams_point(i,:);
+    %h=h+1;
+ end
+ 
+ h=size(Adams_point,1)+1;
+ for i=1:size(Adams_point_var,2)
+     
+     To_adams_free_collision_cs(h,:)=Adams_point_var(i,:);
+     h=h+1;
+ end
+ 
+    
+    
+    
+    
+    
+    
+end
+
+
+

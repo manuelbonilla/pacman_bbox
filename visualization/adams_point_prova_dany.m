@@ -3,7 +3,7 @@ close all
 clc
 
 show_plot     = 1;
-[R, adams_point] = bounding_box_plots('../input_files/cup.shl', '../build/resuls_cup.txt',4);
+[R, adams_point] = bounding_box_plots('../input_files/collander_c++.shl', '../build/res_collander_0.9.0.00001_0.5.txt',5);
 
 %% eulero angles
 
@@ -15,25 +15,21 @@ adams_point_old = adams_point;
 
 for i = 1:size(adams_point,1)
  %% sol solution    
-%    val_phi1 = R(3,1,i)/R(3,2,i);
-%    val_phi2 = R(1,3,i)/R(2,3,i);  
-%    phi = [phi; atan(val_phi1)];
-%    theta = [theta; acos(R(3,3,i))]; 
-%    psi= [psi; atan(-val_phi2)];
 
-    
-%    val_phi1 = R(3,1,i)/R(3,2,i);
-%    val_phi2 = R(1,3,i)/R(2,3,i);  
-   
-   theta =  acos(R(3,3,i));
-   
-   cospsi = -R(2,3,i)/sin(theta);
-   sinpsi = R(1,3,i)/sin(theta);
-   psi = atan( sinpsi/cospsi);
-   
-   cosphi = R(3,2,i)/sin(theta);
-   sinphi = R(3,1,i)/sin(theta);
-   phi= atan(sinphi/cosphi);
+ psi=atan2(R(1,3,i), -R(2,3,i));
+ phi=atan2(-cos(psi)*R(1,2,i)-sin(psi)*R(2,2,i), cos(psi)*R(1,1,i)+sin(psi)*R(2,1,i));
+ theta=atan2(sin(psi)*R(1,3,i)-cos(psi)*R(2,3,i), R(3,3,i));
+ 
+%***%
+%    theta =  acos(R(3,3,i));
+%    
+%    cospsi = -R(2,3,i)/sin(theta);
+%    sinpsi = R(1,3,i)/sin(theta);
+%    psi = atan( sinpsi/cospsi);
+%    
+%    cosphi = R(3,2,i)/sin(theta);
+%    sinphi = R(3,1,i)/sin(theta);
+%    phi= atan(sinphi/cosphi);
    
    vtheta = [vtheta;theta];
    vpsi = [vpsi; psi];

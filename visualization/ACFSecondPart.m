@@ -2,11 +2,11 @@
 % close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% M-file che crea il file ACF per l'esecuzione della seconda parte di %%
-%%%% simulazione solo per quele configurazioni in cui non c'è stata      %%
+%%%% simulazione solo per quelle configurazioni in cui non c'è stata      %%
 %%%% compenetrazione                                                     %%
-load('sim_info')
+load('sim_info')    %% ***carica tutti i dati di To_Bounding_Box*** %%
 
-fileID = fopen('prova_2.acf','w+');
+fileID = fopen('prova_2.acf','w+'); %% ** crea un file chiamato prova_2_acf ** %%
 max_steps = 70000; %Max step of the integrator
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,12 +33,12 @@ fprintf(fileID, '\n');
 %%%%%% Ciclo di creazione del file ACF %%%%%%%%%
 for i=1:size(To_Adams,1)
     
-    name = ['prova' num2str(i) '.req'];
+    name = ['prova' num2str(i) '.req'];     %% ** num2str converte numero a stringa (i=3, scrive prova3)**%%
     fileID2 = fopen(name);
     %                 if (fileID2 == -1)
     %                     continue
     %                 end
-    fileSC = textscan(fileID2,'%s %s %s %s %s %s');
+    fileSC = textscan(fileID2,'%s %s %s %s %s %s');     %% **ricerca una stringa di 6 parole**%% 
     dim_fileSC = size(fileSC{1},1);
     
     if (dim_fileSC > max_steps)
