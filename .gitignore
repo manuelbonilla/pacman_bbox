@@ -26,7 +26,14 @@
 *.exe
 *.out
 *.app
-
+*.res
+*.xmt_txt
+*.sav
+*.req
+*.gra
+*.amd
+*.avi
+*.msg
 *.kdev4
 *~
 .kdev4
