@@ -1,4 +1,4 @@
-function [ collision ] = isCollisionWithBox( ObjectMesh, T_hand_object, box_center, dimensions, enableplot )
+function [ collision ] = isCollisionWithBox( ObjectMesh, T_object_hand, box_center, dimensions, enableplot )
 %ISCOLLISIONWITHBOX This function checks if there is a collision betwen an object
 %and the hand
 %   mesh is the point cloud of the object
@@ -11,6 +11,8 @@ collision = true;
 
 T_box_hand = box_center;
 %T_box_hand = eye(4);
+
+T_hand_object = inv( T_object_hand );
 
 T_box_object = T_hand_object * T_box_hand;
 

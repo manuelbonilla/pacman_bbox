@@ -69,7 +69,8 @@ R = T(1:3,1:3);
  theta=atan2(sin(psi)*R(1,3)-cos(psi)*R(2,3), R(3,3));
  
 
-   E = [T(1:3,4).'  -phi -theta -psi] ;
+   %E = [T(1:3,4).'  -phi -theta -psi] ;
+   E = [T(1:3,4).'  psi theta phi] ;
 
 end
 
