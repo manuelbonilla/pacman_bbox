@@ -1,4 +1,0 @@
-File/Model = prova1.adm
-SIMULATE/DYNAMIC,DURATION=3,STEPS=300
-save/system, file=prova.sav
-
