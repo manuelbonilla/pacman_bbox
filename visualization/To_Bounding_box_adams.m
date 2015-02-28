@@ -26,7 +26,7 @@ To_Adams_variations = [];
 
 for i=1:1%size(To_Adams,1)
     
-    To_Adams_variations = [To_Adams_variations; generate_variations( object, To_Adams( i,: ), box_lenght(i), .001,  1, 5)];
+    To_Adams_variations = [To_Adams_variations; generate_variations( object, To_Adams( i,: ), box_lenght(i), .001,  1, 20];
     
 end
 

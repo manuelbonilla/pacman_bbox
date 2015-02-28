@@ -41,7 +41,7 @@ else
         variations_2d = toTH(originalT) * toTH( [plinear,0,0,0,pang,0] );
         variations_fc_bool_2d = isCollisionHand( ObjectMesh, variations_2d , false );
         if( ~variations_fc_bool_2d)
-            variations_fc_2d(i,:) =  toE(variations_2d);
+            variations_fc_2d(i,:) =  toEi(variations_2d);
             isCollisionHand( ObjectMesh, variations_2d , true );
             i = i+1;
         end
@@ -57,7 +57,7 @@ end
 
 function T = toTH( configxyzzxz )
 
-T = [ eye(3) [configxyzzxz(1);configxyzzxz(2);configxyzzxz(3)]; [0 0 0 1]] * [ROTZ(-configxyzzxz(6))*ROTX(-configxyzzxz(5))*ROTZ(-configxyzzxz(4)) [0;0;0];[0 0 0 1]];
+T = [ eye(3) [configxyzzxz(1);configxyzzxz(2);configxyzzxz(3)]; [0 0 0 1]] * [ROTZ(configxyzzxz(3))*ROTX(configxyzzxz(5))*ROTZ(configxyzzxz(6)) [0;0;0];[0 0 0 1]];
 
 end
 
@@ -71,6 +71,19 @@ R = T(1:3,1:3);
 
    %E = [T(1:3,4).'  -phi -theta -psi] ;
    E = [T(1:3,4).'  psi theta phi] ;
+
+end
+
+function E = toEi( T )
+
+R = T(1:3,1:3);
+ psi=atan2(R(1,3), -R(2,3));
+ phi=atan2(-cos(psi)*R(1,2)-sin(psi)*R(2,2), cos(psi)*R(1,1)+sin(psi)*R(2,1));
+ theta=atan2(sin(psi)*R(1,3)-cos(psi)*R(2,3), R(3,3));
+ 
+
+   E = [(-R'*T(1:3,4)).'  -phi -theta -psi] ;
+   %E = [T(1:3,4).'  psi theta phi] ;
 
 end
 

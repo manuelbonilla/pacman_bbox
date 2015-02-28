@@ -30,8 +30,8 @@ for i = 1:size(adams_point,1)
    vphi = [vphi; phi];
    
    R_reconstructed(:,:,i) = ROTZ(-phi)*ROTX(-theta)*ROTZ(-psi);
-
-   adams_point_inv(i,:)=(-R_reconstructed(:,:,i)*adams_point(i,:).').';
+% 
+%    adams_point_inv(i,:)=(-R_reconstructed(:,:,i)*adams_point(i,:).').';
  
    end
 
@@ -41,8 +41,8 @@ rot_z1 = vpsi ;
 rot_x2 = vtheta ;
 rot_z3 = vphi ;
 
-To_Adams = [adams_point_inv , -rot_z3, -rot_x2, -rot_z1] ;
-%To_Adams = [adams_point , rot_z1, rot_x2, rot_z3] ;
+%To_Adams = [adams_point_inv , -rot_z3, -rot_x2, -rot_z1] ;
+To_Adams = [adams_point(:,1:3) , rot_z1, rot_x2, rot_z3] ;
 
 %hold on
 
