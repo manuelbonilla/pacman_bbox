@@ -13,34 +13,20 @@ hold on
 To_Adams_new=[];
 index_free_collision=[];
 
-if show_plot == 1
-     hold on
-     for i=1:size(To_Adams,1)
-
-        T = [ R_reconstructed(1:3,1:3,i) [To_Adams(i,1); To_Adams(i,2); To_Adams(i,3)]; 0 0 0 1];
-        T=inv(T);
-        %plotCSYS( T , .005);
-%         if ( ~isCollisionHand( object, T) )
-%          
-%           To_Adams_new = [To_Adams_new; To_Adams(i,:)];
-%           index_free_collision=[index_free_collision; i];
-%         else
-%             
-%            index_free_collision=[index_free_collision; 0];
-%            
-%           if (size(index_free_collision,1)>2)
-%           [To_adams_free_collision_cs]=generation_point(To_Adams_new, dim, object, R_reconstructed,  index_free_collision);  
-%           end
-        end
-        
+% if show_plot == 1
+%      hold on
+%      for i=1:size(To_Adams,1)
+% 
+%         T = [ R_reconstructed(1:3,1:3,i) [To_Adams(i,1); To_Adams(i,2); To_Adams(i,3)]; 0 0 0 1];
+%         T=inv(T);
 %      end
-end
+% end
 
 To_Adams_variations = [];
 
-for i=1:size(To_Adams,1)
+for i=1:1%size(To_Adams,1)
     
-    To_Adams_variations = [To_Adams_variations; generate_variations( object, To_Adams( i,: ), box_lenght(i), .001,  1)];
+    To_Adams_variations = [To_Adams_variations; generate_variations( object, To_Adams( i,: ), box_lenght(i), .001,  1, 5)];
     
 end
 

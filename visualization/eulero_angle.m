@@ -42,6 +42,7 @@ rot_x2 = vtheta ;
 rot_z3 = vphi ;
 
 To_Adams = [adams_point_inv , -rot_z3, -rot_x2, -rot_z1] ;
+%To_Adams = [adams_point , rot_z1, rot_x2, rot_z3] ;
 
 %hold on
 

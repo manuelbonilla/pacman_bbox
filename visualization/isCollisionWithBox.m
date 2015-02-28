@@ -1,4 +1,4 @@
-function [ collision ] = isCollisionWithBox( ObjectMesh, T_hand_object, box_center, dimensions )
+function [ collision ] = isCollisionWithBox( ObjectMesh, T_hand_object, box_center, dimensions, enableplot )
 %ISCOLLISIONWITHBOX This function checks if there is a collision betwen an object
 %and the hand
 %   mesh is the point cloud of the object
@@ -62,10 +62,12 @@ X2_object = T_box_object * [X2_box;1];
 % figure();
 %  plot3(ObjectMesh(:,1), ObjectMesh(:,2), ObjectMesh(:,3),'*'); 
 %  title('Original_object'); grid on
-% if ~collision
-%     hold on
-%     plotOrientedIsobox( X1_box,X2_box,T_box_object);
-% end
+if enableplot
+  if ~collision
+     hold on
+     plotOrientedIsobox( X1_box,X2_box,T_box_object);
+  end
+end
 %  xlabel( 'x' );
 %  ylabel( 'y' );
 %  zlabel( 'z' );
