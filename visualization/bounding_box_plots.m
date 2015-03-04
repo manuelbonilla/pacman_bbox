@@ -32,7 +32,7 @@ function [R, palm_points, points, side] = bounding_box_plots(filename_object, bb
              plotOrientedIsobox(res{i}.X, res{i}.Y, res{i}.T);
          else
          
-         plotCSYS(res{i}.T, .12);
+        % plotCSYS(res{i}.T, .12);
   
              
     end

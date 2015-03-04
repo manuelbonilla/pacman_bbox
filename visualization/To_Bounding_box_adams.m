@@ -1,9 +1,9 @@
 clear all
-close all
+%close all
 clc
 
 show_plot     = 1;
-[R, adams_point, object, box_lenght] = bounding_box_plots('../input_files/cup.shl', '../build/res_cup-0.9-0.00001.txt',1);
+[R, adams_point, object, box_lenght] = bounding_box_plots('../input_files/cup.shl', '../build/res_cup.txt',1);
 
 [R_reconstructed, To_Adams]= eulero_angle(R, adams_point);
 
