@@ -11,7 +11,7 @@ collision_palm = isCollisionWithBox( ObjectMesh, T_hand, palm_box, [.110;.112;.0
 little_box = [0.939693	-0.342020	0.0000000000	-0.0562720;
 0.342020	0.939693	0.0000000000	0.0204545;
 0.0000000000	0.0000000000	1.00000	-0.0140000;
-0 0 0 1];
+0 0 0 1];   
 
 collision_little = isCollisionWithBox( ObjectMesh, T_hand, little_box, [.017;.082;.028], enableplot );
 

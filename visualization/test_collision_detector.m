@@ -7,6 +7,10 @@ T_object = [ eye(3) [To_Adams_variations(end,1);To_Adams_variations(end,2);To_Ad
 T_hand = inv(T_object);
 T_hand(1:3,4) = T_hand(1:3,4)/1000;
 
+<<<<<<< HEAD
+=======
+T_hand = [ eye(3)  [ 0;0;-0.12 ]; [ 0 0 0 1 ]];
+>>>>>>> 4a8856eb47ad2bbb650beb1ea66321023e704858
  figure();
  plot3(ObjectMesh(:,1), ObjectMesh(:,2), ObjectMesh(:,3),'*'); 
  title('Original_object'); grid on; hold on;

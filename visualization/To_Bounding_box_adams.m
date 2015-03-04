@@ -1,9 +1,13 @@
 clear all
-close all
+%close all
 clc
 
 show_plot     = 1;
+<<<<<<< HEAD
 [R, adams_point, object, box_lenght] = bounding_box_plots('../input_files/kettle.shl', '../build/res_kettle-0.9-0.00001.txt',2);
+=======
+[R, adams_point, object, box_lenght] = bounding_box_plots('../input_files/cup.shl', '../build/res_cup.txt',1);
+>>>>>>> 4a8856eb47ad2bbb650beb1ea66321023e704858
 
 [R_reconstructed, To_Adams]= eulero_angle(R, adams_point);
 
