@@ -1,100 +1,20 @@
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-1 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-2 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-3 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND *****
-****** Bounding_box algorithm ***** 
-******** Model-4 *********
-****** grasp fail ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-5 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-6 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-7 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND *****
-****** Bounding_box algorithm ***** 
-******** Model-8 *********
-****** grasp fail ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-9 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-10 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-11 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-12 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND *****
-****** Bounding_box algorithm ***** 
-******** Model-13 *********
-****** grasp fail ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND *****
-****** Bounding_box algorithm ***** 
-******** Model-14 *********
-****** grasp fail ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-15 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-16 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND *****
-****** Bounding_box algorithm ***** 
-******** Model-17 *********
-****** grasp fail ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-18 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND ***** 
-****** Bounding_box algorithm ***** 
- ******** Model-19 ********
-****** grasp successful ****** 
-
-****** SIMULATION PISA/IIT SOFT HAND *****
-****** Bounding_box algorithm ***** 
-******** Model-20 *********
-****** grasp fail ****** 
-
+-0.012817	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.025892	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.010150	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.029442	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.023927	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.001616	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.005090	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.001332	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.034013	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.025912	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.001603	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.018838	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.018649	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.022915	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.017666	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.031905	0.025892	-0.010150	-29.442478	23.927371	1.616002
+0.008888	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.068211	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.090638	0.025892	-0.010150	-29.442478	23.927371	1.616002
+-0.108836	0.025892	-0.010150	-29.442478	23.927371	1.616002
