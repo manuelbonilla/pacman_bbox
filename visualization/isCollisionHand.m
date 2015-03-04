@@ -43,4 +43,4 @@ thumb_box = [-0.174881	0.906308	0.384737	0.0700355;
 
 collision_thumb = isCollisionWithBox( ObjectMesh, T_hand, thumb_box, [.017;.082;.028], enableplot );
 
-collision = collision_little || collision_ring || collision_middle || collision_index || collision_thumb;
+collision = collision_palm || collision_little || collision_ring || collision_middle || collision_index || collision_thumb;

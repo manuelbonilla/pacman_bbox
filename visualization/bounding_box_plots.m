@@ -28,11 +28,11 @@ function [R, palm_points, points, side] = bounding_box_plots(filename_object, bb
 % %%  plot figure and csys
  for i=1: n_scatole*2
 
-        %if (mod(i,2) == 0 )
+        if (mod(i,2) == 0 )
              plotOrientedIsobox(res{i}.X, res{i}.Y, res{i}.T);
-         %else
+         else
          
-         plotCSYS(res{i}.T, .3);
+%          plotCSYS(res{i}.T, .3);
   
              
     end

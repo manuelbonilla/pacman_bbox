@@ -3,7 +3,7 @@ close all
 clc
 
 show_plot     = 1;
-[R, adams_point, object, box_lenght] = bounding_box_plots('../input_files/cup.shl', '../build/res_cup-0.9-0.00001.txt',5);
+[R, adams_point, object, box_lenght] = bounding_box_plots('../input_files/kettle.shl', '../build/res_kettle-0.9-0.00001.txt',2);
 
 [R_reconstructed, To_Adams]= eulero_angle(R, adams_point);
 
@@ -24,16 +24,16 @@ index_free_collision=[];
 
 To_Adams_variations = [];
 
-for i=1:1%size(To_Adams,1)
+for i=1:size(To_Adams,1)
     
-    To_Adams_variations = [To_Adams_variations; generate_variations( object, To_Adams( i,: ), box_lenght(i), .001,  1, 20];
+    To_Adams_variations = [To_Adams_variations; generate_variations( object, To_Adams( i,: ), box_lenght(i), .001,  1, 20)];
     
 end
-
+% 
 %% file to adams
 To_Adams_variations(:,1:3) = To_Adams_variations(:,1:3)*1000; % adams unit of measure mm
 To_Adams_new = To_Adams_variations;
 CMDGenerator(To_Adams_new);
 ACFGenerator(To_Adams_new);
 
-save('sim_info')
+save('sim_info_kettle2_collision')

@@ -10,6 +10,7 @@ originalT = To_Adams;
 
 k = 1;
 variations_fc = [];
+points = [];
 for i=1:size(variations_main_axis,1)
    
     variations{i} = toTH(originalT) * toTH( [variations_main_axis(i,1),0,0,0,variations_main_axis(i,2),0] );
@@ -21,7 +22,9 @@ for i=1:size(variations_main_axis,1)
     
 end
 
-[rlinear, r_ang] = findrange( variations_fc_bool(1:size(variation_linear,2)), variations_fc_bool(size(variation_linear,2)+1:end) );
+%[rlinear, r_ang] = findrange( variations_fc_bool(1:size(variation_linear,2)), variations_fc_bool(size(variation_linear,2)+1:end) );
+rlinear = findrange( variations_fc_bool(1:size(variation_linear,2)) );
+r_ang = [2 size(variation_angle,2)];
 
 if ( isempty(rlinear) || isempty(r_ang))
     variations_fc_2d = [];
@@ -34,15 +37,20 @@ else
     % figure()
     % plot(0,0)
     % hold on
+%     point_lin=[];
+%     point_ang=[];
     while i<=numposes
         plinear = rangelinear(1)+( rangelinear(2) - rangelinear(1))*rand();
+        %point_lin=[point_lin; plinear];
         pang = rangeang(1)+( rangeang(2) - rangeang(1))*rand();
-    %     plot(plinear,pang, '*')
+        %point_ang=[point_ang; pang];
+       %plot(plinear,pang, '*')
         variations_2d = toTH(originalT) * toTH( [plinear,0,0,0,pang,0] );
         variations_fc_bool_2d = isCollisionHand( ObjectMesh, variations_2d , false );
         if( ~variations_fc_bool_2d)
+            points=[points; [plinear pang]];
             variations_fc_2d(i,:) =  toEi(variations_2d);
-            isCollisionHand( ObjectMesh, variations_2d , true );
+            isCollisionHand( ObjectMesh, variations_2d , true ); % jut to plot 
             i = i+1;
         end
     end
@@ -50,14 +58,14 @@ else
 
 end
 
-
+save('sim_info_kettle2')
 
 end
 
 
 function T = toTH( configxyzzxz )
 
-T = [ eye(3) [configxyzzxz(1);configxyzzxz(2);configxyzzxz(3)]; [0 0 0 1]] * [ROTZ(configxyzzxz(3))*ROTX(configxyzzxz(5))*ROTZ(configxyzzxz(6)) [0;0;0];[0 0 0 1]];
+T = [ eye(3) [configxyzzxz(1);configxyzzxz(2);configxyzzxz(3)]; [0 0 0 1]] * [ROTZ(configxyzzxz(4))*ROTX(configxyzzxz(5))*ROTZ(configxyzzxz(6)) [0;0;0];[0 0 0 1]];
 
 end
 
@@ -87,12 +95,13 @@ R = T(1:3,1:3);
 
 end
 
-function [rlinear, r_ang] = findrange( vlinear, vang )
+function rlinear = findrange( vlinear )
+%function [rlinear, r_ang] = findrange( vlinear, vang )
 init_linear = [];
 end_linear = [];
 
-init_ang = [];
-end_ang = [];
+% init_ang = [];
+% end_ang = [];
 
 for i = 2:size(vlinear,2)
     if vlinear(i) == 0
@@ -108,22 +117,22 @@ for i = size(vlinear,2):-1:2
     end
 end
 
-
-for i = 2:size(vang,2)
-    if vang(i) == 0
-        init_ang = i;
-        break;
-    end
-end
-
-for i = size(vang,2):-1:2
-    if vang(i) == 0
-        end_ang = i;
-        break;
-    end
-end
+% 
+% for i = 2:size(vang,2)
+%     if vang(i) == 0
+%         init_ang = i;
+%         break;
+%     end
+% end
+% 
+% for i = size(vang,2):-1:2
+%     if vang(i) == 0
+%         end_ang = i;
+%         break;
+%     end
+% end
 
 rlinear = [init_linear end_linear];
-r_ang = [init_ang end_ang];
+% r_ang = [init_ang end_ang];
 
 end
