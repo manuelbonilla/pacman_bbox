@@ -26,6 +26,13 @@ namespace pacman
             T = Eigen::Matrix<double, 4, 4>::Identity();
 
         }
+                
+        void Box::setNumPoints(int num_points)
+        {
+            Points = Eigen::MatrixXd::Zero ( num_points, 3 );
+            T = Eigen::Matrix<double, 4, 4>::Identity();
+        }
+
 
         void Box::SetPoints ( const Eigen::MatrixXd& EigenPoints )
         //const Eigen::MatrixXd& object_eigen

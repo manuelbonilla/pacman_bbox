@@ -23,10 +23,14 @@ namespace pacman
         double Isobox_volume;
         Eigen::Matrix<double, 4, 1> centroid;
         double distance_cm_orig;
+        int num_points_;
 
         //CObject();
         Box ( int num_points );
         
+        Box(){};
+        
+        void setNumPoints (int num_points);
         /**Function: SetPoint
             * Input: constant, variable
             * Description: initializes the points and transformation           
@@ -67,7 +71,7 @@ namespace pacman
 
 
      
-     //~CObject();
+      ~Box(){};
     
        
 
