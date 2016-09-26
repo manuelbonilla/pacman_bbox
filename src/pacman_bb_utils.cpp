@@ -704,6 +704,80 @@ namespace pacman
 
 
     }
+    
+    std::list<Box> extractBoxes ( Box ObjectOriginal, float gain, float min_volume, float min_points )
+    {
+      
+      
+    std::list<Box> results;
+    std::vector< Box > SplitedObject;
+    std::list< Box > cue;
+    cue.push_back ( ObjectOriginal );
+
+    
+
+    while ( !cue.empty() )
+    {
+        
+        SplitedObject = FindBestSplit ( cue.front(), gain );
+        // Condition of gain*area is checked inside FindBestSplit fuction.
+        // Each component in SplitedObject showld contain at least 2 point to compute the area and PCA
+        if ( SplitedObject.size() == 2 &&
+            ( SplitedObject[0].Points.rows() > min_points && SplitedObject[1].Points.rows() > min_points ) )
+        {
+
+            SplitedObject[0].doPCA ( cue.front().T );
+            SplitedObject[0] = ComputeBoundingBox ( SplitedObject[0] );
+
+            SplitedObject[1].doPCA ( cue.front().T );
+            SplitedObject[1] = ComputeBoundingBox ( SplitedObject[1] );
+
+            // Volume condition. 
+            // TODO: This condition must be updated. See results to undertand better.
+
+            if ( ( SplitedObject[0].Isobox_volume > min_volume ) && ( SplitedObject[1].Isobox_volume > min_volume ) )
+            {
+                cue.push_back ( SplitedObject[0] );
+                cue.push_back ( SplitedObject[1] );
+            }
+            else
+            {
+                cue.front().box_distance( ObjectOriginal, cue.front()  );
+                results.push_back  ( cue.front() );
+
+            }
+
+        }
+        else
+        {
+          
+            cue.front().box_distance( ObjectOriginal, cue.front()  );
+
+            results.push_back  ( cue.front() );
+        }
+
+        cue.pop_front();
+        
+        
+        
+
+    }
+    
+    return box_sort(  results );
+    }
+    
+    
+    std::vector<Eigen::MatrixXd> getTrasformsforHand(std::list<Box> sorted_boxes, Box ObjectOriginal)
+    {
+      std::vector<Eigen::MatrixXd> results;
+       while(!sorted_boxes.empty() )
+      {
+          results.push_back(info_adams(sorted_boxes.front(), ObjectOriginal));
+          sorted_boxes.pop_front();
+      }
+    
+    return results;
+    }
 
 
 

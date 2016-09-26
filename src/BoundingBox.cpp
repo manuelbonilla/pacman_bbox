@@ -50,76 +50,19 @@ int main ( int argc, char* argv[] )
     ObjectOriginal.doPCA ( Eigen::Matrix<double, 4, 4>::Identity() );
     ObjectOriginal = ComputeBoundingBox ( ObjectOriginal );
 
-    std::list< Box > cue, results;
-    std::vector< Box > SplitedObject;
-
-    cue.push_back ( ObjectOriginal );
-
     
-
-    while ( !cue.empty() )
+    std::list<Box> sorted_boxes;
+    sorted_boxes = extractBoxes ( ObjectOriginal , gain, min_volume);
+    std::vector< Eigen::MatrixXd> trasformations =  getTrasformsforHand( sorted_boxes, ObjectOriginal);
+//     
+//     
+    for(int i = 0 ; i < trasformations.size() ; i++)
     {
-        
-        SplitedObject = FindBestSplit ( cue.front(), gain );
-        // Condition of gain*area is checked inside FindBestSplit fuction.
-        // Each component in SplitedObject showld contain at least 2 point to compute the area and PCA
-        if ( SplitedObject.size() == 2 &&
-            ( SplitedObject[0].Points.rows() > min_points && SplitedObject[1].Points.rows() > min_points ) )
-        {
-
-            SplitedObject[0].doPCA ( cue.front().T );
-            SplitedObject[0] = ComputeBoundingBox ( SplitedObject[0] );
-
-            SplitedObject[1].doPCA ( cue.front().T );
-            SplitedObject[1] = ComputeBoundingBox ( SplitedObject[1] );
-
-            // Volume condition. 
-            // TODO: This condition must be updated. See results to undertand better.
-
-            if ( ( SplitedObject[0].Isobox_volume > min_volume ) && ( SplitedObject[1].Isobox_volume > min_volume ) )
-            {
-                cue.push_back ( SplitedObject[0] );
-                cue.push_back ( SplitedObject[1] );
-            }
-            else
-            {
-                cue.front().box_distance( ObjectOriginal, cue.front()  );
-                results.push_back  ( cue.front() );
-
-            }
-
-        }
-        else
-        {
-          
-            cue.front().box_distance( ObjectOriginal, cue.front()  );
-
-            results.push_back  ( cue.front() );
-        }
-
-        cue.pop_front();
-
-    }
-    
-    std::list< Box > sorted_boxes;
-    sorted_boxes = box_sort(  results );
-    
-    while(!sorted_boxes.empty() )
-    {
-        Eigen::Matrix<double, 4, 4> T_adams;
-        T_adams= info_adams(sorted_boxes.front(), ObjectOriginal);
-        std::cout<< T_adams <<std::endl;
+        std::cout<< trasformations[i] <<std::endl;
         std::cout<< "0 0 0 0 0 0" <<std::endl;
-        printBox(sorted_boxes.front());
+        printBox( sorted_boxes.front() );
         sorted_boxes.pop_front();
     }
-
-	
-    //for (std::list<Box>::iterator it=sorted_boxes.begin() ; it != sorted_boxes.end(); ++it)
-    //{
-    // 		Box actual = *it;
-	//  	printBox(actual);
-	// }
 
     return 0;
 }

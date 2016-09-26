@@ -98,6 +98,9 @@ namespace pacman
 		*			3) make the column for the Transformation matrix  
 	*/
 	Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure,double distance, int flag_axis, Box ObjectOriginal);
+  
+  std::list<Box> extractBoxes ( pacman::Box ObjectOriginal, float gain, float vol_gain, float min_points = 2 );
+  std::vector<Eigen::MatrixXd> getTrasformsforHand(std::list<Box> sorted_boxes, Box ObjectOriginal);
 
 
  
