@@ -102,3 +102,1823 @@ INTEGRATOR/GSTIFF , MAXIT=2
 SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
 save/system, file=prova20.sav
 
+File/Model = prova21.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova21.sav
+
+File/Model = prova22.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova22.sav
+
+File/Model = prova23.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova23.sav
+
+File/Model = prova24.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova24.sav
+
+File/Model = prova25.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova25.sav
+
+File/Model = prova26.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova26.sav
+
+File/Model = prova27.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova27.sav
+
+File/Model = prova28.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova28.sav
+
+File/Model = prova29.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova29.sav
+
+File/Model = prova30.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova30.sav
+
+File/Model = prova31.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova31.sav
+
+File/Model = prova32.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova32.sav
+
+File/Model = prova33.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova33.sav
+
+File/Model = prova34.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova34.sav
+
+File/Model = prova35.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova35.sav
+
+File/Model = prova36.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova36.sav
+
+File/Model = prova37.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova37.sav
+
+File/Model = prova38.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova38.sav
+
+File/Model = prova39.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova39.sav
+
+File/Model = prova40.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova40.sav
+
+File/Model = prova41.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova41.sav
+
+File/Model = prova42.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova42.sav
+
+File/Model = prova43.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova43.sav
+
+File/Model = prova44.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova44.sav
+
+File/Model = prova45.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova45.sav
+
+File/Model = prova46.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova46.sav
+
+File/Model = prova47.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova47.sav
+
+File/Model = prova48.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova48.sav
+
+File/Model = prova49.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova49.sav
+
+File/Model = prova50.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova50.sav
+
+File/Model = prova51.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova51.sav
+
+File/Model = prova52.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova52.sav
+
+File/Model = prova53.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova53.sav
+
+File/Model = prova54.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova54.sav
+
+File/Model = prova55.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova55.sav
+
+File/Model = prova56.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova56.sav
+
+File/Model = prova57.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova57.sav
+
+File/Model = prova58.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova58.sav
+
+File/Model = prova59.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova59.sav
+
+File/Model = prova60.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova60.sav
+
+File/Model = prova61.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova61.sav
+
+File/Model = prova62.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova62.sav
+
+File/Model = prova63.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova63.sav
+
+File/Model = prova64.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova64.sav
+
+File/Model = prova65.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova65.sav
+
+File/Model = prova66.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova66.sav
+
+File/Model = prova67.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova67.sav
+
+File/Model = prova68.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova68.sav
+
+File/Model = prova69.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova69.sav
+
+File/Model = prova70.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova70.sav
+
+File/Model = prova71.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova71.sav
+
+File/Model = prova72.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova72.sav
+
+File/Model = prova73.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova73.sav
+
+File/Model = prova74.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova74.sav
+
+File/Model = prova75.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova75.sav
+
+File/Model = prova76.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova76.sav
+
+File/Model = prova77.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova77.sav
+
+File/Model = prova78.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova78.sav
+
+File/Model = prova79.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova79.sav
+
+File/Model = prova80.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova80.sav
+
+File/Model = prova81.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova81.sav
+
+File/Model = prova82.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova82.sav
+
+File/Model = prova83.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova83.sav
+
+File/Model = prova84.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova84.sav
+
+File/Model = prova85.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova85.sav
+
+File/Model = prova86.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova86.sav
+
+File/Model = prova87.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova87.sav
+
+File/Model = prova88.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova88.sav
+
+File/Model = prova89.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova89.sav
+
+File/Model = prova90.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova90.sav
+
+File/Model = prova91.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova91.sav
+
+File/Model = prova92.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova92.sav
+
+File/Model = prova93.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova93.sav
+
+File/Model = prova94.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova94.sav
+
+File/Model = prova95.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova95.sav
+
+File/Model = prova96.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova96.sav
+
+File/Model = prova97.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova97.sav
+
+File/Model = prova98.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova98.sav
+
+File/Model = prova99.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova99.sav
+
+File/Model = prova100.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova100.sav
+
+File/Model = prova101.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova101.sav
+
+File/Model = prova102.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova102.sav
+
+File/Model = prova103.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova103.sav
+
+File/Model = prova104.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova104.sav
+
+File/Model = prova105.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova105.sav
+
+File/Model = prova106.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova106.sav
+
+File/Model = prova107.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova107.sav
+
+File/Model = prova108.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova108.sav
+
+File/Model = prova109.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova109.sav
+
+File/Model = prova110.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova110.sav
+
+File/Model = prova111.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova111.sav
+
+File/Model = prova112.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova112.sav
+
+File/Model = prova113.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova113.sav
+
+File/Model = prova114.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova114.sav
+
+File/Model = prova115.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova115.sav
+
+File/Model = prova116.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova116.sav
+
+File/Model = prova117.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova117.sav
+
+File/Model = prova118.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova118.sav
+
+File/Model = prova119.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova119.sav
+
+File/Model = prova120.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova120.sav
+
+File/Model = prova121.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova121.sav
+
+File/Model = prova122.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova122.sav
+
+File/Model = prova123.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova123.sav
+
+File/Model = prova124.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova124.sav
+
+File/Model = prova125.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova125.sav
+
+File/Model = prova126.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova126.sav
+
+File/Model = prova127.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova127.sav
+
+File/Model = prova128.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova128.sav
+
+File/Model = prova129.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova129.sav
+
+File/Model = prova130.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova130.sav
+
+File/Model = prova131.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova131.sav
+
+File/Model = prova132.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova132.sav
+
+File/Model = prova133.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova133.sav
+
+File/Model = prova134.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova134.sav
+
+File/Model = prova135.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova135.sav
+
+File/Model = prova136.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova136.sav
+
+File/Model = prova137.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova137.sav
+
+File/Model = prova138.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova138.sav
+
+File/Model = prova139.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova139.sav
+
+File/Model = prova140.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova140.sav
+
+File/Model = prova141.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova141.sav
+
+File/Model = prova142.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova142.sav
+
+File/Model = prova143.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova143.sav
+
+File/Model = prova144.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova144.sav
+
+File/Model = prova145.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova145.sav
+
+File/Model = prova146.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova146.sav
+
+File/Model = prova147.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova147.sav
+
+File/Model = prova148.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova148.sav
+
+File/Model = prova149.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova149.sav
+
+File/Model = prova150.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova150.sav
+
+File/Model = prova151.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova151.sav
+
+File/Model = prova152.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova152.sav
+
+File/Model = prova153.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova153.sav
+
+File/Model = prova154.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova154.sav
+
+File/Model = prova155.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova155.sav
+
+File/Model = prova156.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova156.sav
+
+File/Model = prova157.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova157.sav
+
+File/Model = prova158.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova158.sav
+
+File/Model = prova159.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova159.sav
+
+File/Model = prova160.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova160.sav
+
+File/Model = prova161.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova161.sav
+
+File/Model = prova162.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova162.sav
+
+File/Model = prova163.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova163.sav
+
+File/Model = prova164.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova164.sav
+
+File/Model = prova165.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova165.sav
+
+File/Model = prova166.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova166.sav
+
+File/Model = prova167.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova167.sav
+
+File/Model = prova168.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova168.sav
+
+File/Model = prova169.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova169.sav
+
+File/Model = prova170.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova170.sav
+
+File/Model = prova171.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova171.sav
+
+File/Model = prova172.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova172.sav
+
+File/Model = prova173.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova173.sav
+
+File/Model = prova174.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova174.sav
+
+File/Model = prova175.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova175.sav
+
+File/Model = prova176.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova176.sav
+
+File/Model = prova177.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova177.sav
+
+File/Model = prova178.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova178.sav
+
+File/Model = prova179.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova179.sav
+
+File/Model = prova180.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova180.sav
+
+File/Model = prova181.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova181.sav
+
+File/Model = prova182.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova182.sav
+
+File/Model = prova183.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova183.sav
+
+File/Model = prova184.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova184.sav
+
+File/Model = prova185.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova185.sav
+
+File/Model = prova186.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova186.sav
+
+File/Model = prova187.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova187.sav
+
+File/Model = prova188.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova188.sav
+
+File/Model = prova189.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova189.sav
+
+File/Model = prova190.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova190.sav
+
+File/Model = prova191.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova191.sav
+
+File/Model = prova192.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova192.sav
+
+File/Model = prova193.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova193.sav
+
+File/Model = prova194.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova194.sav
+
+File/Model = prova195.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova195.sav
+
+File/Model = prova196.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova196.sav
+
+File/Model = prova197.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova197.sav
+
+File/Model = prova198.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova198.sav
+
+File/Model = prova199.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova199.sav
+
+File/Model = prova200.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova200.sav
+
+File/Model = prova201.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova201.sav
+
+File/Model = prova202.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova202.sav
+
+File/Model = prova203.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova203.sav
+
+File/Model = prova204.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova204.sav
+
+File/Model = prova205.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova205.sav
+
+File/Model = prova206.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova206.sav
+
+File/Model = prova207.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova207.sav
+
+File/Model = prova208.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova208.sav
+
+File/Model = prova209.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova209.sav
+
+File/Model = prova210.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova210.sav
+
+File/Model = prova211.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova211.sav
+
+File/Model = prova212.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova212.sav
+
+File/Model = prova213.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova213.sav
+
+File/Model = prova214.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova214.sav
+
+File/Model = prova215.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova215.sav
+
+File/Model = prova216.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova216.sav
+
+File/Model = prova217.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova217.sav
+
+File/Model = prova218.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova218.sav
+
+File/Model = prova219.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova219.sav
+
+File/Model = prova220.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova220.sav
+
+File/Model = prova221.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova221.sav
+
+File/Model = prova222.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova222.sav
+
+File/Model = prova223.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova223.sav
+
+File/Model = prova224.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova224.sav
+
+File/Model = prova225.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova225.sav
+
+File/Model = prova226.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova226.sav
+
+File/Model = prova227.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova227.sav
+
+File/Model = prova228.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova228.sav
+
+File/Model = prova229.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova229.sav
+
+File/Model = prova230.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova230.sav
+
+File/Model = prova231.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova231.sav
+
+File/Model = prova232.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova232.sav
+
+File/Model = prova233.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova233.sav
+
+File/Model = prova234.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova234.sav
+
+File/Model = prova235.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova235.sav
+
+File/Model = prova236.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova236.sav
+
+File/Model = prova237.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova237.sav
+
+File/Model = prova238.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova238.sav
+
+File/Model = prova239.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova239.sav
+
+File/Model = prova240.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova240.sav
+
+File/Model = prova241.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova241.sav
+
+File/Model = prova242.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova242.sav
+
+File/Model = prova243.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova243.sav
+
+File/Model = prova244.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova244.sav
+
+File/Model = prova245.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova245.sav
+
+File/Model = prova246.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova246.sav
+
+File/Model = prova247.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova247.sav
+
+File/Model = prova248.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova248.sav
+
+File/Model = prova249.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova249.sav
+
+File/Model = prova250.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova250.sav
+
+File/Model = prova251.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova251.sav
+
+File/Model = prova252.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova252.sav
+
+File/Model = prova253.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova253.sav
+
+File/Model = prova254.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova254.sav
+
+File/Model = prova255.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova255.sav
+
+File/Model = prova256.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova256.sav
+
+File/Model = prova257.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova257.sav
+
+File/Model = prova258.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova258.sav
+
+File/Model = prova259.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova259.sav
+
+File/Model = prova260.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova260.sav
+
+File/Model = prova261.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova261.sav
+
+File/Model = prova262.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova262.sav
+
+File/Model = prova263.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova263.sav
+
+File/Model = prova264.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova264.sav
+
+File/Model = prova265.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova265.sav
+
+File/Model = prova266.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova266.sav
+
+File/Model = prova267.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova267.sav
+
+File/Model = prova268.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova268.sav
+
+File/Model = prova269.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova269.sav
+
+File/Model = prova270.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova270.sav
+
+File/Model = prova271.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova271.sav
+
+File/Model = prova272.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova272.sav
+
+File/Model = prova273.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova273.sav
+
+File/Model = prova274.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova274.sav
+
+File/Model = prova275.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova275.sav
+
+File/Model = prova276.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova276.sav
+
+File/Model = prova277.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova277.sav
+
+File/Model = prova278.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova278.sav
+
+File/Model = prova279.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova279.sav
+
+File/Model = prova280.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova280.sav
+
+File/Model = prova281.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova281.sav
+
+File/Model = prova282.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova282.sav
+
+File/Model = prova283.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova283.sav
+
+File/Model = prova284.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova284.sav
+
+File/Model = prova285.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova285.sav
+
+File/Model = prova286.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova286.sav
+
+File/Model = prova287.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova287.sav
+
+File/Model = prova288.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova288.sav
+
+File/Model = prova289.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova289.sav
+
+File/Model = prova290.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova290.sav
+
+File/Model = prova291.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova291.sav
+
+File/Model = prova292.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova292.sav
+
+File/Model = prova293.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova293.sav
+
+File/Model = prova294.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova294.sav
+
+File/Model = prova295.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova295.sav
+
+File/Model = prova296.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova296.sav
+
+File/Model = prova297.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova297.sav
+
+File/Model = prova298.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova298.sav
+
+File/Model = prova299.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova299.sav
+
+File/Model = prova300.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova300.sav
+
+File/Model = prova301.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova301.sav
+
+File/Model = prova302.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova302.sav
+
+File/Model = prova303.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova303.sav
+
+File/Model = prova304.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova304.sav
+
+File/Model = prova305.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova305.sav
+
+File/Model = prova306.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova306.sav
+
+File/Model = prova307.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova307.sav
+
+File/Model = prova308.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova308.sav
+
+File/Model = prova309.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova309.sav
+
+File/Model = prova310.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova310.sav
+
+File/Model = prova311.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova311.sav
+
+File/Model = prova312.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova312.sav
+
+File/Model = prova313.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova313.sav
+
+File/Model = prova314.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova314.sav
+
+File/Model = prova315.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova315.sav
+
+File/Model = prova316.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova316.sav
+
+File/Model = prova317.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova317.sav
+
+File/Model = prova318.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova318.sav
+
+File/Model = prova319.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova319.sav
+
+File/Model = prova320.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova320.sav
+
+File/Model = prova321.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova321.sav
+
+File/Model = prova322.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova322.sav
+
+File/Model = prova323.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova323.sav
+
+File/Model = prova324.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova324.sav
+
+File/Model = prova325.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova325.sav
+
+File/Model = prova326.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova326.sav
+
+File/Model = prova327.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova327.sav
+
+File/Model = prova328.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova328.sav
+
+File/Model = prova329.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova329.sav
+
+File/Model = prova330.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova330.sav
+
+File/Model = prova331.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova331.sav
+
+File/Model = prova332.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova332.sav
+
+File/Model = prova333.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova333.sav
+
+File/Model = prova334.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova334.sav
+
+File/Model = prova335.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova335.sav
+
+File/Model = prova336.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova336.sav
+
+File/Model = prova337.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova337.sav
+
+File/Model = prova338.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova338.sav
+
+File/Model = prova339.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova339.sav
+
+File/Model = prova340.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova340.sav
+
+File/Model = prova341.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova341.sav
+
+File/Model = prova342.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova342.sav
+
+File/Model = prova343.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova343.sav
+
+File/Model = prova344.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova344.sav
+
+File/Model = prova345.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova345.sav
+
+File/Model = prova346.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova346.sav
+
+File/Model = prova347.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova347.sav
+
+File/Model = prova348.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova348.sav
+
+File/Model = prova349.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova349.sav
+
+File/Model = prova350.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova350.sav
+
+File/Model = prova351.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova351.sav
+
+File/Model = prova352.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova352.sav
+
+File/Model = prova353.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova353.sav
+
+File/Model = prova354.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova354.sav
+
+File/Model = prova355.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova355.sav
+
+File/Model = prova356.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova356.sav
+
+File/Model = prova357.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova357.sav
+
+File/Model = prova358.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova358.sav
+
+File/Model = prova359.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova359.sav
+
+File/Model = prova360.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova360.sav
+
+File/Model = prova361.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova361.sav
+
+File/Model = prova362.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova362.sav
+
+File/Model = prova363.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova363.sav
+
+File/Model = prova364.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova364.sav
+
+File/Model = prova365.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova365.sav
+
+File/Model = prova366.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova366.sav
+
+File/Model = prova367.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova367.sav
+
+File/Model = prova368.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova368.sav
+
+File/Model = prova369.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova369.sav
+
+File/Model = prova370.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova370.sav
+
+File/Model = prova371.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova371.sav
+
+File/Model = prova372.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova372.sav
+
+File/Model = prova373.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova373.sav
+
+File/Model = prova374.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova374.sav
+
+File/Model = prova375.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova375.sav
+
+File/Model = prova376.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova376.sav
+
+File/Model = prova377.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova377.sav
+
+File/Model = prova378.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova378.sav
+
+File/Model = prova379.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova379.sav
+
+File/Model = prova380.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova380.sav
+
+File/Model = prova381.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova381.sav
+
+File/Model = prova382.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova382.sav
+
+File/Model = prova383.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova383.sav
+
+File/Model = prova384.adm
+INTEGRATOR/GSTIFF , MAXIT=2
+SIMULATE/DYNAMIC,DURATION=3,STEPS=3000
+save/system, file=prova384.sav
+

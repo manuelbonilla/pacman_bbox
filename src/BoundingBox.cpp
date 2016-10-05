@@ -2,16 +2,16 @@
 #include <pacman_bb_utils.hpp>
 #include <iostream>
 #include <list>
+#include <fstream>
 
 using namespace pacman;
 
-void printBox ( Box Box_in );
 
 int main ( int argc, char* argv[] )
 {
     // default definitions
-    double gain = 1.0;
-    double min_volume = 100;
+    double gain = 0.9;
+    double min_volume = 5E-7;
 
     switch ( argc )
     {
@@ -50,28 +50,51 @@ int main ( int argc, char* argv[] )
     ObjectOriginal.doPCA ( Eigen::Matrix<double, 4, 4>::Identity() );
     ObjectOriginal = ComputeBoundingBox ( ObjectOriginal );
 
-    
+
     std::list<Box> sorted_boxes;
+    std::cout << "Gain: " << gain << "\tmin_volume" << min_volume << std::endl;
     sorted_boxes = extractBoxes ( ObjectOriginal , gain, min_volume);
-    std::vector< Eigen::MatrixXd> trasformations =  getTrasformsforHand( sorted_boxes, ObjectOriginal);
-//     
-//     
-    for(int i = 0 ; i < trasformations.size() ; i++)
+
+
+    std::ofstream results_file;
+    results_file.open("results_c.txt");
+
+    std::cout << "No. Boxes: " << sorted_boxes.size() << std::endl ;
+
+
+    while (!sorted_boxes.empty())
     {
-        std::cout<< trasformations[i] <<std::endl;
-        std::cout<< "0 0 0 0 0 0" <<std::endl;
-        printBox( sorted_boxes.front() );
+        std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes.front(), ObjectOriginal);
+        // std::cout << "Transformation:" << std::endl << sorted_boxes.front().T << std::endl << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
+        std::cout 
+        //<< "Transformation:" << std::endl << sorted_boxes.front().T << std::endl 
+        << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
+        // std::cout << "No. trasformations: " << trasformations.size() << std::endl;
+        for (int i = 0 ; i < trasformations.size() ; i++)
+        {
+
+            // std::cout<< "Transform for Hand" <<std::endl;
+            // std::cout<< "det: " << trasformations[i].determinant() << std::endl;
+            // std::cout << "Box_" << i + 1
+            //           << std::endl
+            //           << trasformations[i] << std::endl
+            //           << "det: " << trasformations[i].determinant() << std::endl;
+
+            // if(trasformations[i].determinant() < 0.5)
+            // {
+            //     std::cout << "REally bad" << std::endl;
+            //     exit(1);
+            // }
+            results_file << trasformations[i] << std::endl;
+            results_file << "0 0 0 0 0 0" << std::endl;
+            results_file << sorted_boxes.front().T << std::endl;
+            results_file << sorted_boxes.front().Isobox.block ( 0, 0, 1, 3 ) << " " << sorted_boxes.front().Isobox.block ( 1, 0, 1, 3 ) << std::endl;
+
+            
+        }
         sorted_boxes.pop_front();
     }
 
     return 0;
 }
 
-void printBox ( Box Box_in )
-{
-
-    std::cout << Box_in.T << std::endl;
-    std::cout << Box_in.Isobox.block ( 0,0,1,3 ) << " " << Box_in.Isobox.block ( 1,0,1,3 ) << std::endl;
-
-    return;
-}

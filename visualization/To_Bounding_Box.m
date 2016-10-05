@@ -2,8 +2,9 @@ clear all
 close all
 clc
 
-show_plot     = 1;
-[R, adams_point, object] = bounding_box_plots('../input_files/cup.shl', '../build/res_cup-0.9-0.00001.txt',5);
+show_plot = 1;
+[R, adams_point, object] = bounding_box_plots('../../Grasp-simulation/data/objects/apc2015/mead_index_cards/meshes/tsdf_reduced.shl', '../build/results_c.txt');
+
 
 %% eulero angles
 
@@ -61,10 +62,11 @@ if show_plot == 1
 
         T = [ R_reconstructed(1:3,1:3,i) [To_Adams(i,1); To_Adams(i,2); To_Adams(i,3)]; 0 0 0 1];
         T=inv(T);
-        %plotCSYS( T , .005);
-        if ( isCollision( object, T) )
-          To_Adams(i,:) = [];
-        end
+        %det(R(1:3,1:3))
+        plotCSYS( T , .005);
+%         if ( isCollision( object, T) )
+%           To_Adams(i,:) = [];
+%         end
         
      end
 end
