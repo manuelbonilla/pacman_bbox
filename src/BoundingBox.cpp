@@ -12,15 +12,21 @@ int main ( int argc, char* argv[] )
     // default definitions
     double gain = 0.9;
     double min_volume = 5E-7;
-
+    std::string object_name("no_object");
     switch ( argc )
     {
     case 2:
-        gain = std::atof ( argv[1] );
+        // std::cout << "Filename here" << std::endl;
+        object_name = std::string(argv[1]);
         break;
     case 3:
-        gain = std::atof ( argv[1] );
-        min_volume = std::atof ( argv[2] );
+        object_name = std::string(argv[1]);
+        gain = std::atof ( argv[2] );
+        break;
+    case 4:
+        object_name = std::string(argv[1]);
+        gain = std::atof ( argv[2] );
+        min_volume = std::atof ( argv[3] );
         break;
 
     }
@@ -52,32 +58,39 @@ int main ( int argc, char* argv[] )
 
 
     std::list<Box> sorted_boxes;
-    std::cout << "Gain: " << gain << "\tmin_volume" << min_volume << std::endl;
+    // std::cout << "Gain: " << gain << "\tmin_volume" << min_volume << std::endl;
     sorted_boxes = extractBoxes ( ObjectOriginal , gain, min_volume);
-
-    std::cout << ObjectOriginal.T << std::endl;
-    std::cout << ObjectOriginal.Isobox.block ( 0, 0, 1, 3 ) << " " << ObjectOriginal.Isobox.block ( 1, 0, 1, 3 ) << std::endl;
+// 
+    // std::cout << ObjectOriginal.T << std::endl;
+    // std::cout << ObjectOriginal.Isobox.block ( 0, 0, 1, 3 ) << " " << ObjectOriginal.Isobox.block ( 1, 0, 1, 3 ) << std::endl;
 
 
 
     std::ofstream results_file;
     results_file.open("results_c.txt");
 
-    std::cout << "No. Boxes: " << sorted_boxes.size() << std::endl ;
+    std::ofstream database_file;
+    database_file.open("database.csv", std::ofstream::out | std::ofstream::app);
+    // database_file.open("database.csv");
 
+    // std::cout << "No. Boxes: " << sorted_boxes.size() << std::endl ;
 
-    while (!sorted_boxes.empty())
-    {
-        
+    // std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes, ObjectOriginal);
+
+    std::vector< Eigen::MatrixXd> trasformations =  getTrasformsforHand( sorted_boxes, ObjectOriginal);
+
+    // while (!sorted_boxes.empty())
+    // {
+
         // std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes.front(), ObjectOriginal);
-        std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes.front(), ObjectOriginal);
+        // std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes.front(), ObjectOriginal);
         // std::cout << "Transformation:" << std::endl << sorted_boxes.front().T << std::endl << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
         // std::cout <<
-        //<< "Transformation:" << std::endl << 
-        // sorted_boxes.front().T << std::endl 
+        //<< "Transformation:" << std::endl <<
+        // sorted_boxes.front().T << std::endl
         // << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
-        // std::cout << "No. trasformations: " << trasformations.size() << std::endl
-        ;
+        std::cout << "No. trasformations: " << trasformations.size() << std::endl;
+        // ;
         for (int i = 0 ; i < trasformations.size() ; i++)
         {
 
@@ -93,14 +106,19 @@ int main ( int argc, char* argv[] )
             //     std::cout << "REally bad" << std::endl;
             //     exit(1);
             // }
-            results_file << trasformations[i] << std::endl;
-            results_file << "0 0 0 0 0 0" << std::endl;
-            results_file << sorted_boxes.front().T << std::endl;
-            results_file << sorted_boxes.front().Isobox.block ( 0, 0, 1, 3 ) << " " << sorted_boxes.front().Isobox.block ( 1, 0, 1, 3 ) << std::endl;
+            // results_file << trasformations[i] << std::endl;
+            // results_file << "0 0 0 0 0 0" << std::endl;
+            // results_file << sorted_boxes.front().T << std::endl;
+            // results_file << sorted_boxes.front().Isobox.block ( 0, 0, 1, 3 ) << " " << sorted_boxes.front().Isobox.block ( 1, 0, 1, 3 ) << std::endl;
 
-            
-        }
-        sorted_boxes.pop_front();
+            database_file   << object_name << ","
+                            << trasformations[i](0,0) << "," << trasformations[i](0,1) << "," << trasformations[i](0,3) << ","
+                            << trasformations[i](1,0) << "," << trasformations[i](1,1) << "," << trasformations[i](1,3) << ","
+                            << trasformations[i](2,0) << "," << trasformations[i](2,1) << "," << trasformations[i](2,3) << std::endl;
+
+
+        // }
+        // sorted_boxes.pop_front();
     }
 
     return 0;
