@@ -31,6 +31,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 add_executable(BoundingBox src/BoundingBox.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
 add_executable(BoundingBox_all src/BoundingBox_all.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
+add_executable(BoundingBox_populated src/BoundingBox_populated.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
 target_link_libraries(BoundingBox ${PCL_LIBRARIES})
 
 add_executable(test src/test.cpp )

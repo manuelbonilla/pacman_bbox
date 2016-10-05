@@ -112,9 +112,10 @@ int main ( int argc, char* argv[] )
             // results_file << sorted_boxes.front().Isobox.block ( 0, 0, 1, 3 ) << " " << sorted_boxes.front().Isobox.block ( 1, 0, 1, 3 ) << std::endl;
 
             database_file   << object_name << ","
-                            << trasformations[i](0,0) << "," << trasformations[i](0,1) << "," << trasformations[i](0,3) << ","
-                            << trasformations[i](1,0) << "," << trasformations[i](1,1) << "," << trasformations[i](1,3) << ","
-                            << trasformations[i](2,0) << "," << trasformations[i](2,1) << "," << trasformations[i](2,3) << std::endl;
+                            << trasformations[i](0,0) << "," << trasformations[i](0,1) << "," << trasformations[i](0,2) << ","
+                            << trasformations[i](1,0) << "," << trasformations[i](1,1) << "," << trasformations[i](1,2) << ","
+                            << trasformations[i](2,0) << "," << trasformations[i](2,1) << "," << trasformations[i](2,2) << ","
+                            << trasformations[i](0,3) << "," << trasformations[i](1,3) << "," << trasformations[i](2,3) << std::endl;
 
 
         // }
