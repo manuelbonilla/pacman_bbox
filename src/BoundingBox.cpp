@@ -55,6 +55,10 @@ int main ( int argc, char* argv[] )
     std::cout << "Gain: " << gain << "\tmin_volume" << min_volume << std::endl;
     sorted_boxes = extractBoxes ( ObjectOriginal , gain, min_volume);
 
+    std::cout << ObjectOriginal.T << std::endl;
+    std::cout << ObjectOriginal.Isobox.block ( 0, 0, 1, 3 ) << " " << ObjectOriginal.Isobox.block ( 1, 0, 1, 3 ) << std::endl;
+
+
 
     std::ofstream results_file;
     results_file.open("results_c.txt");
@@ -64,12 +68,16 @@ int main ( int argc, char* argv[] )
 
     while (!sorted_boxes.empty())
     {
+        
+        // std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes.front(), ObjectOriginal);
         std::vector< Eigen::MatrixXd> trasformations =  get_populated_TrasformsforHand( sorted_boxes.front(), ObjectOriginal);
         // std::cout << "Transformation:" << std::endl << sorted_boxes.front().T << std::endl << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
-        std::cout 
-        //<< "Transformation:" << std::endl << sorted_boxes.front().T << std::endl 
-        << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
-        // std::cout << "No. trasformations: " << trasformations.size() << std::endl;
+        // std::cout <<
+        //<< "Transformation:" << std::endl << 
+        // sorted_boxes.front().T << std::endl 
+        // << "det: " << sorted_boxes.front().T.determinant() << std::endl;;
+        // std::cout << "No. trasformations: " << trasformations.size() << std::endl
+        ;
         for (int i = 0 ; i < trasformations.size() ; i++)
         {
 

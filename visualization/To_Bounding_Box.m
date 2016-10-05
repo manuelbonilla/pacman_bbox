@@ -3,7 +3,7 @@ close all
 clc
 
 show_plot = 1;
-[R, adams_point, object] = bounding_box_plots('../../Grasp-simulation/data/objects/apc2015/mead_index_cards/meshes/tsdf_reduced.shl', '../build/results_c.txt');
+[R, adams_point, object] = bounding_box_plots('../../Grasp-simulation/data/objects/apc2015/crayola_64_ct/meshes/tsdf_reduced.shl', '../build/results_c.txt');
 
 
 %% eulero angles

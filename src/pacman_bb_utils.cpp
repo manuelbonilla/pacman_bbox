@@ -382,7 +382,7 @@ std::list< Box > box_sort (std::list< Box > results)
 Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
 {
     double side_x, side_y, side_z;
-    Eigen::Matrix<double, 4, 4> T_l;
+    Eigen::Matrix<double, 4, 4> T_l = Eigen::Matrix<double, 4, 4>::Identity();
     Eigen::Matrix<double, 3, 2> angle;
 
 
@@ -407,7 +407,7 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     figure.push_back(side_z);
 
 
-    max = figure[0]; /*assign max a value to avoid garbage*/
+    max = -1000; /*assign max a value to avoid garbage*/
 
     for (int k = 0; k < figure.size(); k++)
     {
@@ -428,6 +428,7 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     Eigen::Matrix<double, 3, 1> R;
 
     /*find vector x is nothing more than longest axis.*/
+    // std::cout << "first_boxes" << std::endl <<first_boxes.T << std::endl << std::endl;
     switch (ori)
     {
     case 0:
@@ -452,10 +453,8 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     R.row(0) = F.row(0);
     R.row(1) = F.row(1);
     R.row(2) = F.row(2);
-    // std::cout << "R :" << R << std::endl;
 
     angle = FInd_angle(first_boxes, figure, 0.005, flag_axis, ObjectOriginal);
-    // std::cout << "angle" << angle << std::endl;
 
     Eigen::Matrix<double, 3, 1> third_col, axis_x;
 
@@ -464,6 +463,7 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     third_col = angle.col(0);
 
     axis_x = R.transpose().cross(third_col.transpose()); /* calculates orthogonal vector*/
+    // std::cout << "axis: " << axis_x.transpose() << std::endl;
 
     /*make a transformation*/
     T_l.block<3, 1> (0, 0) = R;
@@ -472,6 +472,15 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     T_l.block<3, 1> (0, 3) = first_boxes.T.block<3, 1> (0, 3) + T_l.block<3, 3> (0, 0) * angle.col(1);
     T_l.block<1, 3> (3, 0) = Eigen::MatrixXd:: Zero(1, 3);
     T_l (3, 3) = 1.0;
+
+    if (T_l.determinant() == 0.0)
+    {
+        std::cout << "angle: " << angle << std::endl;
+        std::cout << "R :" << R.transpose() << std::endl;
+        std::cout << std::endl << "angle****" << std::endl << angle << std::endl;
+        std::cout << "axis: " << axis_x.transpose() << std::endl;
+        std::cout << "T_l" << std::endl << T_l << std::endl;
+    }
 
     /* double det;*/
     /* det=T_l.block<3,3> (0,0).determinant();*/
@@ -485,7 +494,7 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
 
 Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double distance, int flag_axis, Box ObjectOriginal)
 {
-    Eigen::Matrix<double, 3, 1> Normal, Col3, D;
+    Eigen::Matrix<double, 3, 1> Normal, tmp_vec, Col3, D;
     double PI = 3.14159265;
     int ori;
     double x, y, z, sum, L1, min;
@@ -507,17 +516,27 @@ Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double 
         sum = x + y + z;
 
         /*length*/
-        L1 = abs(sqrt(pow(first_boxes.T(0, i), 2) + pow(first_boxes.T(1, i), 2) + pow(first_boxes.T(2, i), 2)));
-        // std::cout << "L: " << L1 << std::endl;
-        if (L1 == 0)
+        // std::cout << "first_boxes" << std::endl << first_boxes.T << std::endl << "det:" << first_boxes.T.determinant() << std::endl;
+        // L1 = abs(sqrt(pow(first_boxes.T(0, i), 2) + pow(first_boxes.T(1, i), 2) + pow(first_boxes.T(2, i), 2)));
+        // std::cout << "L1: " << L1 << std::endl;
+        // std::cout << "sum: " << sum << std::endl;
+        tmp_vec = Normal.cross(first_boxes.T.block<1, 3>(0, i));
+        double angle2 = std::atan2( tmp_vec.norm(), sum );
+
+        // std::cout << "Angle_new : " << angle2 * 180.0 / PI <<  std::endl;
+
+        if (L1 == 0.0)
         {
             angle.push_back( 1000 * 180.0 / PI);
             // std::cout << "Angle : " << 1000 * 180.0 / PI <<  std::endl;
             continue;
         }
+        else
+        {
 
-        /*angle*/
-        angle.push_back( acos (sum / L1) * 180.0 / PI);
+            /*angle*/
+            angle.push_back( angle2 * 180.0 / PI);
+        }
         // std::cout << "Angle : " << acos (sum / L1) * 180.0 / PI <<  std::endl;
     }
 
@@ -532,8 +551,8 @@ Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double 
     for (int k = 0; k < angle.size(); k++)
     {
         /*if 'min' is less than angle[k] then assign it that value*/
-        if (flag_axis == k)
-            continue;
+        // if (flag_axis == k)
+        //     continue;
         if (min >= angle[k])
         {
             min = angle[k];
@@ -551,7 +570,7 @@ Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double 
     if (ori == flag_axis)
     {
 
-        // std::cout << "I'm here again" << std::endl;
+        std::cout << "I'm here again" << std::endl;
         angle.clear();
 
         Normal(0, 0) = -ObjectOriginal.centroid(0, 0) + first_boxes.centroid(0, 0);
@@ -574,14 +593,17 @@ Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double 
             sum = x + y + z;
 
             /*length*/
-            L1 = abs(sqrt(pow(first_boxes.T(0, i), 2) + pow(first_boxes.T(1, i), 2) + pow(first_boxes.T(2, i), 2)));
+
+            tmp_vec = Normal.cross(first_boxes.T.block<1, 3>(0, i));
+            double angle2 = std::atan2( tmp_vec.norm(), sum );
+            // L1 = abs(sqrt(pow(first_boxes.T(0, i), 2) + pow(first_boxes.T(1, i), 2) + pow(first_boxes.T(2, i), 2)));
 
             /*angle*/
-            angle.push_back( acos (sum / L1) * 180.0 / PI);
+            angle.push_back( angle2 * 180.0 / PI);
             /*                  double dotv1v2 = 0;*/
             /*                  dotv1v2 = sum;*/
             /*                      angle.push_back( acos (dotv1v2) * 180.0 / PI);*/
-            /*                      std::cout << "Angle : " << acos (sum / L1) * 180.0 / PI <<  std::endl;*/
+            // std::cout << "Angle_now++ : " << angle2 * 180.0 / PI <<  std::endl;
 
         }
 
@@ -782,6 +804,7 @@ std::vector<Eigen::MatrixXd> getTrasformsforHand(std::list<Box> sorted_boxes, Bo
     while (!sorted_boxes.empty() )
     {
         results.push_back(info_adams(sorted_boxes.front(), ObjectOriginal));
+        // std::cout << info_adams(sorted_boxes.front(), ObjectOriginal) << std::endl;
         sorted_boxes.pop_front();
     }
 
@@ -800,7 +823,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
     std::vector<Eigen::MatrixXd> results;
     results.clear();
 
- 
+
     Eigen::Matrix3d m, m_start;
 
     //  Plane YZ;
@@ -814,7 +837,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
             start(1, 3) = i;
             start(2, 3) = j;
             m_start = Eigen::AngleAxisd( -M_PI / 2, Eigen::Vector3d::UnitY());
-            for (double k = -M_PI ; k < M_PI; k = k + 2*M_PI / disc)
+            for (double k = -M_PI ; k < M_PI; k = k + 2 * M_PI / disc)
             {
                 m = m_start * Eigen::AngleAxisd(k, Eigen::Vector3d::UnitZ());
                 start.block<3, 3>(0, 0) = m;
@@ -823,7 +846,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
 
             start(0, 3) = -1.0 * (axis_dimensions(0) / 2 + dist_hand);
             m_start = Eigen::AngleAxisd( M_PI / 2, Eigen::Vector3d::UnitY());
-            for (double k = -M_PI ; k < M_PI; k = k + 2*M_PI / disc)
+            for (double k = -M_PI ; k < M_PI; k = k + 2 * M_PI / disc)
             {
                 m = m_start * Eigen::AngleAxisd(k, Eigen::Vector3d::UnitZ());
                 start.block<3, 3>(0, 0) = m;
@@ -843,7 +866,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
             start(1, 3) = axis_dimensions(1) / 2 + dist_hand;
             start(2, 3) = j;
             m_start = Eigen::AngleAxisd( M_PI / 2, Eigen::Vector3d::UnitX());
-            for (double k = -M_PI ; k < M_PI; k = k + 2*M_PI / disc)
+            for (double k = -M_PI ; k < M_PI; k = k + 2 * M_PI / disc)
             {
                 m = m_start * Eigen::AngleAxisd(k, Eigen::Vector3d::UnitZ());
                 start.block<3, 3>(0, 0) = m;
@@ -852,7 +875,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
 
             start(1, 3) = -1.0 * (axis_dimensions(1) / 2 + dist_hand);
             m_start = Eigen::AngleAxisd( -M_PI / 2, Eigen::Vector3d::UnitX());
-            for (double k = -M_PI ; k < M_PI; k = k + 2*M_PI / disc)
+            for (double k = -M_PI ; k < M_PI; k = k + 2 * M_PI / disc)
             {
                 m = m_start * Eigen::AngleAxisd(k, Eigen::Vector3d::UnitZ());
                 start.block<3, 3>(0, 0) = m;
@@ -873,7 +896,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
             start(1, 3) = j;
             start(2, 3) = axis_dimensions(2) / 2 + dist_hand;
             m_start = Eigen::AngleAxisd( M_PI, Eigen::Vector3d::UnitX());
-            for (double k = -M_PI ; k < M_PI; k = k + 2*M_PI / disc)
+            for (double k = -M_PI ; k < M_PI; k = k + 2 * M_PI / disc)
             {
                 m = m_start * Eigen::AngleAxisd(k, Eigen::Vector3d::UnitZ());
                 start.block<3, 3>(0, 0) = m;
@@ -882,7 +905,7 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
 
             start(2, 3) = -1.0 * (axis_dimensions(2) / 2 + dist_hand);
             m_start = Eigen::AngleAxisd( 0, Eigen::Vector3d::UnitX());
-            for (double k = -M_PI ; k < M_PI; k = k + 2*M_PI / disc)
+            for (double k = -M_PI ; k < M_PI; k = k + 2 * M_PI / disc)
             {
                 m = m_start * Eigen::AngleAxisd(k, Eigen::Vector3d::UnitZ());
                 start.block<3, 3>(0, 0) = m;
@@ -899,12 +922,38 @@ std::vector<Eigen::MatrixXd> get_populated_TrasformsforHand(Box box, Box ObjectO
     std::vector<Eigen::MatrixXd> results;
     Eigen::Vector3d axis_dimensions;
     axis_dimensions <<  -box.Isobox( 0, 0)  + box.Isobox( 1, 0),
-                        -box.Isobox( 0, 1)  + box.Isobox( 1, 1),
-                        -box.Isobox( 0, 2)  + box.Isobox( 1, 2);
+                    -box.Isobox( 0, 1)  + box.Isobox( 1, 1),
+                    -box.Isobox( 0, 2)  + box.Isobox( 1, 2);
     results = populate_face(axis_dimensions, 3, 0.005, box.T);
-
+    results = filter_poses(results, ObjectOriginal);
 
     return results;
+}
+
+
+std::vector<Eigen::MatrixXd> filter_poses(std::vector<Eigen::MatrixXd> all_poses, Box ObjectOriginal)
+{
+    std::vector<Eigen::MatrixXd> results;
+    for (int i = 0; i < all_poses.size(); i++)
+    {
+        if ( pose_inside_box(all_poses[i], ObjectOriginal ))
+            continue;
+
+        results.push_back(all_poses[i]);
+    }
+
+    return results;
+}
+
+bool pose_inside_box(Eigen::MatrixXd Pose, Box ObjectOriginal)
+{
+
+    Eigen::MatrixXd pose_local = ObjectOriginal.T.inverse()*Pose;
+    if (    (pose_local(0,3) > ObjectOriginal.Isobox(0,0) && pose_local(0,3) < ObjectOriginal.Isobox(1,0)) &&
+            (pose_local(1,3) > ObjectOriginal.Isobox(0,1) && pose_local(1,3) < ObjectOriginal.Isobox(1,1)) &&
+            (pose_local(2,3) > ObjectOriginal.Isobox(0,2) && pose_local(2,3) < ObjectOriginal.Isobox(1,2)) )
+        return true;
+    return false;
 }
 
 
