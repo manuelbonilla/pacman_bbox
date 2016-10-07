@@ -804,7 +804,6 @@ std::vector<Eigen::MatrixXd> getTrasformsforHand(std::list<Box> sorted_boxes, Bo
     while (!sorted_boxes.empty() )
     {
         results.push_back(info_adams(sorted_boxes.front(), ObjectOriginal));
-        // std::cout << info_adams(sorted_boxes.front(), ObjectOriginal) << std::endl;
         sorted_boxes.pop_front();
     }
 
