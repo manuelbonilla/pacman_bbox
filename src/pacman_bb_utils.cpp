@@ -379,10 +379,10 @@ std::list< Box > box_sort (std::list< Box > results)
 }
 
 
-Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
+Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal, double distance, bool mirrorred)
 {
     double side_x, side_y, side_z;
-    Eigen::Matrix<double, 4, 4> T_l = Eigen::Matrix<double, 4, 4>::Identity();
+    Eigen::MatrixXd T_l = Eigen::MatrixXd::Identity(4,4);
     Eigen::Matrix<double, 3, 2> angle;
 
 
@@ -454,7 +454,7 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
     R.row(1) = F.row(1);
     R.row(2) = F.row(2);
 
-    angle = FInd_angle(first_boxes, figure, 0.005, flag_axis, ObjectOriginal);
+    angle = FInd_angle(first_boxes, figure, distance, flag_axis, ObjectOriginal);
 
     Eigen::Matrix<double, 3, 1> third_col, axis_x;
 
@@ -482,12 +482,23 @@ Eigen::MatrixXd info_adams( Box  first_boxes, Box ObjectOriginal)
         std::cout << "T_l" << std::endl << T_l << std::endl;
     }
 
+
+    if (mirrorred == true)
+    {
+        T_l.block<3, 1> (0, 3) = first_boxes.T.block<3, 1> (0, 3) + T_l.block<3, 3> (0, 0) * -1 * angle.col(1);
+        Eigen::MatrixXd start2 = Eigen::MatrixXd::Identity(4, 4);
+        Eigen::Matrix3d start;
+        start = Eigen::AngleAxisd( M_PI, Eigen::Vector3d::UnitX());
+        start2.block<3,3>(0,0) = start;
+        return T_l*start2;
+         // T_l = T_l * Eigen::AngleAxisd( M_PI, Eigen::Vector3d::UnitX());
+    }
     /* double det;*/
     /* det=T_l.block<3,3> (0,0).determinant();*/
     /* std::cout<<"det "<< det<<std::endl;*/
 
-    return T_l;
 
+    return T_l;
 }
 
 
@@ -570,7 +581,7 @@ Eigen::MatrixXd FInd_angle( Box first_boxes, std::vector<double> figure, double 
     if (ori == flag_axis)
     {
 
-        std::cout << "I'm here again" << std::endl;
+        // std::cout << "I'm here again" << std::endl;
         angle.clear();
 
         Normal(0, 0) = -ObjectOriginal.centroid(0, 0) + first_boxes.centroid(0, 0);
@@ -793,17 +804,23 @@ std::list<Box> extractBoxes ( Box ObjectOriginal, float gain, float min_volume, 
 
     }
 
+    // std::list<Box> results1;
+    // results1.push_back( results.front());
+
     return box_sort(  results );
+    // return box_sort(  results1 );
 }
 
 
-std::vector<Eigen::MatrixXd> getTrasformsforHand(std::list<Box> sorted_boxes, Box ObjectOriginal)
+std::vector<Eigen::MatrixXd> getTransformsForHand(std::list<Box> sorted_boxes, Box ObjectOriginal, double dist_hand)
 {
+    Eigen::MatrixXd w_T_o = ObjectOriginal.T;
 
     std::vector<Eigen::MatrixXd> results;
     while (!sorted_boxes.empty() )
     {
-        results.push_back(info_adams(sorted_boxes.front(), ObjectOriginal));
+        results.push_back(info_adams(sorted_boxes.front(), ObjectOriginal, 0.005, false));
+        results.push_back(info_adams(sorted_boxes.front(), ObjectOriginal, 0.005, true));
         sorted_boxes.pop_front();
     }
 
@@ -916,14 +933,14 @@ std::vector<Eigen::MatrixXd> populate_face (Eigen::Vector3d axis_dimensions, int
 
 }
 
-std::vector<Eigen::MatrixXd> get_populated_TrasformsforHand(Box box, Box ObjectOriginal)
+std::vector<Eigen::MatrixXd> get_populated_TrasformsforHand(Box box, Box ObjectOriginal, int disc, double dist_hand)
 {
     std::vector<Eigen::MatrixXd> results;
     Eigen::Vector3d axis_dimensions;
     axis_dimensions <<  -box.Isobox( 0, 0)  + box.Isobox( 1, 0),
                     -box.Isobox( 0, 1)  + box.Isobox( 1, 1),
                     -box.Isobox( 0, 2)  + box.Isobox( 1, 2);
-    results = populate_face(axis_dimensions, 3, 0.005, box.T);
+    results = populate_face(axis_dimensions, disc, dist_hand, box.T);
     results = filter_poses(results, ObjectOriginal);
 
     return results;
@@ -947,10 +964,10 @@ std::vector<Eigen::MatrixXd> filter_poses(std::vector<Eigen::MatrixXd> all_poses
 bool pose_inside_box(Eigen::MatrixXd Pose, Box ObjectOriginal)
 {
 
-    Eigen::MatrixXd pose_local = ObjectOriginal.T.inverse()*Pose;
-    if (    (pose_local(0,3) > ObjectOriginal.Isobox(0,0) && pose_local(0,3) < ObjectOriginal.Isobox(1,0)) &&
-            (pose_local(1,3) > ObjectOriginal.Isobox(0,1) && pose_local(1,3) < ObjectOriginal.Isobox(1,1)) &&
-            (pose_local(2,3) > ObjectOriginal.Isobox(0,2) && pose_local(2,3) < ObjectOriginal.Isobox(1,2)) )
+    Eigen::MatrixXd pose_local = ObjectOriginal.T.inverse() * Pose;
+    if (    (pose_local(0, 3) > ObjectOriginal.Isobox(0, 0) && pose_local(0, 3) < ObjectOriginal.Isobox(1, 0)) &&
+            (pose_local(1, 3) > ObjectOriginal.Isobox(0, 1) && pose_local(1, 3) < ObjectOriginal.Isobox(1, 1)) &&
+            (pose_local(2, 3) > ObjectOriginal.Isobox(0, 2) && pose_local(2, 3) < ObjectOriginal.Isobox(1, 2)) )
         return true;
     return false;
 }

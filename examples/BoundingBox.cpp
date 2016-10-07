@@ -86,7 +86,7 @@ int main ( int argc, char* argv[] )
 
 //print results
     std::ofstream results_file;
-    results_file.open((std::string("results/") + object_name + std::string("results_matlab.txt")).c_str());
+    results_file.open((object_name + std::string("results_matlab.txt")).c_str());
 
     std::ofstream database_file;
     std::string database_name("database");
@@ -95,7 +95,7 @@ int main ( int argc, char* argv[] )
     {
         database_name += std::string("populated");
     }
-    database_file.open((std::string("results/") + database_name + std::string(".csv")).c_str(), std::ofstream::out | std::ofstream::app);
+    database_file.open((database_name + std::string(".csv")).c_str(), std::ofstream::out | std::ofstream::app);
 
 
     for (int i = 0; i < box_and_transformations.size(); ++i)
