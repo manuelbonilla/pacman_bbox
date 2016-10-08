@@ -1,6 +1,6 @@
 
 
-project( pacman_bbox )
+project( mvbb_object_decomposition )
 cmake_minimum_required(VERSION 2.6.2)
 
 find_package(CGAL QUIET COMPONENTS Core )
@@ -25,11 +25,12 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-
-
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
-add_executable(BoundingBox examples/BoundingBox.cpp src/pacman_bb.cpp src/pacman_bb_utils.cpp)
+add_library(${PROJECT_NAME} src/pacman_bb.cpp src/pacman_bb_utils.cpp)
+
+add_executable(${PROJECT_NAME}_example examples/BoundingBox.cpp)
+target_link_libraries(${PROJECT_NAME}_example ${PROJECT_NAME})
 
 
 find_package(Doxygen)
